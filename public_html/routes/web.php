@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 // Тестирование
+// Pull Request
 Route::resource('rest', 'RestTestController');
