@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Тестирование
 Route::resource('rest', 'RestTestController');
