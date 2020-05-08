@@ -84,6 +84,18 @@
       <path value="$PROJECT_DIR$/public_html/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/public_html/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/public_html/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/public_html/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/public_html/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/public_html/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/public_html/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/public_html/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/public_html/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/public_html/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/public_html/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/public_html/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/public_html/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/public_html/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/public_html/vendor/caouecs/laravel-lang" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
