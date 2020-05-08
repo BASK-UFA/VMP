@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 pb-4 pb-md-0">
             <div class="card">
 {{--                <div class="card-header">Личная информация</div>--}}
 
@@ -18,7 +18,7 @@
         <div class="col-md-9">
             <div class="card mb-4">
                 <div class="card-header">
-                    <span class="float-left">Профиль</span>
+                    <span style="line-height: 37px;" class="h4">Профиль</span>
                     <span class="float-right"><button class="btn btn-primary">Изменить</button></span>
                 </div>
 
