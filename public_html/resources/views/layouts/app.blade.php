@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .pagination {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
