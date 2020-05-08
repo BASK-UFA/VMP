@@ -2,19 +2,45 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-3">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+{{--                <div class="card-header">Личная информация</div>--}}
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <img class="img-fluid" src="{{ asset('images/avatar.png') }}" alt="">
+                </div>
+                <div class="card-footer d-flex justify-content-center">
+                    <button class="btn btn-primary">Поменять картинку</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <span class="float-left">Профиль</span>
+                    <span class="float-right"><button class="btn btn-primary">Изменить</button></span>
+                </div>
 
-                    You are logged in!
+                <div class="card-body">
+                    <div class="h2">{{ Auth::user()->name }}</div>
+                    <div class="h5">Тут доп. информация</div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">Мои работы</div>
+
+                <div class="card-body">
+                    <div class="h2">Тут будет список работ</div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">Мои статьи</div>
+
+                <div class="card-body">
+                    <div class="h2">Тут будет краткий список статей</div>
                 </div>
             </div>
         </div>
