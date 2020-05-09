@@ -13,7 +13,7 @@ class RestTestController extends Controller
      */
     public function index()
     {
-        //
+        dd(1);
     }
 
     /**

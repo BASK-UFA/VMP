@@ -6,9 +6,16 @@
       <sourceFolder url="file://$MODULE_DIR$/public_html/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/public_html/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/laravel-ide-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/beyondcode/laravel-dump-server" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/caouecs/laravel-lang" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/dnoegel/php-xdg-base-dir" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/event-manager" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/lexer" />
@@ -21,9 +28,11 @@
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/jakub-onderka/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/maximebf/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/myclabs/deep-copy" />
@@ -61,6 +70,8 @@
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/recursion-context" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/seld/jsonlint" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/seld/phar-utils" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/css-selector" />
@@ -68,6 +79,7 @@
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/error-handler" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/finder" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/http-kernel" />
