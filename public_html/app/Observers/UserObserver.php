@@ -24,14 +24,15 @@ class UserObserver
      */
     private function setAvatar(User $user)
     {
-        /** @var \Illuminate\Support\Facades\File $file */
+        /** @var File $file */
         if ($user->isDirty('avatar') and is_file($user->avatar)) {
             $file = $user->avatar;
 
             $path = $file
                 ->store('users/' . $user->id, 'public');
 
-            $user->avatar = 'storage/'.$path;
+            $user->avatar = 'storage/' . $path;
         }
     }
+
 }

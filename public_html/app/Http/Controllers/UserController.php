@@ -3,11 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Repositories\BlogPostRepository;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
+
+
+    /**
+     * @var BlogPostRepository
+     */
+    private $blogPostRepository;
+
+    public function __construct()
+    {
+        $this->blogPostRepository = app(BlogPostRepository::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,13 +55,12 @@ class UserController extends Controller
     /**
      * Показать страницу пользователя
      *
-     * @param  int  $id
+     * @param int $id
      * @return View
      */
     public function show($id)
     {
         $data = User::findOrFail($id);
-
         return view('home', compact('data'));
     }
 

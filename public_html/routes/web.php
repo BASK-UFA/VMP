@@ -29,11 +29,16 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
 //});
 
 Route::resource('user', 'UserController')
-    ->only('show', 'update')
+    ->only('show')
     ->names('user');
 
+Route::resource('user', 'UserController')
+    ->only('update')
+    ->names('user')
+    ->middleware('user');
+
 // Админка блога
-Route::group(['namespace' => 'Blog\Admin', 'prefix' => 'admin/blog'], function () {
+Route::group(['namespace' => 'Blog\Admin', 'prefix' => 'admin/blog', 'middleware' => ['admin', 'auth']], function () {
     // BlogCategory
     Route::resource('categories', 'CategoryController')
         ->only(['index', 'edit', 'store', 'update', 'create'])

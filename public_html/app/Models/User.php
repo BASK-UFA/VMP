@@ -32,12 +32,15 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BlogPost[] $post
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BlogPost[] $posts
  * @property-read int|null $post_count
  */
 class User extends Authenticatable
 {
     use Notifiable;
+
+    // Администратор - первая запись в бд
+    const ADMIN = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -66,9 +69,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function post()
+    public function posts()
     {
         // Пользователь имеет статьи
         return $this->hasMany(BlogPost::class);
+    }
+
+    public function lastPosts()
+    {
+        return $this->hasMany(BlogPost::class)->latest()->limit(5)->get();
     }
 }
