@@ -18,7 +18,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Мой профиль</a>
+                        <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Мой профиль</a>
                     @else
                         <a href="{{ route('login') }}">Войти</a>
 

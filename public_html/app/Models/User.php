@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property int $id
  * @property string $name
+ * @property string $avatar
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -44,7 +45,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -67,6 +68,7 @@ class User extends Authenticatable
 
     public function post()
     {
+        // Пользователь имеет статьи
         return $this->hasMany(BlogPost::class);
     }
 }

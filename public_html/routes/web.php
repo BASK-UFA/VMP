@@ -17,13 +17,20 @@ Route::get('/', function () {
 
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
     Route::resource('posts', 'PostController')->names('blog.posts');
 });
 
+//Route::group(['namespace' => 'User' 'prefix' => 'user'], function() {
+//    Route::resource('posts', 'PostController')->names('blog.posts');
+//});
+
+Route::resource('user', 'UserController')
+    ->only('show', 'update')
+    ->names('user');
 
 // Админка блога
 Route::group(['namespace' => 'Blog\Admin', 'prefix' => 'admin/blog'], function () {
