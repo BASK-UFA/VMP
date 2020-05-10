@@ -1,0 +1,79 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+ html, body  {
+    background-color: greenyellow;	
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0
+}
+.full-height  {
+    height: 100vh;
+}
+
+
+.flex-center  {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref  {
+    position: relative;
+}
+
+.top-right  {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content  {
+    text-align: center;
+}
+
+.title  {
+    font-size: 84px;
+}
+
+.links > a  {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md  {
+    margin-bottom: 30px;
+}
+
+
+.feedback  {
+	font-size: 16px;
+	line-height: 80px;
+	height: 80px;
+	background: #000;
+	color: #fff;
+	.contacts { 
+		display: flex;
+		justify-content: flex-start;
+    }	
+	.socneta {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: -50px;
+		padding-top: 0;
+    }
+}	
