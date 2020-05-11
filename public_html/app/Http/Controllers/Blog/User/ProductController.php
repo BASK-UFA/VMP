@@ -8,6 +8,19 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    /**
+     * Показать все работы пользователя
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $data = Product::all()->where('user_id', $id);
+
+        // TODO: Указать вьюшку для просмотра всех работ пользователя
+        return view('', compact('data'));
+    }
 
     /**
      * Показать страницу создания работы

@@ -4,6 +4,8 @@
 
     @php /** var @var \App\Models\User $data */ @endphp
 
+    {{--  TODO: сверстать success и errors ответы  --}}
+
     <!-- Modal -->
     <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -38,7 +40,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom01">Имя </label>
                                         <input type="text" class="form-control" id="validationCustom01"
-                                               placeholder="Имя" name="name" required>
+                                               placeholder="Имя" name="name" value="{{ $data->name }}">
                                         <div class="valid-feedback">
                                             Looks good!
                                         </div>
@@ -46,22 +48,22 @@
 
 
                                 </div>
-                                {{--                                    <div class="form-row">--}}
-                                {{--                                        <div class="col-md-6 mb-3">--}}
-                                {{--                                            <label for="validationCustom03">Город</label>--}}
-                                {{--                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Город" required>--}}
-                                {{--                                            <div class="invalid-feedback">--}}
-                                {{--                                                Пожалуйста введите свой город.--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="col-md-6 mb-3">--}}
-                                {{--                                            <label for="validationCustom05">Адрес</label>--}}
-                                {{--                                            <input type="text" class="form-control" id="validationCustom05" placeholder="Адрес" required>--}}
-                                {{--                                            <div class="invalid-feedback">--}}
-                                {{--                                                Пожалуйста введите свой адрес.--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
+{{--                                                                    <div class="form-row">--}}
+{{--                                                                        <div class="col-md-6 mb-3">--}}
+{{--                                                                            <label for="validationCustom03">Город</label>--}}
+{{--                                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Город" required>--}}
+{{--                                                                            <div class="invalid-feedback">--}}
+{{--                                                                                Пожалуйста введите свой город.--}}
+{{--                                                                            </div>--}}
+{{--                                                                        </div>--}}
+{{--                                                                        <div class="col-md-6 mb-3">--}}
+{{--                                                                            <label for="validationCustom05">Адрес</label>--}}
+{{--                                                                            <input type="text" class="form-control" id="validationCustom05" placeholder="Адрес" required>--}}
+{{--                                                                            <div class="invalid-feedback">--}}
+{{--                                                                                Пожалуйста введите свой адрес.--}}
+{{--                                                                            </div>--}}
+{{--                                                                        </div>--}}
+{{--                                                                    </div>--}}
 
 
                             </div>
@@ -115,8 +117,10 @@
             <div class="col-md-9 w-100 mt-4">
 
                 <div class=" mb-4">
-                    <div class="card-header h4 text-white bg-dark " style="font-family: 'Oswald', sans-serif">Мои
-                        работы
+                    <div class="card-header h4 text-white bg-dark " style="font-family: 'Oswald', sans-serif">
+                        <span>Мои работы</span>
+                        <span>| <a class="link" href="{{ route('blog.user.products.create') }}">Добавить новую работу</a></span>
+                        <span>| <a class="link" href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все работы</a></span>
                     </div>
 
                     <div>
@@ -148,8 +152,12 @@
                     </div>
                 </div>
                 <div class=" mb-4">
-                    <div class="card-header h4  text-white "
-                         style="font-family: 'Oswald', sans-serif;background-color: chocolate;">Последние опубликованные работы</div>
+                    <div class="card-header h4 text-white"
+                         style="font-family: 'Oswald', sans-serif;background-color: chocolate;">
+                        <span>Последние опубликованные статьи </span>
+                        <span>| <a class="link" href="{{ route('blog.user.posts.create') }}">Создать новую статью</a></span>
+                        <span>| <a class="link" href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a></span>
+                    </div>
 
                     <div>
                         <div class="card-footer text-white pb-3 bg-dark" style="">
@@ -159,7 +167,7 @@
                                     <h4 class="pl-3"
                                         style="font-family: 'Oswald',sans-serif;;">{{ $post->title }}</h4>
                                     <span class="pl-3">Автор: {{$data->name}}</span>
-                                   <span class=" pl-3 float-md-right d-md-inline d-block">Опубликовано: {{$post->published_at}}</span>
+                                   <span class=" pl-3 float-md-right d-md-inline d-block">Создано: {{$post->created_at}}</span>
                                     <p class="pl-3">{{$post->excerpt}}</p>
                                     <hr style="background-color:#fff;">
 

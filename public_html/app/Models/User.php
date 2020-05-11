@@ -40,7 +40,7 @@ class User extends Authenticatable
     use Notifiable;
 
     // Администратор - первая запись в бд
-    const ADMIN = 3;
+    const ADMIN = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -77,6 +77,17 @@ class User extends Authenticatable
 
     public function lastPosts()
     {
-        return $this->hasMany(BlogPost::class)->latest()->limit(5)->get();
+        return $this->hasMany(BlogPost::class)->where('published_at', '!=', null)->latest()->limit(5)->get();
+    }
+
+    public function products()
+    {
+        // Пользователь имеет статьи
+        return $this->hasMany(Product::class);
+    }
+
+    public function lastProducts()
+    {
+        return $this->hasMany(Product::class)->where('published_at', '!=', null)->latest()->limit(3)->get();
     }
 }
