@@ -60,11 +60,16 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\UserUpdateRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function update(UserUpdateRequest $request, $id)
     {
         $data = $request->all();
+
+        // TODO: Вынести логику из контроллера
+        if ($id != \Auth::user()->id) {
+            return abort(403);
+        }
 
         $result = User::findOrFail($id)->update($data);
 
