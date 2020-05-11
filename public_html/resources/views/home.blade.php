@@ -76,13 +76,17 @@
                     </div>
                 </div>
 
-                <div class="card mb-4">
-                    <div class="card-header">Мои статьи</div>
+                @foreach($data->lastPosts() as $post)
+                    <div class="card mb-4">
+                        <div class="card-header">{{ $post->title }}</div>
 
-                    <div class="card-body">
-                        <div class="h2">Тут будет краткий список статей</div>
+                        <div class="card-body">
+                            <div>
+                                <div>{{$post->excerpt}}</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
