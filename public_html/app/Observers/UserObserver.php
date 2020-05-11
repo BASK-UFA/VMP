@@ -15,6 +15,7 @@ class UserObserver
     public function updating(User $user)
     {
         $this->setAvatar($user);
+//        dd($user->getDirty());
     }
 
     /**
