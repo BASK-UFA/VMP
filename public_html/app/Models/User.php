@@ -40,7 +40,7 @@ class User extends Authenticatable
     use Notifiable;
 
     // Администратор - первая запись в бд
-    const ADMIN = 1;
+    const ADMIN = 3;
 
     /**
      * The attributes that are mass assignable.

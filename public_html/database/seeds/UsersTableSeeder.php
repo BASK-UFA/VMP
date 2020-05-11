@@ -15,14 +15,9 @@ class UsersTableSeeder extends Seeder
     {
         $data = [
             [
-                'name'      => 'Автор не известен',
-                'email'     => 'author_unknow@g.g',
-                'password'  => bcrypt(Str::random(16))
-            ],
-            [
-                'name'      => 'Автор',
-                'email'     => 'author1@g.g',
-                'password'  => bcrypt('123123')
+                'name'      => 'Администратор',
+                'email'     => 'admin@vmp.ru',
+                'password'  => bcrypt('password')
             ]
         ];
 
