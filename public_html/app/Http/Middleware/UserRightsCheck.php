@@ -15,13 +15,13 @@ class UserRightsCheck
      */
     public function handle($request, Closure $next)
     {
-        if (empty($request->user)) {
-            abort(500);
-        }
-
-        if ((int)$request->user !== (int)\Auth::user()->id) {
-            abort(403);
-        }
+//        if (empty($request->user)) {
+//            abort(500);
+//        }
+//
+//        if ((int)$request->user !== (int)\Auth::user()->id) {
+//            abort(403);
+//        }
 
         return $next($request);
     }

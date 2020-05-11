@@ -19,37 +19,21 @@ Route::get('/', function () {
 Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
-
+// Возможность просмотреть статьи пользователей
 Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
-    Route::resource('posts', 'PostController')->names('blog.posts');
+    Route::resource('posts', 'PostController')
+        ->only('show', 'index')
+        ->names('blog.posts');
 });
-
-//Route::group(['namespace' => 'User' 'prefix' => 'user'], function() {
-//    Route::resource('posts', 'PostController')->names('blog.posts');
-//});
-
-// Разрешено гостю в блоге
-//Route::group(['namespace' => 'Blog', 'prefix' => 'Blog'], function () {
-//    Route::resource('product', 'ProductController')
-//        ->only('show', 'index')
-//        ->names('product');
-//});
 
 // Возможность просмотреть работы всепользователям
 Route::resource('product', 'Blog\ProductController')
     ->only('show', 'index')
     ->names('product');
 
-// REST для продуктов с middleware
-Route::resource('product', 'Blog\User\ProductController')
-    ->except('show', 'index')
-    ->names('product')
-    ->middleware('user');
-
-
 // Просмотр личных страниц пользователей
 Route::resource('user', 'UserController')
-    ->only('show')
+    ->only('show', 'index')
     ->names('user');
 
 // REST для личных страниц с middleware
@@ -58,8 +42,23 @@ Route::resource('user', 'UserController')
     ->names('user')
     ->middleware('user');
 
+// Пользователь
+Route::group(['namespace' => 'Blog\User', 'prefix' => 'user/blog', 'middleware' => ['user', 'auth']], function () {
+
+    // Post
+    Route::resource('posts', 'PostController')
+        ->only(['index', 'edit', 'store', 'update', 'create'])
+        ->names('blog.user.posts');
+
+    // Product
+    Route::resource('products', 'ProductController')
+        ->except(['show'])
+        ->names('blog.user.products');
+});
+
 // Админка блога
 Route::group(['namespace' => 'Blog\Admin', 'prefix' => 'admin/blog', 'middleware' => ['admin', 'auth']], function () {
+
     // BlogCategory
     Route::resource('categories', 'CategoryController')
         ->only(['index', 'edit', 'store', 'update', 'create'])

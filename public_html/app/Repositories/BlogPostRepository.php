@@ -3,8 +3,10 @@
 
 namespace App\Repositories;
 use App\Models\BlogPost as Model;
+use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class BlogPostRepository extends CoreRepository
 {
@@ -14,8 +16,25 @@ class BlogPostRepository extends CoreRepository
         return Model::class;
     }
 
+
+    public function getAllOfUserWithPaginate($id = null) {
+        if ($id === null) {
+            $id = \Auth::user()->id;
+        }
+
+        /** @var LengthAwarePaginator $result */
+        $result = $this->startConditions()
+            ->where('user_id', $id)
+            ->orderBy('id', 'DESC')
+            ->with(['category', 'user'])
+            ->paginate(10);
+
+
+        return $result;
+    }
+
     /**
-     * Получить список статей для вывода в списке (Админка)
+     * Получить список всех статей для вывода в списке
      *
      * @return LengthAwarePaginator
      */
