@@ -12,7 +12,6 @@ use App\Http\Controllers\Controller;
 class PostController extends Controller
 {
 
-
     /**
      * @var BlogPostRepository|\Illuminate\Contracts\Foundation\Application|mixed
      */
