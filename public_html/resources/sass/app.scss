@@ -7,45 +7,118 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-html, body {
-    background-color: #fff;
-    color: #636b6f;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    height: 100vh;
-    margin: 0;
+body {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 2.142;
+    font-family: Montserrat,sans-serif;
+    letter-spacing: 0;
+    text-align: left;
+    color: #3b3d42;
+    position: relative;
+    overflow-x: hidden;
 }
-.full-height {
-    height: 100vh;
+
+nav {
+    background: #000;
 }
-.flex-center {
-    align-items: center;
+
+
+.intro {
+    background: #ffca85;
+}
+
+.intro_btn {
+    background: #ffca85;
+    width: 300px;
+    margin: auto;
+    border: 2px solid #2d3034;
+    border-radius: 20px;
+    font-size: 30px;
+}
+
+.intro_img {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    background: url('../images/back.jpeg');
+    background-size: cover;
+    height: 800px;
+    padding-top: 300px;
 }
-.position-ref {
-    position: relative;
-}
-.top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
-}
-.content {
-    text-align: center;
-}
-.title {
-    font-size: 84px;
-}
-.links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
+
+.intro_title {
+    font-size: 80px;
+    font-weight: 700;
     text-transform: uppercase;
 }
-.m-b-md {
-    margin-bottom: 30px;
+
+.intro_text {
+    font-size: 38px;
+    font-weight: 300;
+}
+
+.feedback {
+    font-size: 12px;
+    line-height: 80px;
+    height: 80px;
+    background: #000;
+    color: #fff;
+}
+
+.fa {
+    margin-left: 20px;
+}
+
+.about {
+    background: #fff;
+    height: 600px;
+    padding-top: 100px;
+    font-family: 'Oswald';
+}
+
+.about_title {
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.about_text {
+    text-transform: uppercase;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.about_line {
+    margin-top: 30px;
+    height: 5px;
+    width: 20%;
+}
+
+.about_us {
+    margin-top: 60px;
+    font-weight: 700;
+    font-family: 'Montserrat';
+}
+
+.about_team {
+    font-family: 'Montserrat';
+}
+
+.cats {
+    font-family: 'Oswald';
+    background: #ffca85;
+    height: 500px;
+}
+
+.cats_title {
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.cats_text {
+    text-transform: uppercase;
+    margin-top: 30px;
+    font-weight: 700;
 }
