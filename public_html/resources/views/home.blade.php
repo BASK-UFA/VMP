@@ -116,11 +116,14 @@
 
             <div class="col-md-9 w-100 mt-4">
 
-                <div class=" mb-4">
-                    <div class="card-header h4 text-white bg-dark " style="font-family: 'Oswald', sans-serif">
-                        <span>Мои работы</span>
-                        <span>| <a class="link" href="{{ route('blog.user.products.create') }}">Добавить новую работу</a></span>
-                        <span>| <a class="link" href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все работы</a></span>
+                <div class=" mb-5">
+                    <div class="card-header h4 text-white bg-dark  " style="font-family: 'Oswald', sans-serif; padding-bottom:1.75rem;">
+                        <span class="mb-1">Мои работы</span>
+
+
+                        <span class="mr-3"><button class="btn float-md-right d-block mt-1 mb-1" style="background-color: chocolate;"><a class="link text-white" href="{{ route('blog.user.products.create') }}">Добавить новую работу</a></button> </span>
+                       <span class="bg-dark float-md-right mb-1" style="width: 15px; opacity: 0">b</span>
+                        <span><button class="btn float-md-right d-block mb-1 mt-1 " style="background-color: chocolate;"> <a class="link text-white" href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все работы</a></button></span>
                     </div>
 
                     <div>
