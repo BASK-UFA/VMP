@@ -29,10 +29,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data = new Product();
+        $item = new Product();
+//        dd($item);
 
-        // TODO: Указать вьюшку создания работы
-        return view('', compact($data));
+
+        return view('blog.user.products.edit',compact('item'));
     }
 
     /**
@@ -51,8 +52,8 @@ class ProductController extends Controller
         if ($result) {
             if ($result) {
                 return redirect()
-                    // TODO: Указать вьюшку для страницы изменения работы
-                    ->route('', ['id' => $item->id])
+
+                    ->route('blog.user.products.edit', ['id' => $item->id])
                     ->with(['success' => 'Успешно обновлено']);
             } else {
                 return back()
@@ -71,8 +72,8 @@ class ProductController extends Controller
     {
         $data = Product::findOrFail($id);
 
-        // TODO: Указать вьюшку для страницы изменения работы
-        return view('', $data);
+
+        return view('blog.user.products.edit', $data);
     }
 
     /**
@@ -90,8 +91,7 @@ class ProductController extends Controller
         if ($result) {
             if ($result) {
                 return redirect()
-                    // TODO: Указать вьюшку для страницы изменения работы
-                    ->route('', ['id' => $id])
+                    ->route('blog.user.products.edit', ['id' => $id])
                     ->with(['success' => 'Успешно обновлено']);
             } else {
                 return back()
