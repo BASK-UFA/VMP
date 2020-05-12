@@ -155,11 +155,12 @@
                     </div>
                 </div>
                 <div class=" mb-4">
-                    <div class="card-header h4 text-white"
+                    <div class="card-header h4 text-white pb-4"
                          style="font-family: 'Oswald', sans-serif;background-color: chocolate;">
                         <span>Последние опубликованные статьи </span>
-                        <span>| <a class="link" href="{{ route('blog.user.posts.create') }}">Создать новую статью</a></span>
-                        <span>| <a class="link" href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a></span>
+                        <span><button class="btn float-md-right d-block mt-1 mb-1 bg-dark" ><a class="link" href="{{ route('blog.user.posts.create') }}">Создать новую статью</a></button></span>
+                        <span class="bg-dark float-md-right mb-1" style="width: 15px; opacity: 0">b</span>
+                        <span><button class="btn float-md-right d-block mb-1 mt-1 bg-dark" ><a class="link" href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a></button></span>
                     </div>
 
                     <div>
