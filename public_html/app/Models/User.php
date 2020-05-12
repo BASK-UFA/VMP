@@ -85,9 +85,9 @@ class User extends Authenticatable
         // Пользователь имеет статьи
         return $this->hasMany(Product::class);
     }
-
     public function lastProducts()
     {
         return $this->hasMany(Product::class)->where('published_at', '!=', null)->latest()->limit(3)->get();
     }
 }
+
