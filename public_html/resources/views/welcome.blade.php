@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="{{ asset('js/app.js') }}"></script>
-    </head>
-    <body>
-
+@extends('layouts.app')
+@section('content')
     <section class="intro">
         <div class="fluid-container">
             <div class="row">
@@ -25,6 +8,8 @@
                 </div>
             </div>
         </div>
+    </section>
+
 
     <section class="about">
         <div class="container">
@@ -173,5 +158,4 @@
             </div>
         </div>
     </section>
-    </body>
-</html>
+@endsection

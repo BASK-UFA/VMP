@@ -10883,6 +10883,7 @@ a.text-dark:focus {
 }
 
 body {
+  position: relative;
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -10891,7 +10892,6 @@ body {
   letter-spacing: 0;
   text-align: left;
   color: #3b3d42;
-  position: relative;
   overflow-x: hidden;
 }
 
