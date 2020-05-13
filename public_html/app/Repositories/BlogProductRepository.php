@@ -24,7 +24,7 @@ class BlogProductRepository extends CoreRepository
         $columns = [
             'id',
             'excerpt',
-            'category_id',
+            'content_html',
             'user_id',
             'name',
             'created_at'
@@ -34,7 +34,7 @@ class BlogProductRepository extends CoreRepository
         $result = $this->startConditions()
             ->select($columns)
             ->orderBy('id', 'DESC')
-            ->with(['category', 'user'])
+            ->with(['user'])
             ->paginate(10);
 
 
