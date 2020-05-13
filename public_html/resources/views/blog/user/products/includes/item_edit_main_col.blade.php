@@ -25,7 +25,7 @@
                     <div class="tab-pane fade active show" id="maindata" role="tabpanel" aria-labelledby="maindata-tab">
                         <div class="form-group">
                             <label for="title">Заголовок</label>
-                            <input name="title" value="{{ old('title', $item->name) }}"
+                            <input name="name" value="{{ old('name', $item->name) }}"
                                    type="text"
                                    id="title"
                                    class="form-control"
@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Превью</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                         </div>
 
                     </div>

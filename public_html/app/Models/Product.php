@@ -11,5 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    protected $fillable = [
+        'title', 'slug', 'excerpt', 'category_id', 'content_raw', 'is_published', 'published_at',
+    ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

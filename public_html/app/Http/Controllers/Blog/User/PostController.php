@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Blog\User;
 
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\BlogPost;
 use App\Models\User;
 use App\Repositories\BlogCategoryRepository;
@@ -18,6 +20,11 @@ class PostController extends Controller
     private $blogPostRepository;
     private $blogCategoryRepository;
 
+    /**
+     * Подключение репозиториев
+     *
+     * PostController constructor.
+     */
     public function __construct()
     {
         $this->blogPostRepository = app(BlogPostRepository::class);
@@ -36,7 +43,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Показать форму создание продукта
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -48,12 +55,12 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Сохранить продукт в базе данных
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
         $item = new BlogPost();
         $data = $request->all();
@@ -108,7 +115,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
         $item = $this->blogPostRepository->getEdit($id);
 
