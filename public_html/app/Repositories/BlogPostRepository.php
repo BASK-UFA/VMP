@@ -42,6 +42,7 @@ class BlogPostRepository extends CoreRepository
     {
         $columns = [
             'id',
+            'image',
             'excerpt',
             'category_id',
             'user_id',

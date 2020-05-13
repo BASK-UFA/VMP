@@ -96,6 +96,7 @@
       <path value="$PROJECT_DIR$/public_html/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/public_html/vendor/justinrainbow/json-schema" />
       <path value="$PROJECT_DIR$/public_html/vendor/caouecs/laravel-lang" />
+      <path value="$PROJECT_DIR$/public_html/vendor/andreasindal/laravel-markdown" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

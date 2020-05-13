@@ -4,20 +4,20 @@
     @php /** var @var \App\Models\BlogPost $item */ @endphp
 
     @if($item->exists)
-        <form method="POST" action="{{ route('blog.user.posts.update', $item->id) }}">
-        @method('PATCH')
-    @else
-        <form method="POST" action="{{ route('blog.user.posts.store') }}">
-    @endif
-        @csrf
-        <div class="container">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('blog.user.posts.update', $item->id) }}">
+            @method('PATCH')
+            @else
+                <form enctype="multipart/form-data" method="POST" action="{{ route('blog.user.posts.store') }}">
+                    @endif
+                    @csrf
+                    <div class="container">
 
-            @include('blog.admin.posts.includes.result_message')
+                        @include('blog.admin.posts.includes.result_message')
 
-                <div class="row justify-content-center">
-                    <div class="col-md-9">
-                        @include('blog.admin.posts.includes.item_edit_main_col')
-                    </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-9">
+                                @include('blog.admin.posts.includes.item_edit_main_col')
+                            </div>
                     <div class="col-md-3">
                         @include('blog.admin.posts.includes.item_edit_add_col')
                     </div>

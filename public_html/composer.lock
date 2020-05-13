@@ -1,11 +1,54 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa10c92f106538658492f578a44a24b3",
+    "content-hash": "bcc50b55ccc15f612dcbf5c9097ded90",
     "packages": [
+        {
+            "name": "andreasindal/laravel-markdown",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreasindal/laravel-markdown.git",
+                "reference": "59da1a84cbfff865c0a22ec71e0a70d36bb2776c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreasindal/laravel-markdown/zipball/59da1a84cbfff865c0a22ec71e0a70d36bb2776c",
+                "reference": "59da1a84cbfff865c0a22ec71e0a70d36bb2776c",
+                "shasum": ""
+            },
+            "require": {
+                "erusev/parsedown": "^1.6",
+                "illuminate/support": "^5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Indal\\Markdown\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Indal",
+                    "email": "andreas@rocketship.se"
+                }
+            ],
+            "description": "Simple Blade directive for markdown parsing.",
+            "time": "2016-08-18T19:20:45+00:00"
+        },
         {
             "name": "caouecs/laravel-lang",
             "version": "4.0.11",

@@ -51,8 +51,7 @@ class ProductObserver
     protected function setHtml(Product $product)
     {
         if ($product->isDirty('content_raw')) {
-            // TODO: Тут должна быть генерация markdown -> html
-            $product->content_html = $product->content_raw;
+            $product->content_html = markdown($product->content_raw);
         }
     }
 
