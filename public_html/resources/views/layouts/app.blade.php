@@ -89,7 +89,7 @@
         </div>
     </div>
     <nav style="height: 70px" class="p-0 navbar-main navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a style="padding: 0.5rem 1rem !important;" class="navbar-brand" href="#">ВМП</a>
+        <a style="padding: 0.5rem 1rem !important;" class="navbar-brand" href="{{ route('/') }}">ВМП</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -100,10 +100,10 @@
                 <div style="padding: 0.5rem 1rem !important;" class="w-100 p-0 position-absolute bg-dark navbar-collapse ">
                     <ul class="navbar-nav m-auto main-menu h6">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('/') }}">Главная <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Блог</a>
+                            <a class="nav-link" href="{{ route('posts.index') }}">Блог</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -115,6 +115,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
+{{--                        TODO: Ссылка на наши работы    --}}
                             <a class="nav-link disabled" href="#">Наши работы</a>
                         </li>
                     </ul>
