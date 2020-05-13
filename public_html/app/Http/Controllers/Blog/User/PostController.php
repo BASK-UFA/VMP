@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Blog\User;
 
+use App\Http\Requests\BlogPostStoreRequest;
+use App\Http\Requests\BlogPostUpdateRequest;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\BlogPost;
@@ -32,7 +34,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Показать статьи пользователя
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -43,7 +45,7 @@ class PostController extends Controller
     }
 
     /**
-     * Показать форму создание продукта
+     * Показать форму создание статьи
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -55,12 +57,12 @@ class PostController extends Controller
     }
 
     /**
-     * Сохранить продукт в базе данных
+     * Сохранить статью в базе данных
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function store(ProductStoreRequest $request)
+    public function store(BlogPostStoreRequest $request)
     {
         $item = new BlogPost();
         $data = $request->all();
@@ -78,7 +80,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Показать статьи пользователя
      *
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -109,14 +111,15 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Обновить статью
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProductUpdateRequest $request, $id)
+    public function update(BlogPostUpdateRequest $request, $id)
     {
+        dd(2);
         $item = $this->blogPostRepository->getEdit($id);
 
         if (empty($item)) {

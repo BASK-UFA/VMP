@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Blog\User;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -31,38 +32,36 @@ class ProductController extends Controller
     {
         $item = new Product();
 
-        return view('blog.user.products.edit',compact('item'));
+        return view('blog.user.products.edit', compact('item'));
     }
 
     /**
      * Сохранить продукт в память
      *
-     * @var Product $item
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @var Product $item
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
         $data = $request->input();
-        $item = new Product();
-        $result = $item->create($data);
+        $item = (new Product())->create($data);
 
-        if ($result) {
-            if ($result) {
-                return redirect()
-                    ->route('blog.user.products.edit', ['id' => $item->id])
-                    ->with(['success' => 'Успешно обновлено']);
-            } else {
-                return back()
-                    ->withErrors(['msg' => 'Ошибка сохранения']);
-            }
+        if ($item->exists) {
+            return redirect()
+                ->route('blog.user.products.edit', ['id' => $item->id])
+                ->with(['success' => 'Успешно обновлено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка сохранения']);
         }
+
     }
 
     /**
      * Показать страницу изменения работы
      *
-     * @param  int  $id
+     * @param int $id
      * @return \View
      */
     public function edit($id)
@@ -76,11 +75,11 @@ class ProductController extends Controller
     /**
      * Обновить продукт в памяти
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
         $data = $request->input();
         $result = Product::findOrFail($id)->update($data);
@@ -100,7 +99,7 @@ class ProductController extends Controller
     /**
      * Удалить продукт
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
