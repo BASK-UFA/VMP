@@ -32,15 +32,14 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return View
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        $data = Product::findOrFail($id);
+        $item = Product::findOrFail($id);
 
-        // TODO: Указать вьюшку для просмотра работы
-        return view('', $data);
+        return view('blog.products.show', compact('item'));
     }
 
 }
