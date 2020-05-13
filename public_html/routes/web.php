@@ -27,7 +27,7 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
     // Статьи
     Route::resource('posts', 'PostController')
         ->only('show', 'index')
-        ->names('blog.posts');
+        ->names('posts');
 
     // Работы
     Route::resource('product', 'ProductController')

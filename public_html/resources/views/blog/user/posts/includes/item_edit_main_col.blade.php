@@ -1,19 +1,19 @@
 @php /** @var App\Models\BlogPost $item */ @endphp
 
-<div class="row justify-content-center">
+<div class="row justify-content-center" style="font-family: 'Oswald', sans-serif;">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header text-white" style="background-color: chocolate; ">
                 @if($item->is_published)
                     Опубликовано
                 @else
                     Черновик
                 @endif
             </div>
-            <div class="card-body">
+            <div class="card-footer border-0">
                 <div class="card-title"></div>
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
+                    <li class="nav-item border-0">
                         <a id="maindata-tab" href="#maindata" data-toggle="tab" class="nav-link active" role="tab" aria-controls="maindata" aria-selected="true">Основные данные</a>
                     </li>
                     <li class="nav-item">
