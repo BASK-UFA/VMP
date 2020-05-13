@@ -11,40 +11,67 @@
 |
 */
 
+
+// Главная страница
 Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
 
+// Общедоступные статьи и работы пользователей
 Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
-    Route::resource('posts', 'PostController')->names('blog.posts');
+
+    // Статьи
+    Route::resource('posts', 'PostController')
+        ->only('show', 'index')
+        ->names('posts');
+
+    // Работы
+    Route::resource('product', 'ProductController')
+        ->only('show', 'index')
+        ->names('product');
 });
 
 
-// Админка блога
-Route::group(['namespace' => 'Blog\Admin', 'prefix' => 'admin/blog'], function () {
-    // BlogCategory
+// Личные страници пользователей
+Route::resource('user', 'UserController')
+    ->only('show', 'index', 'update')
+    ->names('user');
+
+
+// Маршруты только для пользователей
+Route::group(['namespace' => 'Blog\User', 'prefix' => 'user', 'middleware' => ['user', 'auth']], function () {
+
+    // Статьи
+    Route::resource('posts', 'PostController')
+        ->except(['show'])
+        ->names('blog.user.posts');
+    Route::get('{id}/posts', 'PostController@show')->name('blog.user.posts.show');
+
+    // Работы
+    Route::resource('products', 'ProductController')
+        ->except(['show'])
+        ->names('blog.user.products');
+    Route::get('{id}/products', 'ProductController@show')->name('blog.user.products.show');
+});
+
+
+// Маршруты только для администратора
+Route::group(['namespace' => 'Blog\Admin', 'prefix' => 'admin/blog', 'middleware' => ['admin', 'auth']], function () {
+
+    // Статьи
     Route::resource('categories', 'CategoryController')
         ->only(['index', 'edit', 'store', 'update', 'create'])
         ->names('blog.admin.categories');
 
-    // BlogPost
+    // Категории
     Route::resource('posts', 'PostController')
         ->except(['show'])
         ->names('blog.admin.posts');
+
+    // TODO: Сделать маршруты для работы с Product моделью
 });
-
-
-// Работа с коллекциями
-Route::group(['prefix' => 'digging_deeper'], function () {
-    Route::get('collections', "DiggingDeeperController@collections")
-        ->name('digging_deeper.collections');
-});
-
-
-//Route::resource('rest', 'RestTestController')->names('restTest');
 
