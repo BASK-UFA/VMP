@@ -106,9 +106,7 @@
                             <a class="mt-2 mt-md-0 btn btn-primary text-white"
                                href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все работы</a>
                         </div>
-
                     </div>
-
                     <div>
 
                             <div class="card-footer pb-3" style="background-color: chocolate;">
