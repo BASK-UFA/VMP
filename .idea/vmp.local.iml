@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/public_html/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/public_html/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/andreasindal/laravel-markdown" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/laravel-debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/reflection-docblock" />

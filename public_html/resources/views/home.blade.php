@@ -60,15 +60,10 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                @if (session()->has('success'))
-                    <div class="alert alert-success">
-                        {{session()->get('success')}}
-                    </div>
-                @endif
 
-            </div>
+        @include('blog.includes.result_message')
+
+        <div class="row">
             <div class="col-md-3  ">
                 <div class="pb-4 pb-md-0  ">
 
@@ -108,7 +103,6 @@
                         </div>
                     </div>
                     <div>
-
                             <div class="card-footer pb-3" style="background-color: chocolate;">
                             <div class="card-deck">
                                 @foreach($data->lastProducts() as $product)
@@ -142,10 +136,18 @@
                             @foreach($data->lastPosts() as $post)
                                 <div class=" mb-4">
                                     <h4 class="pl-3"
-                                        style="font-family: 'Oswald',sans-serif;;">{{ $post->title }}</h4>
-                                    <span class="pl-3">Автор: {{$data->name}}</span>
-                                    <span
-                                        class=" pl-3 float-md-right d-md-inline d-block">Создано: {{$post->created_at}}</span>
+                                        style="font-family: 'Oswald',sans-serif;">
+                                        <a class="link" href="{{ route('posts.show', $id = $post->id) }}">
+                                            {{ $post->title }}
+                                        </a>
+
+                                    </h4>
+                                    <div>
+                                        <span class="pl-3">Автор: {{$data->name}}</span>
+                                        <span
+                                            class=" pl-3 float-md-right d-md-inline d-block">Создано: {{$post->created_at}}</span>
+                                    </div>
+                                    <img src="{{ asset($post->image) }}" alt="" class="img-fluid">
                                     <p class="pl-3">{{$post->excerpt}}</p>
                                     <hr style="background-color:#fff;">
 

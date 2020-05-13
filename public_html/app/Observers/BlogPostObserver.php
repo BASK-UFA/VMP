@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\BlogPost;
+use App\Models\Product;
 use Carbon\Carbon;
 
 class BlogPostObserver
@@ -16,6 +17,7 @@ class BlogPostObserver
     public function updating(BlogPost $blogPost)
     {
         $this->setPublishedAt($blogPost);
+        $this->setImage($blogPost);
         $this->setSlug($blogPost);
     }
 
@@ -27,9 +29,29 @@ class BlogPostObserver
     public function creating(BlogPost $blogPost)
     {
         $this->setPublishedAt($blogPost);
+        $this->setImage($blogPost);
         $this->setSlug($blogPost);
         $this->setHtml($blogPost);
         $this->setUser($blogPost);
+    }
+
+    /**
+     * Сохранить промо-картинку в памяти и обновить поле avatar пользователя
+     *
+     * @param BlogPost $product
+     */
+    private function setImage(BlogPost $blogPost)
+    {
+        /** @var File $file */
+
+        if ($blogPost->isDirty('image') and is_file($blogPost->image)) {
+            $file = $blogPost->image;
+
+            $path = $file
+                ->store('posts/' . $blogPost->id, 'public');
+
+            $blogPost->image = 'storage/' . $path;
+        }
     }
 
     /**
@@ -66,7 +88,7 @@ class BlogPostObserver
     {
         if ($blogPost->isDirty('content_raw')) {
             // TODO: Тут должна быть генерация markdown -> html
-            $blogPost->content_html = $blogPost->content_raw;
+            $blogPost->content_html = markdown($blogPost->content_raw);
         }
     }
 
