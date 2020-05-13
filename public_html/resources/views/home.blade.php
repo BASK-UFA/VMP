@@ -96,19 +96,17 @@
 
             <div class="col-md-9 w-100 mt-4">
 
-                <div class=" mb-5">
+                <div class="mb-5">
                     <div class="card-header h4 text-white bg-dark  "
                          style="font-family: 'Oswald', sans-serif; padding-bottom:1.75rem;">
                         <span class="mb-1">Мои работы</span>
+                        <div class="float-md-right">
+                            <a class="mt-2 mt-md-0 btn btn-primary text-white"
+                               href="{{ route('blog.user.products.create') }}">Добавить новую работу</a>
+                            <a class="mt-2 mt-md-0 btn btn-primary text-white"
+                               href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все работы</a>
+                        </div>
 
-
-                        <span class="mr-3"><button class="btn float-md-right d-block mt-1 mb-1"
-                                                   style="background-color: chocolate;"><a class="link text-white"
-                                                                                           href="{{ route('blog.user.products.create') }}">Добавить новую работу</a></button> </span>
-                        <span class="bg-dark float-md-right mb-1" style="width: 15px; opacity: 0">b</span>
-                        <span><button class="btn float-md-right d-block mb-1 mt-1 "
-                                      style="background-color: chocolate;"> <a class="link text-white"
-                                                                               href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все работы</a></button></span>
                     </div>
 
                     <div>
