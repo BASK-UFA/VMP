@@ -15,8 +15,13 @@ class Product extends Model
         'name', 'excerpt', 'category_id', 'content_raw', 'is_published', 'published_at',
     ];
 
+    /**
+     * Продукт (работа) принадлежит пользователю
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }
