@@ -30,7 +30,7 @@
                         </div>
 
                         <div >
-                            <img  class="d-flex justify-content-center h-25 w-50"  src="{{asset('')}}" alt="">
+                            <img  class="d-flex justify-content-center h-25 w-50"  src="{{asset('images/books.jpg')}}" alt="">
                             <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">{{ $item->excerpt }}</div>
                             <div>
                                 <button class="btn text-white" style="font-size:1.2em;background-color:chocolate; ; font-family: 'Oswald', sans-serif;" href="#">Читать далее...</button>

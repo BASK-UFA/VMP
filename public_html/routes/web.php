@@ -30,9 +30,9 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
         ->names('posts');
 
     // Работы
-    Route::resource('product', 'ProductController')
+    Route::resource('products', 'ProductController')
         ->only('show', 'index')
-        ->names('product');
+        ->names('products');
 });
 
 

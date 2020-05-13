@@ -30,8 +30,6 @@ class ProductController extends Controller
     public function create()
     {
         $item = new Product();
-//        dd($item);
-
 
         return view('blog.user.products.edit',compact('item'));
     }
@@ -52,7 +50,6 @@ class ProductController extends Controller
         if ($result) {
             if ($result) {
                 return redirect()
-
                     ->route('blog.user.products.edit', ['id' => $item->id])
                     ->with(['success' => 'Успешно обновлено']);
             } else {
@@ -70,10 +67,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data = Product::findOrFail($id);
+        $item = Product::findOrFail($id);
 
 
-        return view('blog.user.products.edit', $data);
+        return view('blog.user.products.edit', compact('item'));
     }
 
     /**
