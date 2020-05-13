@@ -119,7 +119,6 @@ class PostController extends Controller
      */
     public function update(BlogPostUpdateRequest $request, $id)
     {
-        dd(2);
         $item = $this->blogPostRepository->getEdit($id);
 
         if (empty($item)) {
