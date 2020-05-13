@@ -20,14 +20,13 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $data = $this->blogProductRepository->getAllWithPaginate();
 
-        // TODO: Указать вьюшку страницы "Наши работы"
-        return view('', $data);
+        return view('blog.products.index', $data);
     }
 
     /**

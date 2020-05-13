@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    @php /** var @var \App\Models\BlogPost $item */ @endphp
+    @php /** var @var \App\Models\Product $item */ @endphp
 
     @if($item->exists)
-        <form method="POST" action="{{ route('blog.user.products.update', $item->id) }}">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('blog.user.products.update', $item->id) }}">
         @method('PATCH')
     @else
-        <form method="POST" action="{{ route('blog.user.products.store') }}">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('blog.user.products.store') }}">
     @endif
         @csrf
         <div class="container">
