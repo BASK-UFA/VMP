@@ -87,7 +87,7 @@ class User extends Authenticatable
     }
     public function lastProducts()
     {
-        return $this->hasMany(Product::class)->where('published_at', '!=', null)->latest()->limit(3)->get();
+        return $this->hasMany(Product::class)->latest()->limit(3)->get();
     }
 }
 

@@ -13,8 +13,7 @@ class ProductStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        dd(1);
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -29,7 +28,6 @@ class ProductStoreRequest extends FormRequest
             'slug'  =>  'max:200',
             'excerpt' => 'max:500',
             'content_raw' => 'required|string|min:5|max:10000',
-            'category_id' => 'required|integer|exists:blog_categories,id',
         ];
     }
 }
