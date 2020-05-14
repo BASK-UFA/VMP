@@ -50,7 +50,9 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
+.article_txt{
+    /*font-size: 1.5em;*/
+}
 article,
 aside,
 figcaption,
@@ -503,6 +505,16 @@ mark,
 
 .blockquote-footer::before {
   content: "\2014\A0";
+}
+.img-fluid{
+    background: #222;
+    color: #fff;
+    border-radius: 2px;
+    position: unset;
+    right: 0;
+    bottom: 10px;
+    font-size: 18px;
+    padding: 3px 5px;
 }
 
 .img-fluid {
@@ -10917,17 +10929,19 @@ nav {
   justify-content: center;
   flex-direction: column;
   color: #fff;
-  background: url(/images/back.jpeg?16b342d1ffa1f6272a47769e1cefdedd);
+    background: url(/images/back.jpeg?16b342d1ffa1f6272a47769e1cefdedd);
   background-size: cover;
   height: 800px;
   padding-top: 300px;
 }
-
-.intro_title {
-  font-size: 80px;
-  font-weight: 700;
-  text-transform: uppercase;
+.intro_read {
+    margin-top: -95px;
+    height: 600px;
 }
+
+
+
+
 
 .intro_text {
   font-size: 38px;
