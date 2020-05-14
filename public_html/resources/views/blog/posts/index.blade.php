@@ -6,11 +6,9 @@
             <br>
             <div class="row">
                 <div class="col-md-12">
-
                         <div class=" pagination justify-content-center ">
                             {{ $paginator->links() }}
                         </div>
-
                 </div>
             </div>
         @endif

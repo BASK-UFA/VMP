@@ -37,11 +37,15 @@
                         </span>
                 </div>
 
-                <div class="mt-4 "><p class="article_txt">{{!!$item->content_html!!}}</p></div>
+                <div class="mt-4 "><p class="article_txt">{{($item->content_html)}}</p></div>
 
             </div>
         </div>
     </div>
+
+
+
+
 
     {{--    @dd($item->getAttributes())--}}
 
