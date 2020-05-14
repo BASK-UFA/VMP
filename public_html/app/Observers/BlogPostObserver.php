@@ -17,6 +17,7 @@ class BlogPostObserver
     public function updating(BlogPost $blogPost)
     {
         $this->setPublishedAt($blogPost);
+        $this->setHtml($blogPost);
         $this->setImage($blogPost);
         $this->setSlug($blogPost);
     }
