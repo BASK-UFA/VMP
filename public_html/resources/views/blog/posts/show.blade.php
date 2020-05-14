@@ -15,7 +15,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{asset($item->image)}}" class="d-block w-100  intro_read bg-secondary">
+                <img src="{{ asset($item->image) }}" class="d-block w-100  intro_read bg-secondary">
                 <div class="carousel-caption  d-md-block">
                     <h5> {{ $item->title }}</h5>
 
@@ -29,7 +29,7 @@
             <div class="col-12">
 
                 <div>
-                    <span>{{$item->user->name}}</span>
+                    <span>{{ $item->user->name }}</span>
                     <span class="float-md-right">Создано: {{$item->created_at}}</span>
                 </div>
 
