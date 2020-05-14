@@ -34,7 +34,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="offset-lg-2 col-lg-8">
+            <div class="offset-lg-2 col-lg-9">
                 <h3 class="cats_title mt-5 text-center">
                     Категории
                 </h3>
