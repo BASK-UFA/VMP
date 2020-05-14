@@ -15,7 +15,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset($item->image) }}" class="d-block w-100  intro_read bg-secondary">
+                <img alt="Превью" src="{{ asset($item->image) }}" class="d-block w-100  intro_read bg-secondary">
                 <div class="carousel-caption  d-md-block">
                     <h5> {{ $item->title }}</h5>
 
