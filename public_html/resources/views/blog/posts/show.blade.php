@@ -29,26 +29,18 @@
             <div class="col-12">
 
                 <div>
-                        <span>
-                            {{$item->user->name}}
-                        </span>
-                    <span class="float-md-right">
-                            Создано: {{$item->created_at}}
-                        </span>
+                    <span>{{$item->user->name}}</span>
+                    <span class="float-md-right">Создано: {{$item->created_at}}</span>
                 </div>
 
-                <div class="mt-4 "><p class="article_txt">{{($item->content_html)}}</p></div>
+                <div class="mt-4">
+                    <div class="article_txt">
+                        {!! $item->content_html !!}
+                    </div>
+                </div>
 
             </div>
         </div>
     </div>
-
-
-
-
-
-    {{--    @dd($item->getAttributes())--}}
-
-
 
 @endsection
