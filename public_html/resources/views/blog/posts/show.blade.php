@@ -16,8 +16,11 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{{asset($item->image)}}" class="d-block w-100  intro_read bg-secondary">
-                <div class="carousel-caption  d-md-block">
-                    <h5> {{ $item->title }}</h5>
+                <div class="carousel-caption  d-md-block arrow-7">
+                    <h1 class="post_name"> {{ $item->title }}</h1>
+
+                    <a href="#article_user"><div class="arrow arrow-bottom"></div></a>
+
 
                 </div>
             </div>
@@ -29,7 +32,9 @@
             <div class="col-12">
 
                 <div>
-                        <span>
+                    <span id="article_user"> <img class="img-fluid article_avatar"
+                                                  src="{{ asset($item->user->avatar) }}" alt=""></span>
+                    <span class="h3 post_name">
                             {{$item->user->name}}
                         </span>
                     <span class="float-md-right">
@@ -37,7 +42,7 @@
                         </span>
                 </div>
 
-                <div class="mt-4 "><p class="article_txt">{{($item->content_html)}}</p></div>
+                <div class="mt-4 "><p class="article_txt">{!!$item->content_html!!}</p></div>
 
             </div>
         </div>

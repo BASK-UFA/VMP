@@ -50,8 +50,33 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.article_txt{
-    /*font-size: 1.5em;*/
+
+.anchor{
+
+bottom: -10px;
+
+
+    position: relative;
+}
+.arrow-bottom {
+    transform: rotate(135deg);
+   }
+.arrow {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-top: 10px solid #fff;
+    border-right: 10px solid #fff;
+    margin-right: 60px;
+}
+
+.article_avatar{
+border-radius:50% !important;
+    width: 150px;
+    height: 150px;
+}
+.post_name{
+    font-family: 'Oswald', sans-serif;
 }
 article,
 aside,
