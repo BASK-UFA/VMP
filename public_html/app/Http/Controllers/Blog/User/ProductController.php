@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Blog\User;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -18,96 +19,96 @@ class ProductController extends Controller
     {
         $data = Product::all()->where('user_id', $id);
 
-        // TODO: Указать вьюшку для просмотра всех работ пользователя
-        return view('', compact('data'));
+        return view('blog.user.products.index', compact('data'));
     }
 
     /**
      * Показать страницу создания работы
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
         $item = new Product();
-//        dd($item);
 
-
-        return view('blog.user.products.edit',compact('item'));
+        return view('blog.user.products.edit', compact('item'));
     }
 
     /**
      * Сохранить продукт в память
      *
-     * @var Product $item
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\ProductStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
-        $data = $request->input();
-        $item = new Product();
-        $result = $item->create($data);
+        $data = $request->all();
+        $item = (new Product())->create($data);
 
-        if ($result) {
-            if ($result) {
-                return redirect()
-
-                    ->route('blog.user.products.edit', ['id' => $item->id])
-                    ->with(['success' => 'Успешно обновлено']);
-            } else {
-                return back()
-                    ->withErrors(['msg' => 'Ошибка сохранения']);
-            }
+        if ($item->exists) {
+            return redirect()
+                ->route('blog.user.products.edit', ['id' => $item->id])
+                ->with(['success' => 'Успешно обновлено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка сохранения']);
         }
+
     }
 
     /**
      * Показать страницу изменения работы
      *
-     * @param  int  $id
-     * @return \View
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $data = Product::findOrFail($id);
+        $item = Product::findOrFail($id);
 
-
-        return view('blog.user.products.edit', $data);
+        return view('blog.user.products.edit', compact('item'));
     }
 
     /**
      * Обновить продукт в памяти
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\ProductUpdateRequest $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
-        $data = $request->input();
+        $data = $request->all();
         $result = Product::findOrFail($id)->update($data);
 
         if ($result) {
-            if ($result) {
-                return redirect()
-                    ->route('blog.user.products.edit', ['id' => $id])
-                    ->with(['success' => 'Успешно обновлено']);
-            } else {
-                return back()
-                    ->withErrors(['msg' => 'Ошибка сохранения']);
-            }
+            return redirect()
+                ->route('blog.user.products.edit', ['id' => $id])
+                ->with(['success' => 'Успешно обновлено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка сохранения']);
         }
+
     }
 
     /**
      * Удалить продукт
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $result = Product::destroy($id);
+
+        if ($result) {
+            return redirect()
+                ->route('blog.user.products.create')
+                ->with(['success' => 'Работа успешно удалена']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка удаления работы']);
+        }
     }
 }

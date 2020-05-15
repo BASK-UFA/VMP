@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Blog\User;
 
+use App\Http\Requests\BlogPostStoreRequest;
+use App\Http\Requests\BlogPostUpdateRequest;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\BlogPost;
 use App\Models\User;
 use App\Repositories\BlogCategoryRepository;
@@ -18,6 +22,11 @@ class PostController extends Controller
     private $blogPostRepository;
     private $blogCategoryRepository;
 
+    /**
+     * Подключение репозиториев
+     *
+     * PostController constructor.
+     */
     public function __construct()
     {
         $this->blogPostRepository = app(BlogPostRepository::class);
@@ -25,7 +34,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Показать статьи пользователя
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -36,7 +45,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Показать форму создание статьи
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -48,12 +57,12 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Сохранить статью в базе данных
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogPostStoreRequest $request)
     {
         $item = new BlogPost();
         $data = $request->all();
@@ -71,7 +80,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Показать статьи пользователя
      *
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -83,9 +92,9 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Показать форму изменения статьи
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function edit($id)
@@ -102,13 +111,13 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Обновить статью
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(BlogPostUpdateRequest $request, $id)
     {
         $item = $this->blogPostRepository->getEdit($id);
 
@@ -134,13 +143,23 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удалить статью
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $result = BlogPost::destroy($id);
+
+        if ($result) {
+            return redirect()
+                ->route('blog.user.posts.create')
+                ->with(['success' => "Статья удалена"]);
+        } else {
+            return back()
+                ->withErrors(['msg' => "Ошибка удаления"])
+                ->withInput();
+        }
     }
 }

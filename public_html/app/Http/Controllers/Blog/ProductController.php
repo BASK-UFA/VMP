@@ -20,28 +20,26 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $data = $this->blogProductRepository->getAllWithPaginate();
 
-        // TODO: Указать вьюшку страницы "Наши работы"
-        return view('', $data);
+        return view('blog.products.index', $data);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return View
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        $data = Product::findOrFail($id);
+        $item = Product::findOrFail($id);
 
-        // TODO: Указать вьюшку для просмотра работы
-        return view('', $data);
+        return view('blog.products.show', compact('item'));
     }
 
 }

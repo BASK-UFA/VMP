@@ -25,16 +25,13 @@
                     <div class="tab-pane fade active show" id="maindata" role="tabpanel" aria-labelledby="maindata-tab">
                         <div class="form-group">
                             <label for="title">Заголовок</label>
-                            <input name="title" value="{{ old('title', $item->name) }}"
+                            <input name="name" value="{{ old('name', $item->name) }}"
                                    type="text"
                                    id="title"
                                    class="form-control"
                                    minlength="3"
                                    required>
                         </div>
-
-
-
                         <div class="form-group">
                             <label for="content_raw">Статья</label>
                             <textarea
@@ -53,8 +50,6 @@
 
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
-
-
                         <div class="form-group">
                             <label for="excerpt">Выдержка</label>
                             <textarea
@@ -65,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Превью</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                         </div>
 
                     </div>

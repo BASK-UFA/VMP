@@ -55,14 +55,16 @@ class PostController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * Показать статью
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $item = BlogPost::findOrFail($id);
+
+        return view('blog.posts.show', compact('item'));
     }
 
     /**

@@ -18,21 +18,16 @@ class CreateBlogPostsTable extends Migration
 
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-
+            $table->string('image')->nullable();
             $table->string('slug')->unique();
             $table->string('title');
-
             $table->text('excerpt')->nullable();
-
             $table->text('content_raw');
             $table->text('content_html');
-
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
-
             $table->timestamps();
             $table->softDeletes();
-
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('blog_categories');
             $table->index('is_published');
