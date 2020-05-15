@@ -75,8 +75,12 @@ border-radius:50% !important;
     width: 150px;
     height: 150px;
 }
-.post_name{
+.post_name {
     font-family: 'Oswald', sans-serif;
+
+}
+.post_name h1{
+
     text-shadow:#000 0 0 5px;
 }
 article,
