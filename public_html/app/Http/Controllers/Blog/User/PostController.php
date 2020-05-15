@@ -92,9 +92,9 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Показать форму изменения статьи
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function edit($id)
@@ -143,13 +143,23 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удалить статью
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $result = BlogPost::destroy($id);
+
+        if ($result) {
+            return redirect()
+                ->route('blog.user.posts.create')
+                ->with(['success' => "Статья удалена"]);
+        } else {
+            return back()
+                ->withErrors(['msg' => "Ошибка удаления"])
+                ->withInput();
+        }
     }
 }

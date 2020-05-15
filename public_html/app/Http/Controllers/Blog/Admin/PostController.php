@@ -142,9 +142,9 @@ class PostController extends BaseController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удалить статью
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy($id)
