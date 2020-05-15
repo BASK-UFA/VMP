@@ -67,7 +67,7 @@ bottom: -10px;
     height: 60px;
     border-top: 10px solid #fff;
     border-right: 10px solid #fff;
-    margin-right: 60px;
+
 }
 
 .article_avatar{
@@ -77,6 +77,7 @@ border-radius:50% !important;
 }
 .post_name{
     font-family: 'Oswald', sans-serif;
+    text-shadow:#000 0 0 5px;
 }
 article,
 aside,
@@ -532,7 +533,6 @@ mark,
   content: "\2014\A0";
 }
 .img-fluid{
-    background: #222;
     color: #fff;
     border-radius: 2px;
     position: unset;
@@ -10960,10 +10960,15 @@ nav {
   padding-top: 300px;
 }
 .intro_read {
-    margin-top: -95px;
-    height: 600px;
+    top: -95px;
+    height: 120vh;
 }
-
+@media (max-width: 600px) {
+    .intro_read{
+        height:60vh;
+        object-fit: cover;
+    }
+}
 
 
 
