@@ -192,3 +192,130 @@ nav {
     font-weight: 300;
 }
 
+//GREEEEEEEEEN
+header{
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    border: 3px solid black;
+}
+.and-blok1{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20%;
+    margin-top: 5%;
+}
+.and-h2{
+    border-right: 3px solid black;
+    margin-right: 8px;
+    padding-right: 8px;
+    font-size: 18px;
+    font-family: oswald,Sans-serif;
+}
+.and-h2 a{
+    font-family: oswald,Sans-serif;
+    color:black;
+    text-decoration: none;
+}
+.and-h2 a:hover{
+    color: #f7992b;
+    transition-duration: 0.3s;
+}
+.and-h22{
+    font-size: 18px;
+    font-family: oswald,Sans-serif;
+    color: #f7992b
+}
+.and-h3{
+    margin-left: 20%;
+    font-family: oswald,Sans-serif;
+    font-weight: 300;
+    line-height: 0px;
+    margin-top: 4%;
+    font-size: 16px;
+}
+.and-blok22{
+    width: 35%;
+    margin-left: 13%;
+}
+.and-p1{
+    font-family: oswald,Sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 5px;
+    letter-spacing: 2.4px;
+    margin-left: 20%;
+}
+.and-blokflex{
+    display: flex;
+}
+.and-blok21{
+    width: 30%;
+}
+.and-p2{
+    color: #000;
+    font-family: montserrat,Sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 2.143em;
+}
+.and-two{
+    margin-top: 4%;
+}
+.and-two img{
+    width: 32%;
+    height: 32%;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+.and-blok3{
+    display: flex;
+}
+.and-blok31{
+    margin-left: 20%;
+}
+.and-blok32{
+    margin-left: 7%
+}
+input{
+    font-family: montserrat,Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.625em;
+    letter-spacing: 0;
+    padding: 9px 15px 10px;
+    margin: 0 0 20px;
+    border-radius: 0;
+    background-color: rgba(0,0,0,.03);
+    color:#979797;
+    border-style: solid;
+    border-width: 0;
+    width: 100%;
+}
+textarea{
+    font-family: montserrat,Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.625em;
+    letter-spacing: 0;
+    padding: 9px 15px 10px;
+    margin: 0 0 20px;
+    border-radius: 0;
+    background-color: rgba(0,0,0,.03);
+    color:#979797;
+    border-style: solid;
+    border-width: 0;
+    width: 100%;
+}
+.and-sub{
+    background-color: rgba(68,123,224,.01);
+    color: #f7992b;
+    padding: 18px 36px 18px 47px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f7992b;
+    border-radius: 0;
+    margin: 20px 0 0;
+    width: 200px;
+}
