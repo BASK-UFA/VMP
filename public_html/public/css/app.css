@@ -51,38 +51,6 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.anchor{
-
-bottom: -10px;
-
-
-    position: relative;
-}
-.arrow-bottom {
-    transform: rotate(135deg);
-   }
-.arrow {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    border-top: 10px solid #fff;
-    border-right: 10px solid #fff;
-
-}
-
-.article_avatar{
-border-radius:50% !important;
-    width: 150px;
-    height: 150px;
-}
-.post_name {
-    font-family: 'Oswald', sans-serif;
-
-}
-.post_name h1{
-
-    text-shadow:#000 0 0 5px;
-}
 article,
 aside,
 figcaption,
@@ -535,15 +503,6 @@ mark,
 
 .blockquote-footer::before {
   content: "\2014\A0";
-}
-.img-fluid{
-    color: #fff;
-    border-radius: 2px;
-    position: unset;
-    right: 0;
-    bottom: 10px;
-    font-size: 18px;
-    padding: 3px 5px;
 }
 
 .img-fluid {
@@ -10958,24 +10917,17 @@ nav {
   justify-content: center;
   flex-direction: column;
   color: #fff;
-    background: url(/images/back.jpeg?16b342d1ffa1f6272a47769e1cefdedd);
+  background: url(/images/back.jpeg?16b342d1ffa1f6272a47769e1cefdedd);
   background-size: cover;
   height: 800px;
   padding-top: 300px;
 }
-.intro_read {
-    top: -95px;
-    height: 120vh;
+
+.intro_title {
+  font-size: 80px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
-@media (max-width: 600px) {
-    .intro_read{
-        height:60vh;
-        object-fit: cover;
-    }
-}
-
-
-
 
 .intro_text {
   font-size: 38px;
@@ -11043,5 +10995,73 @@ nav {
   text-transform: uppercase;
   margin-top: 30px;
   font-weight: 700;
+}
+
+.anchor {
+  bottom: -10px;
+  position: relative;
+}
+
+.arrow-bottom {
+  transform: rotate(135deg);
+}
+
+.arrow {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-top: 10px solid #fff;
+  border-right: 10px solid #fff;
+}
+
+.article_avatar {
+  width: 150px;
+  height: 150px;
+}
+
+.post_name {
+  font-family: "Oswald", sans-serif !important;
+}
+
+.Oswald {
+  font-family: "Oswald", sans-serif !important;
+}
+
+.post_name h2 {
+  text-shadow: #000 0 0 5px !important;
+}
+
+.chocolate {
+  background-color: chocolate !important;
+}
+
+.wb {
+  width: 5px;
+}
+
+.h_profile {
+  line-height: 37px !important;
+}
+
+.h_layouts {
+  height: 70px;
+}
+
+.intro_read {
+  top: -95px;
+  height: 90vh;
+}
+
+@media (max-width: 600px) {
+  .intro_read {
+    height: 60vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+.intro_text {
+  font-size: 38px;
+  font-weight: 300;
 }
 
