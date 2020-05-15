@@ -122,3 +122,73 @@ nav {
     margin-top: 30px;
     font-weight: 700;
 }
+.anchor{
+
+    bottom: -10px;
+
+
+    position: relative;
+}
+.arrow-bottom {
+    transform: rotate(135deg);
+}
+.arrow {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-top: 10px solid #fff;
+    border-right: 10px solid #fff;
+
+}
+
+.article_avatar{
+
+    width: 150px;
+    height: 150px;
+}
+
+.post_name {
+    font-family: 'Oswald', sans-serif!important;
+}
+
+.Oswald{
+    font-family: 'Oswald', sans-serif!important;
+}
+
+
+
+.post_name h2{
+    text-shadow:#000 0 0 5px!important;
+}
+
+.chocolate{
+    background-color: chocolate!important;
+}
+
+.wb{
+    width: 5px;
+}
+
+.h_profile{
+    line-height: 37px!important;
+}
+
+.h_layouts{
+    height: 70px;
+}
+.intro_read {
+    top: -95px;
+    height: 90vh;
+}
+@media (max-width: 600px) {
+    .intro_read{
+        height:60vh;
+        object-fit: cover;
+    }
+}
+
+.intro_text {
+    font-size: 38px;
+    font-weight: 300;
+}
+
