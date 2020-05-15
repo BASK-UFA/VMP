@@ -67,7 +67,7 @@ bottom: -10px;
     height: 60px;
     border-top: 10px solid #fff;
     border-right: 10px solid #fff;
-    margin-right: 60px;
+    /*margin-right: 60px;*/
 }
 
 .article_avatar{

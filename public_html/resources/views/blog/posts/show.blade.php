@@ -12,7 +12,7 @@
                 <img alt="Превью" src="{{ asset($item->image) }}" class="d-block w-100  intro_read bg-secondary">
                 <div class="carousel-caption  d-md-block arrow-7">
                     <h1 class="post_name"> {{ $item->title }}</h1>
-                    <a href="#article_user">
+                    <a id="link" href="#link">
                         <div class="arrow arrow-bottom"></div>
                     </a>
                 </div>

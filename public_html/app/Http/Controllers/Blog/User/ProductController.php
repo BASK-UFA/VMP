@@ -42,7 +42,7 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $data = $request->input();
+        $data = $request->all();
         $item = (new Product())->create($data);
 
         if ($item->exists) {
@@ -78,9 +78,8 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, $id)
     {
-        $data = $request->input();
+        $data = $request->all();
         $result = Product::findOrFail($id)->update($data);
-
 
         if ($result) {
             return redirect()
@@ -97,10 +96,19 @@ class ProductController extends Controller
      * Удалить продукт
      *
      * @param int $id
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $result = Product::destroy($id);
+
+        if ($result) {
+            return redirect()
+                ->route('blog.user.products.create')
+                ->with(['success' => 'Работа успешно удалена']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка удаления работы']);
+        }
     }
 }
