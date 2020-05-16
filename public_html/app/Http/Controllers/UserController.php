@@ -56,20 +56,15 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Обновить данные пользователя
      *
-     * @param  \Illuminate\Http\UserUpdateRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UserUpdateRequest $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse|void
      */
     public function update(UserUpdateRequest $request, $id)
     {
         $data = $request->all();
-
-        // TODO: Вынести логику из контроллера
-        if ($id != \Auth::user()->id) {
-            return abort(403);
-        }
 
         $result = User::findOrFail($id)->update($data);
 
@@ -84,9 +79,9 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удалить пользователя
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

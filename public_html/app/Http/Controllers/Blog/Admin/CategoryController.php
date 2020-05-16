@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Controllers\Blog\Admin\BaseController;
-use App\Http\Requests\BlogCategoryCreateRequest;
+use App\Http\Requests\BlogCategoryStoreRequest;
 use App\Http\Requests\BlogCategoryUpdateRequest;
 use App\Models\BlogCategory;
 use App\Repositories\BlogCategoryRepository;
@@ -48,10 +48,10 @@ class CategoryController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param BlogCategoryCreateRequest $request
+     * @param BlogCategoryStoreRequest $request
      * @return RedirectResponse
      */
-    public function store(BlogCategoryCreateRequest $request)
+    public function store(BlogCategoryStoreRequest $request)
     {
         $data = $request->input();
 

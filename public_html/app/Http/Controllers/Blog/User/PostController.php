@@ -147,10 +147,16 @@ class PostController extends Controller
      *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        $result = BlogPost::destroy($id);
+        $model = BlogPost::findOrFail($id);
+
+        $this->authorize('delete', $model);
+
+        $result = $model->delete();
 
         if ($result) {
             return redirect()

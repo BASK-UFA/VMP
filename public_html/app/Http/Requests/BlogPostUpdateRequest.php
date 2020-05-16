@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\BlogPost;
 use Illuminate\Foundation\Http\FormRequest;
 
 class BlogPostUpdateRequest extends FormRequest
@@ -13,7 +14,8 @@ class BlogPostUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        $blogPost = BlogPost::find($this->route('post'));
+        return $blogPost && $this->user()->can('update', $blogPost);
     }
 
     /**
