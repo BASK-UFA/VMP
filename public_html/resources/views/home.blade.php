@@ -22,23 +22,19 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
                     <div class="modal-body">
                         <div class="card mb-2">
                             <div class="card-header"><h3>Загрузка фото</h3></div>
-
                             <div class="card-body">
                                 <input name="avatar" class="input form-control-file" type="file">
-
                             </div>
-
                         </div>
                         <div class="card">
                             <h5 class="card-header">Личные данные</h5>
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">Имя </label>
+                                        <label for="validationCustom01">Имя</label>
                                         <input type="text" class="form-control" id="validationCustom01"
                                                placeholder="Имя" name="name" value="{{ $data->name }}">
                                         <div class="valid-feedback">
@@ -48,7 +44,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
@@ -60,7 +55,6 @@
     </div>
 
     <div class="container">
-
         @include('blog.includes.result_message')
 
         <div class="row">
@@ -69,7 +63,7 @@
                     <img class="img-fluid home_avatar" src="{{ asset($data->avatar) }}" alt="">
                     <div class="mt-4 Oswald">
                         <div>
-                            <span   class="h4 h_profile">Профиль</span>
+                            <span class="h4 h_profile">Профиль</span>
                             <span class="float-right"></span>
                         </div>
 
@@ -78,22 +72,27 @@
                             <div class="h5">Тут доп. информация</div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="btn btn-dark text-center btn-lg" data-toggle="modal"
-                                data-target=".bd-example-modal-xl"> Изменить
-                        </button>
-                    </div>
 
+                    {{-- Если пользователь может обновить профиль --}}
+                    @can('update', $data)
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-dark text-center btn-lg" data-toggle="modal"
+                                    data-target=".bd-example-modal-xl">Изменить
+                            </button>
+                        </div>
+                    @endcan
                 </div>
             </div>
-            <div class="col-md-9 w-100 mt-4">
 
+            <div class="col-md-9 w-100 mt-4">
                 <div class="mb-5">
                     <div class="card-header h4 text-white bg-dark Oswald pb-4">
                         <span class="mb-1">Мои работы</span>
                         <div class="float-md-right">
-                            <a class="mt-2 mt-md-0 btn btn-primary text-white"
-                               href="{{ route('blog.user.products.create') }}">Добавить новую работу</a>
+                            @can('update', $data)
+                                <a class="mt-2 mt-md-0 btn btn-primary text-white"
+                                   href="{{ route('blog.user.products.create') }}">Добавить новую работу</a>
+                            @endcan
                             <a class="mt-2 mt-md-0 btn btn-primary text-white"
                                href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все
                                 работы</a>
@@ -106,7 +105,7 @@
                                     <div class="card bg-dark text-white">
                                         <div class="card-body">
                                             <h5 class="card-title Oswald"
-                                                >{{ $product->name }}</h5>
+                                            >{{ $product->name }}</h5>
                                             <hr class="bg-white">
                                             <p class="card-text">{{ $product->excerpt }}</p>
                                         </div>
@@ -116,15 +115,19 @@
                         </div>
                     </div>
                 </div>
-                <div class=" mb-4">
+
+                <div class="mb-4">
                     <div class="card-header h4 text-white pb-4 Oswald chocolate">
                         <span>Последние опубликованные статьи </span>
                         <span>
-                            <button class="btn float-md-right d-block mt-1 mb-1 bg-dark">
-                                <a class="link" href="{{ route('blog.user.posts.create') }}">Создать новую статью</a>
-                            </button>
+                            @can('update', $data)
+                                <button class="btn float-md-right d-block mt-1 mb-1 bg-dark">
+                                    <a class="link"
+                                       href="{{ route('blog.user.posts.create') }}">Создать новую статью</a>
+                                </button>
+                            @endcan
                         </span>
-                        <span id="" class="bg-dark float-md-right mb-1 wb" ></span>
+                        <span id="" class="bg-dark float-md-right mb-1 wb"></span>
                         <span>
                             <button class="btn float-md-right d-block mb-1 mt-1 bg-dark">
                                 <a class="link" href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>
@@ -132,8 +135,7 @@
                         </span>
                     </div>
                     <div>
-                        <div class="card-footer text-white pb-3 bg-dark" >
-
+                        <div class="card-footer text-white pb-3 bg-dark">
                             @foreach($data->lastPosts() as $post)
                                 <div class=" mb-4">
                                     <h4 class="pl-3 Oswald">
@@ -149,17 +151,12 @@
                                     <img src="{{ asset($post->image) }}" alt="" class="img-fluid">
                                     <p class="pl-3">{{$post->excerpt}}</p>
                                     <hr class="bg-white">
-
                                 </div>
-
                             @endforeach
-
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 @endsection

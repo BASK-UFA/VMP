@@ -61,12 +61,17 @@ class UserController extends Controller
      * @param \App\Http\Requests\UserUpdateRequest $request
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse|void
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(UserUpdateRequest $request, $id)
     {
+        $model = User::findOrFail($id);
+
+        $this->authorize('update', $model);
+
         $data = $request->all();
 
-        $result = User::findOrFail($id)->update($data);
+        $result = $model->update($data);
 
         if ($result) {
             return redirect()
