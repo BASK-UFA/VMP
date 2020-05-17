@@ -13,7 +13,6 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-//        dd($this->toArray());
         return true;
     }
 

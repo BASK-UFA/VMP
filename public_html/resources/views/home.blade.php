@@ -6,53 +6,64 @@
 
     {{--  TODO: сверстать success и errors ответы  --}}
 
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <form enctype="multipart/form-data" method="POST"
-                      action="{{ route('user.update', ['id' => $data->id]) }}">
-                    @method('PATCH')
-                    @csrf
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Изменение личной информации</h5>
+    <!-- Модальное окно с изменениями страницы пользователя -->
+    @can('update', $data)
+        <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <form enctype="multipart/form-data" method="POST"
+                          action="{{ route('user.update', ['id' => $data->id]) }}">
+                        @method('PATCH')
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Изменение личной информации</h5>
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card mb-2">
-                            <div class="card-header"><h3>Загрузка фото</h3></div>
-                            <div class="card-body">
-                                <input name="avatar" class="input form-control-file" type="file">
-                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="card">
-                            <h5 class="card-header">Личные данные</h5>
-                            <div class="card-body">
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">Имя</label>
-                                        <input type="text" class="form-control" id="validationCustom01"
-                                               placeholder="Имя" name="name" value="{{ $data->name }}">
-                                        <div class="valid-feedback">
-                                            Looks good!
+                        <div class="modal-body">
+                            <div class="card mb-2">
+                                <h5 class="card-header">Загрузка фото</h5>
+                                <div class="card-body">
+                                    <input name="avatar" class="input form-control-file" type="file">
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h5 class="card-header">Личные данные</h5>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="validationCustom01">Имя</label>
+                                                <input type="text" class="form-control" id="validationCustom01"
+                                                       placeholder="Имя" name="name"
+                                                       value="{{ old('name', $data->name) }}">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="validationCustom02">Дополнительная информация</label>
+                                                <textarea class="form-control" name="description"
+                                                          id="validationCustom02" cols="30"
+                                                          rows="10">{{ old('description', $data->description)  }}</textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
                 </form>
             </div>
         </div>
     </div>
+    @endcan
 
     <div class="container">
         @include('blog.includes.result_message')
@@ -69,7 +80,7 @@
 
                         <div>
                             <div class="h2">{{ $data->name }}</div>
-                            <div class="h5">Тут доп. информация</div>
+                            <div class="h5">{{ $data->description }}</div>
                         </div>
                     </div>
 

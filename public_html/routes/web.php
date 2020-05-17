@@ -38,7 +38,12 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
 
 // Личные страници пользователей
 Route::resource('user', 'UserController')
-    ->only('show', 'index', 'update')
+    ->only('index', 'update')
+    ->names('user')
+    ->middleware('auth');
+
+Route::resource('user', 'UserController')
+    ->only('show')
     ->names('user');
 
 

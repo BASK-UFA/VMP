@@ -104,15 +104,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('posts.index') }}">Блог</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Категории
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item disabled" href="#">Action</a>
-                        </div>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('products.index') }}">Наши работы</a>
                     </li>
