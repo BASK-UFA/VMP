@@ -2,11 +2,10 @@
 
 
 namespace App\Repositories;
+use App\Models\BlogPost;
 use App\Models\BlogPost as Model;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 class BlogPostRepository extends CoreRepository
 {
@@ -16,8 +15,30 @@ class BlogPostRepository extends CoreRepository
         return Model::class;
     }
 
+    /**
+     * Получить все статьи, где GET параметр равен полю name пользователей
+     * Если ни один пользователь не найден, то редирект на posts.index с ошибкой
+     *
+     * @param $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Http\RedirectResponse
+     */
+    public function getSpecificWithPaginate($request)
+    {
+        $name = $request->get('name');
 
-    public function getAllOfUserWithPaginate($id = null) {
+        if (empty($name)) {
+            return $this->getAllWithPaginate();
+        }
+
+        $usersId = User::where('name', 'LIKE', '%' . $name . '%')->get('id')->toArray();
+
+        $result = BlogPost::whereIn('user_id', $usersId)->paginate(10);
+
+        return $result;
+    }
+
+    public function getAllOfUserWithPaginate($id = null)
+    {
         if ($id === null) {
             $id = \Auth::user()->id;
         }
