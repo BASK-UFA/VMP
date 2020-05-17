@@ -29,6 +29,8 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
         ->only('show', 'index')
         ->names('posts');
 
+    Route::get('search/posts', 'PostController@search')->name('posts.search');
+
     // Работы
     Route::resource('products', 'ProductController')
         ->only('show', 'index')
@@ -38,7 +40,12 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
 
 // Личные страници пользователей
 Route::resource('user', 'UserController')
-    ->only('show', 'index', 'update')
+    ->only('index', 'update')
+    ->names('user')
+    ->middleware('auth');
+
+Route::resource('user', 'UserController')
+    ->only('show')
     ->names('user');
 
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateRequest extends FormRequest
+class BlogPostSearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,14 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar'  => 'file',
-            'name'    => 'string'
+            'name' => 'required|string|max:20'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => '[По автору]'
         ];
     }
 }
