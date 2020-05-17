@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="col-md-9 w-100 mt-4">
+            <div class="col-md-9 w-100">
                 <div class="mb-5">
                     <div class="card-header h4 text-white bg-dark Oswald pb-4">
                         <span class="mb-1">Мои работы</span>
@@ -118,21 +118,15 @@
 
                 <div class="mb-4">
                     <div class="card-header h4 text-white pb-4 Oswald chocolate">
-                        <span>Последние опубликованные статьи </span>
-                        <span>
+                        <span class="mb-1">Мои статьи</span>
+                        <div class="float-md-right">
                             @can('update', $data)
-                                <button class="btn float-md-right d-block mt-1 mb-1 bg-dark">
-                                    <a class="link"
-                                       href="{{ route('blog.user.posts.create') }}">Создать новую статью</a>
-                                </button>
+                                <a class="mt-2 mt-md-0 btn btn-primary text-white"
+                                   href="{{ route('blog.user.posts.create') }}">Добавить новую статю</a>
                             @endcan
-                        </span>
-                        <span id="" class="bg-dark float-md-right mb-1 wb"></span>
-                        <span>
-                            <button class="btn float-md-right d-block mb-1 mt-1 bg-dark">
-                                <a class="link" href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>
-                            </button>
-                        </span>
+                            <a class="mt-2 mt-md-0 btn btn-primary text-white"
+                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>
+                        </div>
                     </div>
                     <div>
                         <div class="card-footer text-white pb-3 bg-dark">
