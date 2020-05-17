@@ -29,6 +29,8 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
         ->only('show', 'index')
         ->names('posts');
 
+    Route::get('search/posts', 'PostController@search')->name('posts.search');
+
     // Работы
     Route::resource('products', 'ProductController')
         ->only('show', 'index')

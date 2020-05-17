@@ -59,10 +59,10 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                             <button type="submit" class="btn btn-primary">Сохранить</button>
                         </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     @endcan
 
     <div class="container">
@@ -86,9 +86,9 @@
 
                     {{-- Если пользователь может обновить профиль --}}
                     @can('update', $data)
-                        <div class="d-flex justify-content-center">
+                        <div class="">
                             <button type="button" class="btn btn-dark text-center btn-lg" data-toggle="modal"
-                                    data-target=".bd-example-modal-xl">Изменить
+                                    data-target=".bd-example-modal-xl">Редактировать
                             </button>
                         </div>
                     @endcan
