@@ -133,7 +133,6 @@
                     </div>
                     <div>
                         <div class="card-footer text-white pb-3 bg-dark" >
-
                             @foreach($data->lastPosts() as $post)
                                 <div class=" mb-4">
                                     <h4 class="pl-3 Oswald">
