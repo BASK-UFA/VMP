@@ -59,16 +59,21 @@ class PostController extends Controller
     /**
      * Сохранить статью в базе данных
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(BlogPostStoreRequest $request)
     {
         $item = new BlogPost();
+
+        $this->authorize('create', $item);
+
         $data = $request->all();
+
         $result = $item->fill($data)->save();
 
-        if ($result){
+        if ($result) {
             return redirect()
                 ->route('blog.user.posts.edit', [$item->id])
                 ->with(['success' => 'Успешно создано']);
@@ -92,14 +97,17 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Показать форму изменения статьи
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($id)
     {
         $item = $this->blogPostRepository->getEdit($id);
+
+        $this->authorize('update', $item);
 
         if (empty($item)) {
             return back()
@@ -113,9 +121,10 @@ class PostController extends Controller
     /**
      * Обновить статью
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(BlogPostUpdateRequest $request, $id)
     {
@@ -126,6 +135,8 @@ class PostController extends Controller
                 ->withErrors(['msg' => "Запись id=[{$id}]не найдена"])
                 ->withInput();
         }
+
+        $this->authorize('update', $item);
 
         $data = $request->all();
 
@@ -143,13 +154,29 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удалить статью
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        //
+        $model = BlogPost::findOrFail($id);
+
+        $this->authorize('delete', $model);
+
+        $result = $model->delete();
+
+        if ($result) {
+            return redirect()
+                ->route('blog.user.posts.create')
+                ->with(['success' => "Статья удалена"]);
+        } else {
+            return back()
+                ->withErrors(['msg' => "Ошибка удаления"])
+                ->withInput();
+        }
     }
 }

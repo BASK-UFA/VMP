@@ -15,7 +15,7 @@ class ProductObserver
      */
     public function updating(Product $product)
     {
-        $this->setPublishedAt($product);
+        $this->setImage($product);
     }
 
     /**
@@ -25,9 +25,28 @@ class ProductObserver
      */
     public function creating(Product $product)
     {
-        $this->setPublishedAt($product);
+        $this->setImage($product);
         $this->setHtml($product);
         $this->setUser($product);
+    }
+
+    /**
+     * Сохранить промо-картинку в памяти и обновить поле image работы
+     *
+     * @param Product $product
+     */
+    private function setImage(Product $product)
+    {
+        /** @var File $file */
+
+        if ($product->isDirty('image') and is_file($product->image)) {
+            $file = $product->image;
+
+            $path = $file
+                ->store('products/' . $product->id, 'public');
+
+            $product->image = 'storage/' . $path;
+        }
     }
 
     /**

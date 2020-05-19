@@ -12,13 +12,14 @@ $factory->define(Product::class, function (Faker $faker) {
     $createdAt = $faker->dateTimeBetween('-3 months', '-2 days');
 
     $data = [
-        'user_id'       => (rand(1, 5) == 5) ? 1 : 2,
-        'name'         => $name,
-        'excerpt'       => $faker->text(rand(40, 100)),
-        'content_raw'   => $txt,
-        'content_html'  => $txt,
-        'created_at'    => $createdAt,
-        'updated_at'    => $createdAt,
+        'user_id' => (rand(1, 5) == 5) ? 1 : 2,
+        'image' => $faker->imageUrl('1366', '768', 'technics'),
+        'name' => $name,
+        'excerpt' => $faker->text(rand(40, 100)),
+        'content_raw' => $txt,
+        'content_html' => $txt,
+        'created_at' => $createdAt,
+        'updated_at' => $createdAt,
     ];
 
     return $data;

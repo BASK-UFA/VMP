@@ -42,7 +42,7 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $data = $request->input();
+        $data = $request->all();
         $item = (new Product())->create($data);
 
         if ($item->exists) {
@@ -61,10 +61,13 @@ class ProductController extends Controller
      *
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($id)
     {
         $item = Product::findOrFail($id);
+
+        $this->authorize('update', $item);
 
         return view('blog.user.products.edit', compact('item'));
     }
@@ -75,12 +78,17 @@ class ProductController extends Controller
      * @param \App\Http\Requests\ProductUpdateRequest $request
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(ProductUpdateRequest $request, $id)
     {
-        $data = $request->input();
-        $result = Product::findOrFail($id)->update($data);
+        $data = $request->all();
 
+        $model = Product::findOrFail($id);
+
+        $this->authorize('update', $model);
+
+        $result = $model->update($data);
 
         if ($result) {
             return redirect()
@@ -97,10 +105,25 @@ class ProductController extends Controller
      * Удалить продукт
      *
      * @param int $id
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        //
+        $model = Product::findOrFail($id);
+
+        $this->authorize('delete', $model);
+
+        $result = $model->delete();
+
+        if ($result) {
+            return redirect()
+                ->route('blog.user.products.create')
+                ->with(['success' => 'Работа успешно удалена']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка удаления работы']);
+        }
     }
 }

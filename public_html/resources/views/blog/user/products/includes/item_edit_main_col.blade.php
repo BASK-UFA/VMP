@@ -32,9 +32,6 @@
                                    minlength="3"
                                    required>
                         </div>
-
-
-
                         <div class="form-group">
                             <label for="content_raw">Статья</label>
                             <textarea
@@ -53,8 +50,6 @@
 
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
-
-
                         <div class="form-group">
                             <label for="excerpt">Выдержка</label>
                             <textarea

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Blog;
 
+use App\Http\Requests\BlogPostSearchRequest;
 use App\Models\BlogPost;
 use App\Repositories\BlogCategoryRepository;
 use App\Repositories\BlogPostRepository;
-use Illuminate\Http\Request;
 
 class PostController extends BaseController
 {
@@ -22,9 +22,9 @@ class PostController extends BaseController
 
 
     /**
-     * Display a listing of the resource.
+     * Показать статьи всех пользователей
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -34,70 +34,36 @@ class PostController extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Показать все статьи пользователей, чей GET параметр name равен имени пользователя в БД
+     * Если найти статьи не удалось, то редирект на posts.index
+     * В будущем будет более детальный поиск, а не только по name пользователей
      *
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\BlogPostSearchRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function create()
+    public function search(BlogPostSearchRequest $request)
     {
-        //
-    }
+        $paginator = $this->blogPostRepository->getSpecificWithPaginate($request)->appends('name', $request->name);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        if ($paginator->isEmpty()) {
+            return redirect()
+                ->route('posts.index')
+                ->withErrors(['msg' => "Пользователь $request->name не найден"]);
+        }
+
+        return view('blog.posts.index', compact('paginator'));
     }
 
     /**
      * Показать статью
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
         $item = BlogPost::findOrFail($id);
 
         return view('blog.posts.show', compact('item'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
