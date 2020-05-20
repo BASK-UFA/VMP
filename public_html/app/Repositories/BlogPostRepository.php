@@ -32,7 +32,7 @@ class BlogPostRepository extends CoreRepository
 
         $usersId = User::where('name', 'LIKE', '%' . $name . '%')->get('id')->toArray();
 
-        $result = BlogPost::whereIn('user_id', $usersId)->paginate(10);
+        $result = BlogPost::whereIn('user_id', $usersId)->with(['user'], ['category'])->paginate(10);
 
         return $result;
     }

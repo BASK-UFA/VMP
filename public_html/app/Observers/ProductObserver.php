@@ -32,6 +32,7 @@ class ProductObserver
 
     /**
      * Сохранить промо-картинку в памяти и обновить поле image работы
+     * Если картинки нет, то поставить картинку по умолчанию
      *
      * @param Product $product
      */
@@ -46,6 +47,8 @@ class ProductObserver
                 ->store('products/' . $product->id, 'public');
 
             $product->image = 'storage/' . $path;
+        } else {
+            $product->image = 'images/' . rand(1, 6) . '-product-sm.png';
         }
     }
 
