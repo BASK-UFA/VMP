@@ -5,42 +5,34 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\BlogPostRepository;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
-
-
-    /**
-     * @var BlogPostRepository
-     */
     private $blogPostRepository;
 
+    /**
+     * Подключение репозиториев
+     *
+     * UserController constructor.
+     */
     public function __construct()
     {
         $this->blogPostRepository = app(BlogPostRepository::class);
     }
 
     /**
-     * Display a listing of the resource.
+     * Показать страницу авторизованного пользователя
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
-        $data = \Auth::user();
-        return view('home', compact('data'));
-    }
+        $data = Auth::user();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('home', compact('data'));
     }
 
     /**
@@ -52,6 +44,7 @@ class UserController extends Controller
     public function show($id)
     {
         $data = User::findOrFail($id);
+
         return view('home', compact('data'));
     }
 
@@ -81,16 +74,5 @@ class UserController extends Controller
             return back()
                 ->withErrors(['msg' => 'Ошибка сохранения']);
         }
-    }
-
-    /**
-     * Удалить пользователя
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

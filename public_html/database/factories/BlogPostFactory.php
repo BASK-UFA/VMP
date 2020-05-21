@@ -16,7 +16,7 @@ $factory->define(BlogPost::class, function (Faker $faker) {
 
     $data = [
         'category_id' => rand(1, 11),
-        'image' => $faker->imageUrl('1366', '768', 'technics'),
+//        'image' => $faker->imageUrl('1366', '768', 'cats'),
         'user_id' => (rand(1, 5) == 5) ? 1 : 2,
         'title' => $title,
         'slug' => \Str::slug($title),

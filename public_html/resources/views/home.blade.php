@@ -65,10 +65,14 @@
         </div>
     @endcan
 
+    {{-- TODO: Вынести стили в scss --}}
+
     <div class="container">
         @include('blog.includes.result_message')
 
         <div class="row">
+
+            {{-- Личная информация пользователя --}}
             <div class="col-md-3">
                 <div class="pb-4 pb-md-0">
                     <img class="img-fluid home_avatar" src="{{ asset($data->avatar) }}" alt="">
@@ -80,7 +84,7 @@
 
                         <div>
                             <div class="h2">{{ $data->name }}</div>
-                            <div class="h5">{{ $data->description }}</div>
+                            <div class="h5">{!! $data->description !!}</div>
                         </div>
                     </div>
 
@@ -96,68 +100,104 @@
             </div>
 
             <div class="col-md-9 w-100">
+
+                {{-- Работы пользователя --}}
                 <div class="mb-5">
                     <div class="card-header h4 text-white bg-dark Oswald pb-4">
                         <span class="mb-1">Мои работы</span>
                         <div class="float-md-right">
                             @can('update', $data)
-                                <a class="mt-2 mt-md-0 btn btn-primary text-white"
-                                   href="{{ route('blog.user.products.create') }}">Добавить новую работу</a>
+                                <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                                   href="{{ route('products.create') }}">Добавить новую работу</a>
                             @endcan
-                            <a class="mt-2 mt-md-0 btn btn-primary text-white"
-                               href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все
+                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                               href="{{ route('products.show', ['id' => $data->id]) }}">Показать все
                                 работы</a>
                         </div>
                     </div>
-                    <div>
-                        <div class="card-footer pb-3 chocolate">
-                            <div class="card-deck">
-                                @foreach($data->lastProducts() as $product)
-                                    <div class="card bg-dark text-white">
-                                        <div class="card-body">
-                                            <h5 class="card-title Oswald"
-                                            >{{ $product->name }}</h5>
-                                            <hr class="bg-white">
-                                            <p class="card-text">{{ $product->excerpt }}</p>
-                                        </div>
+
+                    <div class="card-body pb-3 pl-md-0 pr-md-0">
+                        <div class="card-deck products">
+
+                            @foreach($data->lastProducts() as $product)
+                                @php /** PHPDOC @var \App\Models\Product $product */ @endphp
+                                <div class="card">
+                                    <div class="card-top"><img class="card-image" alt=""
+                                                               src="{{ asset($product->image) }}"/></div>
+                                    <div class="card-mid">
+                                        <h4 class="card-title">{{ $product->name }}</h4>
+                                        <label class="card-desc">{{ $product->excerpt }}</label>
+                                        <div class="card-blur-zone"></div>
                                     </div>
-                                @endforeach
-                            </div>
+                                </div>
+                            @endforeach
+                            {{--                            @foreach($data->lastProducts() as $product)--}}
+                            {{--                                <div class="card bg-dark text-white">--}}
+                            {{--                                    <img class="card-img" src="{{ asset($product->image) }}" alt="">--}}
+                            {{--                                    <div class="card-body">--}}
+                            {{--                                        <h5 class="card-title Oswald">{{ $product->name }}</h5>--}}
+                            {{--                                        <hr class="bg-white">--}}
+                            {{--                                        <p class="card-text">{{ $product->excerpt }}</p>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            @endforeach--}}
+                            {{--                            <div class="card">--}}
+                            {{--                                <div class="card-top"><img class="card-image" alt="" src="" /></div>--}}
+                            {{--                                <div class="card-mid">--}}
+                            {{--                                    <h4 class="card-title">Titre</h4>--}}
+                            {{--                                    <label class="card-desc">Description</label>--}}
+                            {{--                                    <div class="card-blur-zone"></div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-4">
-                    <div class="card-header h4 text-white pb-4 Oswald chocolate">
+                {{-- Статьи пользователя --}}
+                <div class="mb-5">
+                    <div class="card-header h4 text-white pb-4 Oswald bg-dark">
                         <span class="mb-1">Мои статьи</span>
                         <div class="float-md-right">
                             @can('update', $data)
-                                <a class="mt-2 mt-md-0 btn btn-primary text-white"
-                                   href="{{ route('blog.user.posts.create') }}">Добавить новую статю</a>
+                                <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                                   href="{{ route('posts.create') }}">Добавить новую статю</a>
                             @endcan
-                            <a class="mt-2 mt-md-0 btn btn-primary text-white"
-                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>
+                            {{--                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"--}}
+                            {{--                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>--}}
+                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                               href="{{ route('posts.search', ['name' => $data->name]) }}">Показать все статьи</a>
                         </div>
                     </div>
                     <div>
-                        <div class="card-footer text-white pb-3 bg-dark">
+                        <div class="card-footer pb-3 posts">
                             @foreach($data->lastPosts() as $post)
-                                <div class=" mb-4">
-                                    <h4 class="pl-3 Oswald">
-                                        <a class="link" href="{{ route('posts.show', $id = $post->id) }}">
-                                            {{ $post->title }}
-                                        </a>
-                                    </h4>
+                                <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
                                     <div>
-                                        <span class="pl-3">Автор: {{$data->name}}</span>
-                                        <span
-                                            class=" pl-3 float-md-right d-md-inline d-block">Создано: {{$post->created_at}}</span>
+                                        <a style="font-size: 1.2rem"
+                                           href="{{ route('user.show', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a>
+                                        <div>
+                                            {{ $post->created_at }}
+                                        </div>
                                     </div>
-                                    <img src="{{ asset($post->image) }}" alt="" class="img-fluid">
-                                    <p class="pl-3">{{$post->excerpt}}</p>
-                                    <hr class="bg-white">
+                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" style="font-size:2em;"
+                                       class="pt-2">{{ $post->title }}</a>
+                                </div>
+                                <div class="posts__item__content">
+                                    <img class="d-flex justify-content-center h-25 w-50" src="{{ asset($post->image) }}"
+                                         alt="">
+                                    <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">
+                                        {{ $post->excerpt }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <a class="btn btn-dark text-white"
+                                           href="{{ route('posts.show', ['id' => $post->id]) }}">Читать
+                                            полностью</a>
+                                    </div>
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="card-footer border-top-0 d-flex justify-content-center">
+                            <a href="#" class="btn btn-dark">Показать все статьи</a>
                         </div>
                     </div>
                 </div>
