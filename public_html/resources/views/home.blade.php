@@ -108,10 +108,10 @@
                         <div class="float-md-right">
                             @can('update', $data)
                                 <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                                   href="{{ route('blog.user.products.create') }}">Добавить новую работу</a>
+                                   href="{{ route('products.create') }}">Добавить новую работу</a>
                             @endcan
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('blog.user.products.show', ['id' => $data->id]) }}">Показать все
+                               href="{{ route('products.show', ['id' => $data->id]) }}">Показать все
                                 работы</a>
                         </div>
                     </div>
@@ -160,10 +160,12 @@
                         <div class="float-md-right">
                             @can('update', $data)
                                 <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                                   href="{{ route('blog.user.posts.create') }}">Добавить новую статю</a>
+                                   href="{{ route('posts.create') }}">Добавить новую статю</a>
                             @endcan
+                            {{--                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"--}}
+                            {{--                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>--}}
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>
+                               href="{{ route('posts.search', ['name' => $data->name]) }}">Показать все статьи</a>
                         </div>
                     </div>
                     <div>

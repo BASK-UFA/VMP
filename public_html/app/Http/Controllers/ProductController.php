@@ -1,25 +1,50 @@
 <?php
 
-namespace App\Http\Controllers\Blog\User;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
+use App\Repositories\BlogProductRepository;
 
 class ProductController extends Controller
 {
+    private $blogProductRepository;
+
     /**
-     * Показать все работы пользователя
+     * Подключение репозиториев
+     *
+     * ProductController constructor.
+     */
+    public function __construct()
+    {
+        $this->blogProductRepository = app(BlogProductRepository::class);
+    }
+
+    /**
+     * Показать страницу всех работ
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $data = $this->blogProductRepository->getAllWithPaginate();
+
+        return view('blog.products.index', $data);
+    }
+
+    /**
+     * Показать работу
      *
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        $data = Product::all()->where('user_id', $id);
+        $item = Product::findOrFail($id);
 
-        return view('blog.user.products.index', compact('data'));
+        return view('blog.products.show', compact('item'));
     }
 
     /**
@@ -35,7 +60,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Сохранить продукт в память
+     * Сохранить работу в память
      *
      * @param \App\Http\Requests\ProductStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse
@@ -47,7 +72,7 @@ class ProductController extends Controller
 
         if ($item->exists) {
             return redirect()
-                ->route('blog.user.products.edit', ['id' => $item->id])
+                ->route('products.edit', ['id' => $item->id])
                 ->with(['success' => 'Успешно обновлено']);
         } else {
             return back()
@@ -73,7 +98,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Обновить продукт в памяти
+     * Обновить работу в памяти
      *
      * @param \App\Http\Requests\ProductUpdateRequest $request
      * @param int $id
@@ -92,7 +117,7 @@ class ProductController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('blog.user.products.edit', ['id' => $id])
+                ->route('products.edit', ['id' => $id])
                 ->with(['success' => 'Успешно обновлено']);
         } else {
             return back()
@@ -102,7 +127,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Удалить продукт
+     * Удалить работу
      *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
@@ -119,7 +144,7 @@ class ProductController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('blog.user.products.create')
+                ->route('products.create')
                 ->with(['success' => 'Работа успешно удалена']);
         } else {
             return back()

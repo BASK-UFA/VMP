@@ -10,37 +10,16 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
-
-
-    /**
-     * @var BlogPostRepository
-     */
     private $blogPostRepository;
 
+    /**
+     * Подключение репозиториев
+     *
+     * UserController constructor.
+     */
     public function __construct()
     {
         $this->blogPostRepository = app(BlogPostRepository::class);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $data = \Auth::user();
-        return view('home', compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -81,16 +60,5 @@ class UserController extends Controller
             return back()
                 ->withErrors(['msg' => 'Ошибка сохранения']);
         }
-    }
-
-    /**
-     * Удалить пользователя
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
