@@ -1,24 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Blog\User;
+namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogPostSearchRequest;
 use App\Http\Requests\BlogPostStoreRequest;
 use App\Http\Requests\BlogPostUpdateRequest;
-use App\Http\Requests\ProductStoreRequest;
-use App\Http\Requests\ProductUpdateRequest;
 use App\Models\BlogPost;
-use App\Models\User;
 use App\Repositories\BlogCategoryRepository;
 use App\Repositories\BlogPostRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
 
-    /**
-     * @var BlogPostRepository|\Illuminate\Contracts\Foundation\Application|mixed
-     */
     private $blogPostRepository;
     private $blogCategoryRepository;
 
@@ -34,32 +27,72 @@ class PostController extends Controller
     }
 
     /**
-     * Показать статьи пользователя
+     * Показать статьи всех пользователей
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $paginator = $this->blogPostRepository->getAllOfUserWithPaginate();
-        return view('blog.user.posts.index', compact('paginator'));
+        $paginator = $this->blogPostRepository->getAllWithPaginate();
+
+        return view('blog.posts.index', compact('paginator'));
+    }
+
+    /**
+     * Показать все статьи пользователей, чей GET параметр name равен имени пользователя в БД
+     * Если найти статьи не удалось, то редирект на posts.index
+     * В будущем будет более детальный поиск, а не только по name пользователей
+     *
+     * @param \App\Http\Requests\BlogPostSearchRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function search(BlogPostSearchRequest $request)
+    {
+        $paginator = $this->blogPostRepository->getSpecificWithPaginate($request);
+
+        if ($paginator->isEmpty()) {
+            return redirect()
+                ->route('posts.index')
+                ->withErrors(['msg' => "По вашему запросу статьи не найдены"]);
+        }
+
+        return view('blog.posts.index', compact('paginator'));
+    }
+
+    /**
+     * Показать статью
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $item = BlogPost::findOrFail($id);
+
+        return view('blog.posts.show', compact('item'));
     }
 
     /**
      * Показать форму создание статьи
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
         $item = new BlogPost();
+
+        $this->authorize('create', $item);
+
         $categoryList = $this->blogCategoryRepository->getForComboBox();
+
         return view('blog.user.posts.edit', compact('item', 'categoryList'));
     }
 
     /**
      * Сохранить статью в базе данных
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\BlogPostStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
@@ -75,25 +108,13 @@ class PostController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('blog.user.posts.edit', [$item->id])
+                ->route('posts.edit', [$item->id])
                 ->with(['success' => 'Успешно создано']);
         } else {
             return back()
                 ->withErrors(['msg' => 'Ошибка создания'])
                 ->withInput();
         }
-    }
-
-    /**
-     * Показать статьи пользователя
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $paginator = $this->blogPostRepository->getAllOfUserWithPaginate($id);
-        return view('blog.user.posts.index', compact('paginator'));
     }
 
     /**
@@ -121,7 +142,7 @@ class PostController extends Controller
     /**
      * Обновить статью
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\BlogPostUpdateRequest $request
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
@@ -144,7 +165,7 @@ class PostController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('blog.user.posts.edit', $item->id)
+                ->route('posts.edit', $item->id)
                 ->with(['success' => 'Успешно сохранено']);
         } else {
             return back()
@@ -171,7 +192,7 @@ class PostController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('blog.user.posts.create')
+                ->route('posts.create')
                 ->with(['success' => "Статья удалена"]);
         } else {
             return back()

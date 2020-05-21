@@ -4,14 +4,13 @@
     @php /** var @var \App\Models\BlogPost $item */ @endphp
 
     @if($item->exists)
-        <form enctype="multipart/form-data" method="POST" action="{{ route('blog.user.posts.update', $item->id) }}">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('posts.update', $item->id) }}">
             @method('PATCH')
             @else
-                <form enctype="multipart/form-data" method="POST" action="{{ route('blog.user.posts.store') }}">
+                <form enctype="multipart/form-data" method="POST" action="{{ route('posts.store') }}">
                     @endif
                     @csrf
                     <div class="container">
-
                         @include('blog.admin.posts.includes.result_message')
 
                         <div class="row justify-content-center">
@@ -27,7 +26,7 @@
 
                 @if ($item->exists)
                     <br>
-                    <form method="POST" action="{{ route('blog.user.posts.destroy', $item->id) }}">
+                    <form method="POST" action="{{ route('posts.destroy', $item->id) }}">
                         @method('DELETE')
                         @csrf
                         <div class="container">
@@ -38,10 +37,10 @@
                                             <button type="submit" class="btn btn-link">Удалить</button>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
                         </div>
-                        <div class="col-md-3"></div>
-                    </div>
-                </div>
-            </form>
-        @endif
+                    </form>
+    @endif
 @endsection
