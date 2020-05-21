@@ -73,13 +73,11 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $item = new Product();
+        $this->authorize('create', Product::class);
 
-        $this->authorize('create', $item);
+        $item = (new Product())->create($data);
 
-        $item->create();
-
-        if ($item->exists) {
+        if ($item->exists()) {
             return redirect()
                 ->route('products.edit', ['id' => $item->id])
                 ->with(['success' => 'Успешно обновлено']);
