@@ -33,8 +33,6 @@
                                    required>
                         </div>
 
-
-
                         <div class="form-group">
                             <label for="content_raw">Статья</label>
                             <textarea
@@ -46,14 +44,6 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
-                        <div class="form-group">
-                            <label for="slug">Идентификатор</label>
-                            <input name="slug" value="{{ old('slug', $item->slug) }}"
-                                   type="text"
-                                   id="slug"
-                                   class="form-control">
-                        </div>
-
                         <div class="form-group">
                             <label for="category_id">Родитель</label>
                             <select name="category_id"

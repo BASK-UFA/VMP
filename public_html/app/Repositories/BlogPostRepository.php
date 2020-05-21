@@ -53,7 +53,6 @@ class BlogPostRepository extends CoreRepository
             'excerpt',
             'category_id',
             'user_id',
-            'slug',
             'title',
             'is_published',
             'published_at',
