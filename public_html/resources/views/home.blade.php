@@ -131,24 +131,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            {{--                            @foreach($data->lastProducts() as $product)--}}
-                            {{--                                <div class="card bg-dark text-white">--}}
-                            {{--                                    <img class="card-img" src="{{ asset($product->image) }}" alt="">--}}
-                            {{--                                    <div class="card-body">--}}
-                            {{--                                        <h5 class="card-title Oswald">{{ $product->name }}</h5>--}}
-                            {{--                                        <hr class="bg-white">--}}
-                            {{--                                        <p class="card-text">{{ $product->excerpt }}</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            @endforeach--}}
-                            {{--                            <div class="card">--}}
-                            {{--                                <div class="card-top"><img class="card-image" alt="" src="" /></div>--}}
-                            {{--                                <div class="card-mid">--}}
-                            {{--                                    <h4 class="card-title">Titre</h4>--}}
-                            {{--                                    <label class="card-desc">Description</label>--}}
-                            {{--                                    <div class="card-blur-zone"></div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
