@@ -13,7 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
 
     $data = [
         'user_id' => (rand(1, 5) == 5) ? 1 : 2,
-        'image' => $faker->imageUrl('1366', '768', 'technics'),
+        'image' => 'images/' . rand(1, 6) . '-product-sm.png',
         'name' => $name,
         'excerpt' => $faker->text(rand(40, 100)),
         'content_raw' => $txt,
