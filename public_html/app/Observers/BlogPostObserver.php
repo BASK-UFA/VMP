@@ -39,7 +39,7 @@ class BlogPostObserver
     /**
      * Сохранить промо-картинку в памяти и обновить поле image поста
      *
-     * @param BlogPost $product
+     * @param \App\Models\BlogPost $blogPost
      */
     private function setImage(BlogPost $blogPost)
     {
