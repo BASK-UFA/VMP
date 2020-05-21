@@ -51,10 +51,13 @@ class ProductController extends Controller
      * Показать страницу создания работы
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
         $item = new Product();
+
+        $this->authorize('create', $item);
 
         return view('blog.user.products.edit', compact('item'));
     }
@@ -64,11 +67,17 @@ class ProductController extends Controller
      *
      * @param \App\Http\Requests\ProductStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(ProductStoreRequest $request)
     {
         $data = $request->all();
-        $item = (new Product())->create($data);
+
+        $item = new Product();
+
+        $this->authorize('create', $item);
+
+        $item->create();
 
         if ($item->exists) {
             return redirect()
@@ -98,7 +107,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Обновить работу в памяти
+     * Обновить работу
      *
      * @param \App\Http\Requests\ProductUpdateRequest $request
      * @param int $id
@@ -123,7 +132,6 @@ class ProductController extends Controller
             return back()
                 ->withErrors(['msg' => 'Ошибка сохранения']);
         }
-
     }
 
     /**
@@ -132,7 +140,7 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
-     * @throws \Exception
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function destroy($id)
     {

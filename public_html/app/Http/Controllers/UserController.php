@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\BlogPostRepository;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -23,6 +24,18 @@ class UserController extends Controller
     }
 
     /**
+     * Показать страницу авторизованного пользователя
+     *
+     * @return View
+     */
+    public function index()
+    {
+        $data = Auth::user();
+
+        return view('home', compact('data'));
+    }
+
+    /**
      * Показать страницу пользователя
      *
      * @param int $id
@@ -31,6 +44,7 @@ class UserController extends Controller
     public function show($id)
     {
         $data = User::findOrFail($id);
+
         return view('home', compact('data'));
     }
 

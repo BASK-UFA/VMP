@@ -48,7 +48,7 @@ class PostController extends Controller
      */
     public function search(BlogPostSearchRequest $request)
     {
-        $paginator = $this->blogPostRepository->getSpecificWithPaginate($request)->appends('name', $request->name);
+        $paginator = $this->blogPostRepository->getSpecificWithPaginate($request);
 
         if ($paginator->isEmpty()) {
             return redirect()
@@ -76,11 +76,16 @@ class PostController extends Controller
      * Показать форму создание статьи
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
         $item = new BlogPost();
+
+        $this->authorize('create', $item);
+
         $categoryList = $this->blogCategoryRepository->getForComboBox();
+
         return view('blog.user.posts.edit', compact('item', 'categoryList'));
     }
 

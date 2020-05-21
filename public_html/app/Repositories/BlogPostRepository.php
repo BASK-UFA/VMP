@@ -32,24 +32,10 @@ class BlogPostRepository extends CoreRepository
 
         $usersId = User::where('name', 'LIKE', '%' . $name . '%')->get('id')->toArray();
 
-        $result = BlogPost::whereIn('user_id', $usersId)->with(['user'], ['category'])->paginate(10);
-
-        return $result;
-    }
-
-    public function getAllOfUserWithPaginate($id = null)
-    {
-        if ($id === null) {
-            $id = \Auth::user()->id;
-        }
-
-        /** @var LengthAwarePaginator $result */
-        $result = $this->startConditions()
-            ->where('user_id', $id)
-            ->orderBy('id', 'DESC')
-            ->with(['category', 'user'])
-            ->paginate(10);
-
+        $result = BlogPost::whereIn('user_id', $usersId)
+            ->with(['user'], ['category'])
+            ->paginate(10)
+            ->appends('name', $request->name);
 
         return $result;
     }
