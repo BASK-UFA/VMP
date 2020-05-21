@@ -142,6 +142,6 @@
             </div>
         </div>
     </div>
-    {{--        @dd($data)--}}
+            @dd($data)
 
 @endsection
