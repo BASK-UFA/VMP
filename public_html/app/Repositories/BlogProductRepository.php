@@ -23,6 +23,7 @@ class BlogProductRepository extends CoreRepository
     {
         $columns = [
             'id',
+            'image',
             'excerpt',
             'content_html',
             'user_id',
