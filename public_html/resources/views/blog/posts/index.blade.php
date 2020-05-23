@@ -41,6 +41,9 @@
                         <div>
                             <a class="btn btn-dark text-white" href="{{ route('posts.show', ['id' => $item->id]) }}">Читать
                                 полностью</a>
+                            @can('update', $item)
+                                <a class="btn btn-primary" href="{{ route('posts.edit', ['id' => $item->id]) }}">Редактировать</a>
+                            @endcan
                         </div>
                     </div>
                     <hr class="w-100">
