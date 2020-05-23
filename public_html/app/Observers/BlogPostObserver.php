@@ -19,7 +19,6 @@ class BlogPostObserver
         $this->setPublishedAt($blogPost);
         $this->setHtml($blogPost);
         $this->setImage($blogPost);
-        $this->setSlug($blogPost);
     }
 
     /**
@@ -31,7 +30,6 @@ class BlogPostObserver
     {
         $this->setPublishedAt($blogPost);
         $this->setImage($blogPost);
-        $this->setSlug($blogPost);
         $this->setHtml($blogPost);
         $this->setUser($blogPost);
     }
