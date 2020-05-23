@@ -1,5 +1,5 @@
 @if($errors->any())
-<div class="row justify-content-center">
+<div class="row justify-content-center home">
     <div class="col-md-12">
         <div class="alert alert-danger" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -12,7 +12,7 @@
 @endif
 
 @if(session('success'))
-<div class="row justify-content-center">
+<div class="row justify-content-center home">
     <div class="col-md-12">
         <div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
