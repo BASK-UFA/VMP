@@ -197,7 +197,7 @@
     </div>
     <nav class="p-0 navbar-main navbar navbar-expand-lg navbar-dark bg-dark sticky-top h_layouts">
         <div class="container">
-            <a class="navbar-brand pl-3 pl-md-0" href="{{ route('/') }}">ВМП</a>
+            <a class="navbar-brand pl-3 pl-md-0 h6 Oswald" href="{{ route('/') }}">V W P</a>
             <button class="navbar-toggler"
                     type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
