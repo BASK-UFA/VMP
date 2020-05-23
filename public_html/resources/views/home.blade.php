@@ -4,8 +4,6 @@
 
     @php /** var @var \App\Models\User $data */ @endphp
 
-    {{--  TODO: сверстать success и errors ответы  --}}
-
     <!-- Модальное окно с изменениями страницы пользователя -->
     @can('update', $data)
         <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

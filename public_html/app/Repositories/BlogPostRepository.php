@@ -33,7 +33,9 @@ class BlogPostRepository extends CoreRepository
         $usersId = User::where('name', 'LIKE', '%' . $name . '%')->get('id')->toArray();
 
         $result = BlogPost::whereIn('user_id', $usersId)
-            ->with(['user'], ['category'])
+            ->orderBy('id', 'DESC')
+            ->with(['user', 'category'])
+            ->where('is_published', 1)
             ->paginate(10)
             ->appends('name', $request->name);
 
@@ -63,8 +65,9 @@ class BlogPostRepository extends CoreRepository
         $result = $this->startConditions()
             ->select($columns)
             ->orderBy('id', 'DESC')
+            ->where('is_published', 1)
             ->with(['category', 'user'])
-            ->paginate(25);
+            ->paginate(10);
 
         return $result;
     }
@@ -79,7 +82,11 @@ class BlogPostRepository extends CoreRepository
     {
         $user = User::find($id);
 
-        return $user->posts()->paginate(10);
+        return $user->posts()
+            ->orderBy('id', 'DESC')
+            ->where('is_published', 1)
+            ->with(['user', 'category'])
+            ->paginate(10);
     }
 
     /**
