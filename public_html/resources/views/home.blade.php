@@ -111,7 +111,7 @@
                                    href="{{ route('products.create') }}">Добавить новую работу</a>
                             @endcan
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('products.show', ['id' => $data->id]) }}">Показать все
+                               href="{{ route('user.products', ['id' => $data->id]) }}">Показать все
                                 работы</a>
                         </div>
                     </div>
@@ -122,8 +122,9 @@
                             @foreach($data->lastProducts() as $product)
                                 @php /** PHPDOC @var \App\Models\Product $product */ @endphp
                                 <div class="card">
-                                    <div class="card-top"><img class="card-image" alt=""
-                                                               src="{{ asset($product->image) }}"/></div>
+                                    <div class="card-top">
+                                        <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                    </div>
                                     <div class="card-mid">
                                         <h4 class="card-title">{{ $product->name }}</h4>
                                         <label class="card-desc">{{ $product->excerpt }}</label>
@@ -131,24 +132,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            {{--                            @foreach($data->lastProducts() as $product)--}}
-                            {{--                                <div class="card bg-dark text-white">--}}
-                            {{--                                    <img class="card-img" src="{{ asset($product->image) }}" alt="">--}}
-                            {{--                                    <div class="card-body">--}}
-                            {{--                                        <h5 class="card-title Oswald">{{ $product->name }}</h5>--}}
-                            {{--                                        <hr class="bg-white">--}}
-                            {{--                                        <p class="card-text">{{ $product->excerpt }}</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            @endforeach--}}
-                            {{--                            <div class="card">--}}
-                            {{--                                <div class="card-top"><img class="card-image" alt="" src="" /></div>--}}
-                            {{--                                <div class="card-mid">--}}
-                            {{--                                    <h4 class="card-title">Titre</h4>--}}
-                            {{--                                    <label class="card-desc">Description</label>--}}
-                            {{--                                    <div class="card-blur-zone"></div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -165,7 +148,7 @@
                             {{--                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"--}}
                             {{--                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>--}}
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('posts.search', ['name' => $data->name]) }}">Показать все статьи</a>
+                               href="{{ route('user.posts', ['user' => $data->id]) }}">Показать все статьи</a>
                         </div>
                     </div>
                     <div>
@@ -197,7 +180,8 @@
                             @endforeach
                         </div>
                         <div class="card-footer border-top-0 d-flex justify-content-center">
-                            <a href="#" class="btn btn-dark">Показать все статьи</a>
+                            <a href="{{ route('user.posts', ['user' => $data->id]) }}" class="btn btn-dark">Показать все
+                                статьи</a>
                         </div>
                     </div>
                 </div>

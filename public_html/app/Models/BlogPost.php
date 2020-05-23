@@ -58,7 +58,7 @@ class BlogPost extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'excerpt', 'image', 'category_id', 'content_raw', 'is_published', 'published_at',
+        'title', 'excerpt', 'image', 'category_id', 'content_raw', 'is_published', 'published_at',
     ];
 
     public function category()

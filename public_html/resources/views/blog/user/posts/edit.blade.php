@@ -11,14 +11,14 @@
                     @endif
                     @csrf
                     <div class="container">
-                        @include('blog.admin.posts.includes.result_message')
+                        @include('blog.user.posts.includes.result_message')
 
                         <div class="row justify-content-center">
                             <div class="col-md-9">
-                                @include('blog.admin.posts.includes.item_edit_main_col')
+                                @include('blog.user.posts.includes.item_edit_main_col')
                             </div>
                             <div class="col-md-3">
-                                @include('blog.admin.posts.includes.item_edit_add_col')
+                                @include('blog.user.posts.includes.item_edit_add_col')
                             </div>
                         </div>
                     </div>
