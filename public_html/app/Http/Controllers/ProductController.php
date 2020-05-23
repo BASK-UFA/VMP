@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
@@ -156,5 +155,25 @@ class ProductController extends Controller
             return back()
                 ->withErrors(['msg' => 'Ошибка удаления работы']);
         }
+    }
+
+    /**
+     * Получить работы пользователя в пагинаторе
+     * Как назвать такой метод?
+     *
+     * @param $user int
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function tag($user)
+    {
+        $data = $this->blogProductRepository->getAllForUserWithPaginate($user);
+
+        if ($data->isEmpty()) {
+            return redirect()
+                ->route('posts.index')
+                ->withErrors(['msg' => 'Статей по вашему запросу не найдено']);
+        }
+
+        return view('blog.products.index', compact('data'));
     }
 }

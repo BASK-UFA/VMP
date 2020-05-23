@@ -66,12 +66,24 @@ class BlogPostRepository extends CoreRepository
             ->with(['category', 'user'])
             ->paginate(25);
 
-
         return $result;
     }
 
     /**
-     * Получить модель для редактирования в админке.
+     * Получить посты пользователя
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getAllForUserWithPaginate($id)
+    {
+        $user = User::find($id);
+
+        return $user->posts()->paginate(10);
+    }
+
+    /**
+     * Получить модель
      *
      * @param int $id
      *
