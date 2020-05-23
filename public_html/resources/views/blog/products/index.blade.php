@@ -7,7 +7,7 @@
     {{--  Для обращения к полю используйте конструкцию в цикле с foreach {{ $product->НАЗВАНИЕ-ПОЛЯ }}   --}}
     {{--  Ниже вывод содержимого пагинатора в виде массива                                               --}}
 
-    <div class="containe pt-4">
+    <div class="container pt-4">
         <div class="row">
             <div>
                 <div class="col-md-9 m-auto pt-5 pb-5">
@@ -35,9 +35,9 @@
             </div>
             <div class="card-deck">
                 @foreach($data as $product)
-                    <div class="col-md-4 ">
+                    <div class="col-md-4">
                         <a href="{{route('products.show', ['id' =>$product->id])}}"
-                           class="text-decoration-none text-dark">
+                           class="p-2 text-decoration-none text-dark">
                             <div class="skill_block h-90 mb-5">
                                 <img class="card-img-top" src="{{ asset($product->image) }}" alt="Card image cap">
                                 <div class="card-body m-3">

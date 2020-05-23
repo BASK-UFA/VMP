@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data = User::findOrFail($id);
+        $data = User::with(['posts', 'products'])->findOrFail($id);
 
         return view('home', compact('data'));
     }

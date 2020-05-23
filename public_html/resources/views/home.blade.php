@@ -175,17 +175,17 @@
 
                             @foreach($data->lastProducts() as $product)
                                 @php /** PHPDOC @var \App\Models\Product $product */ @endphp
-                                <a class="col-md-4" href="{{route('products.show', ['id' =>$product->id])}}">
-                                <div class="card">
-                                    <div class="card-top">
-                                        <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                <a class="col-md-4 p-0" href="{{route('products.show', ['id' =>$product->id])}}">
+                                    <div class="card">
+                                        <div class="card-top">
+                                            <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                        </div>
+                                        <div class="card-mid">
+                                            <h4 class="card-title">{{ $product->name }}</h4>
+                                            <label class="card-desc">{{ $product->excerpt }}</label>
+                                            <div class="card-blur-zone"></div>
+                                        </div>
                                     </div>
-                                    <div class="card-mid">
-                                        <h4 class="card-title">{{ $product->name }}</h4>
-                                        <label class="card-desc">{{ $product->excerpt }}</label>
-                                        <div class="card-blur-zone"></div>
-                                    </div>
-                                </div>
                                 </a>
                             @endforeach
                         </div>
