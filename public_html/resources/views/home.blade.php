@@ -67,7 +67,7 @@
 
     {{-- TODO: Вынести стили в scss --}}
 
-    <div class="container pt-4">
+    <div class="container home">
         @include('blog.includes.result_message')
 
         <div class="row">
@@ -116,11 +116,12 @@
                         </div>
                     </div>
 
-                    <div class="card-body pb-3 pl-md-0 pr-md-0">
+                    <div class="card-footer pb-3 pl-md-0 pr-md-0">
                         <div class="card-deck products">
 
                             @foreach($data->lastProducts() as $product)
                                 @php /** PHPDOC @var \App\Models\Product $product */ @endphp
+                                <a class="col-md-4" href="{{route('products.show', ['id' =>$product->id])}}">
                                 <div class="card">
                                     <div class="card-top">
                                         <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
@@ -131,6 +132,7 @@
                                         <div class="card-blur-zone"></div>
                                     </div>
                                 </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -142,6 +144,10 @@
                         <span class="mb-1">Мои статьи</span>
                         <div class="float-md-right">
                             @can('update', $data)
+                                <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                                   href="#" data-toggle="modal" data-target="#DraftModal">
+                                        Запустить модальное окно
+                                   </a>
                                 <a class="mt-2 mt-md-0 btn btn-secondary text-white"
                                    href="{{ route('posts.create') }}">Добавить новую статю</a>
                             @endcan
@@ -171,12 +177,12 @@
                                     <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">
                                         {{ $post->excerpt }}
                                     </div>
-                                    <div class="mb-3">
-                                        <a class="btn btn-dark text-white"
+                                    <div class="mb-3 mt-3">
+                                        <a class="btn btn-dark text-white mt-2"
                                            href="{{ route('posts.show', ['id' => $post->id]) }}">Читать
                                             полностью</a>
                                         @can('update', $post)
-                                            <a class="btn btn-primary"
+                                            <a class="btn btn-primary mt-2"
                                                href="{{ route('posts.edit', ['id' => $post->id]) }}">Редактировать</a>
                                         @endcan
                                     </div>
