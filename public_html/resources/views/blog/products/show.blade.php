@@ -7,17 +7,17 @@
     {{--  Для обращения к полю используйте конструкцию {{ $item->НАЗВАНИЕ-ПОЛЯ }}   --}}
     {{--  Ниже вывод всех полей модели через дебагер                                --}}
 
-    <div class="product_bg col-md-12">
+    <div class="product_bg col-md-12" style="margin-top: -1.5rem">
         <div class="col-md-9 m-auto pb-5">
             <div class="container">
                 <div class="row">
-                    <div class="pt-4 col-md-3">
+                    <div class="pt-5 col-md-3">
                         <h1 class="Oswald product_excerpt text-center">
                             {{ $item->name }}
                         </h1>
                     </div>
                     <div class="col-md-9">
-                        <img class="product_img d-block mx-auto rounded" src="{{asset('images/1-product-sm.png')}}" alt="">
+                        <img class="product_img d-block mx-auto rounded" src="{{asset($item->image)}}" alt="">
                     </div>
                 </div>
             </div>

@@ -169,6 +169,20 @@
         .posts__item__content:last-child {
             border: 0;
         }
+
+        .skill_block:hover {
+            box-shadow: none !important;
+        }
+
+        .product_bg::after {
+            /*content: none;*/
+            z-index: 0 !important;
+        }
+
+        .product_img {
+            z-index: 1000000 !important;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -204,9 +218,9 @@
             </ul>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark Oswald navbar-main pb-0 position-absolute w-100 ">
-       <div class="container text-center">
-           <a class="navbar-brand h4" href="{{ route('/') }}">В М П</a>
+    <nav class="navbar navbar-expand-lg navbar-dark Oswald navbar-main pb-0 position-absolute w-100">
+        <div class="container text-center">
+            <a class="navbar-brand h4" href="{{ route('/') }}">В М П</a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
            </button>
@@ -263,7 +277,7 @@
 
         </div>
     </nav>
-    <main class="cont">
+    <main class="cont my-4">
         @yield('content')
     </main>
 </div>
