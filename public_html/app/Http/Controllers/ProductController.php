@@ -31,7 +31,7 @@ class ProductController extends Controller
     {
         $data = $this->blogProductRepository->getAllWithPaginate();
 
-        return view('blog.products.index', $data);
+        return view('blog.products.index', compact('data'));
     }
 
     /**
