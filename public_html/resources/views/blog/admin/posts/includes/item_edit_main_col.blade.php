@@ -1,6 +1,6 @@
 @php /** @var App\Models\BlogPost $item */ @endphp
 
-<div class="row justify-content-center">
+<div class="row justify-content-center pt-4">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">

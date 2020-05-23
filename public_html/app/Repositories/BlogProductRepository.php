@@ -36,7 +36,7 @@ class BlogProductRepository extends CoreRepository
             ->select($columns)
             ->orderBy('id', 'DESC')
             ->with(['user'])
-            ->paginate(10);
+            ->paginate(9);
 
 
         return $result;
@@ -64,6 +64,9 @@ class BlogProductRepository extends CoreRepository
     {
         $user = User::find($id);
 
-        return $user->products()->paginate(10);
+        return $user->products()
+            ->orderBy('id', 'DESC')
+            ->with(['user'])
+            ->paginate(9);
     }
 }

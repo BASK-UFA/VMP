@@ -75,9 +75,15 @@ class User extends Authenticatable
         return $this->hasMany(BlogPost::class);
     }
 
+    public function draftPosts()
+    {
+        // Пользователь имеет неопубликованные статьи
+        return $this->hasMany(BlogPost::class)->where('is_published', 0)->get();
+    }
+
     public function lastPosts()
     {
-        return $this->hasMany(BlogPost::class)->where('published_at', '!=', null)->latest()->limit(5)->get();
+        return $this->hasMany(BlogPost::class)->where('is_published', 1)->latest()->limit(5)->get();
     }
 
     public function products()
@@ -85,6 +91,7 @@ class User extends Authenticatable
         // Пользователь имеет статьи
         return $this->hasMany(Product::class);
     }
+
     public function lastProducts()
     {
         return $this->hasMany(Product::class)->latest()->limit(3)->get();

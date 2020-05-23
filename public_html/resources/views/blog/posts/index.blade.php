@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container home">
 
         @include('blog.includes.result_message')
 
@@ -38,9 +38,12 @@
                         <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">
                             {{ $item->excerpt }}
                         </div>
-                        <div>
+                        <div class="mt-3">
                             <a class="btn btn-dark text-white" href="{{ route('posts.show', ['id' => $item->id]) }}">Читать
                                 полностью</a>
+                            @can('update', $item)
+                                <a class="btn btn-primary" href="{{ route('posts.edit', ['id' => $item->id]) }}">Редактировать</a>
+                            @endcan
                         </div>
                     </div>
                     <hr class="w-100">

@@ -50,6 +50,8 @@ class BlogPostObserver
                 ->store('posts/' . $blogPost->id, 'public');
 
             $blogPost->image = 'storage/' . $path;
+        } else {
+            $blogPost->image = 'images/' . rand(1, 6) . '-lg-posts.jpg';
         }
     }
 

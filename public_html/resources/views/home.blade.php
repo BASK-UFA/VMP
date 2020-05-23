@@ -4,8 +4,6 @@
 
     @php /** var @var \App\Models\User $data */ @endphp
 
-    {{--  TODO: сверстать success и errors ответы  --}}
-
     <!-- Модальное окно с изменениями страницы пользователя -->
     @can('update', $data)
         <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -64,10 +62,60 @@
             </div>
         </div>
     @endcan
+    <!-- Модальное окно с черновиками -->
+    <div class="modal fade" id="DraftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ваши черновики</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @foreach($data->draftPosts()  as $post)
+                        <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
+                            <div>
+                                <a style="font-size: 1.2rem"
+                                   href="{{ route('user.show', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a>
+                                <div>
+                                    {{ $post->created_at }}
+                                </div>
+                            </div>
+                            <a href="{{ route('posts.show', ['id' => $post->id]) }}" style="font-size:2em;"
+                               class="pt-2">{{ $post->title }}</a>
+                        </div>
+                        <div class="posts__item__content">
+                            <img class="d-flex justify-content-center h-25 w-50" src="{{ asset($post->image) }}"
+                                 alt="">
+                            <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">
+                                {{ $post->excerpt }}
+                            </div>
+                            <div class="mb-3 mt-3">
+                                @can('update', $post)
+                                <form method="POST" action="{{ route('posts.destroy', $post->id) }} ">
+                                    @method('DELETE')
+                                    @csrf
+                              <button  class="btn btn-primary">Удалить</button>
+
+
+                                    <a class="btn btn-primary "
+                                       href="{{ route('posts.edit', ['id' => $post->id]) }}">Редактировать</a>
+                                    <hr class="bg-dark">
+                                </form>
+                                @endcan
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     {{-- TODO: Вынести стили в scss --}}
 
-    <div class="container">
+    <div class="container home">
         @include('blog.includes.result_message')
 
         <div class="row">
@@ -116,21 +164,29 @@
                         </div>
                     </div>
 
-                    <div class="card-body pb-3 pl-md-0 pr-md-0">
+                    <div class="card-footer pb-3 pl-md-0 pr-md-0">
+                        @if ($data->lastProducts()->isEmpty())
+                            <div>
+                                <p class="Oswald h3 text-center">Работ пока нет</p>
+                            </div>
+
+                        @endif
                         <div class="card-deck products">
 
                             @foreach($data->lastProducts() as $product)
                                 @php /** PHPDOC @var \App\Models\Product $product */ @endphp
-                                <div class="card">
-                                    <div class="card-top">
-                                        <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                <a class="col-md-4 p-0" href="{{route('products.show', ['id' =>$product->id])}}">
+                                    <div class="card">
+                                        <div class="card-top">
+                                            <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                        </div>
+                                        <div class="card-mid">
+                                            <h4 class="card-title">{{ $product->name }}</h4>
+                                            <label class="card-desc">{{ $product->excerpt }}</label>
+                                            <div class="card-blur-zone"></div>
+                                        </div>
                                     </div>
-                                    <div class="card-mid">
-                                        <h4 class="card-title">{{ $product->name }}</h4>
-                                        <label class="card-desc">{{ $product->excerpt }}</label>
-                                        <div class="card-blur-zone"></div>
-                                    </div>
-                                </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -143,6 +199,10 @@
                         <div class="float-md-right">
                             @can('update', $data)
                                 <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                                   href="#" data-toggle="modal" data-target="#DraftModal">
+                                       Ваши черновики
+                                   </a>
+                                <a class="mt-2 mt-md-0 btn btn-secondary text-white"
                                    href="{{ route('posts.create') }}">Добавить новую статю</a>
                             @endcan
                             {{--                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"--}}
@@ -153,7 +213,11 @@
                     </div>
                     <div>
                         <div class="card-footer pb-3 posts">
+                            @if ($data->lastPosts()->isEmpty())
+                                <p class="Oswald h3 text-center">Статей пока нет</p>
+                            @endif
                             @foreach($data->lastPosts() as $post)
+
                                 <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
                                     <div>
                                         <a style="font-size: 1.2rem"
@@ -171,18 +235,25 @@
                                     <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">
                                         {{ $post->excerpt }}
                                     </div>
-                                    <div class="mb-3">
-                                        <a class="btn btn-dark text-white"
+                                    <div class="mb-3 mt-3">
+                                        <a class="btn btn-dark text-white mt-2"
                                            href="{{ route('posts.show', ['id' => $post->id]) }}">Читать
                                             полностью</a>
+                                        @can('update', $post)
+                                            <a class="btn btn-primary mt-2"
+                                               href="{{ route('posts.edit', ['id' => $post->id]) }}">Редактировать</a>
+                                        @endcan
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-                        <div class="card-footer border-top-0 d-flex justify-content-center">
-                            <a href="{{ route('user.posts', ['user' => $data->id]) }}" class="btn btn-dark">Показать все
-                                статьи</a>
-                        </div>
+                        @if ($data->lastPosts()->count()>=5)
+                            <div class="card-footer border-top-0 d-flex justify-content-center">
+                                <a href="{{ route('user.posts', ['user' => $data->id]) }}" class="btn btn-dark">Показать все
+                                    статьи</a>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div>

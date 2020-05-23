@@ -62,6 +62,10 @@
             height: 100%;
         }
 
+        .cont{
+            z-index:0;
+        }
+
         .products .card-mid {
             padding: 20px;
             position: absolute;
@@ -131,8 +135,17 @@
         }
 
         .navbar-main {
-            /*background-color: rgba(52, 58, 64, 0.8);*/
-            opacity: 0.8;
+            background-color: rgba(52, 58, 64,0.8);
+            padding-top: 0.8rem!important;
+            color:#fff;
+            z-index: 41;
+
+        }
+        .navbar-drop {
+            border:0;
+            background-color: rgba(52, 58, 64,0.8);
+            color:#fff;
+            z-index: 41;
         }
 
         .bg-dark-opacity {
@@ -142,11 +155,6 @@
         .navbar-add {
             z-index: 100;
         }
-
-        .navbar-main .main-menu a {
-            color: #f7992b !important;
-        }
-
         .collapsing {
             -webkit-transition: none;
             transition: none;
@@ -161,11 +169,26 @@
         .posts__item__content:last-child {
             border: 0;
         }
+
+        .skill_block:hover {
+            box-shadow: none !important;
+        }
+
+        .product_bg::after {
+            /*content: none;*/
+            z-index: 0 !important;
+        }
+
+        .product_img {
+            z-index: 1000000 !important;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body>
+
 <div id="app">
-    <div class="navbar-add navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-add navbar navbar-expand-lg navbar-dark  bg-dark">
         <div class="navbar-collapse container">
             <ul class="navbar-nav text-sm-center">
                 <li class="nav-item active">
@@ -195,74 +218,66 @@
             </ul>
         </div>
     </div>
-    <nav class="p-0 navbar-main navbar navbar-expand-lg navbar-dark bg-dark sticky-top h_layouts">
-        <div class="container">
-            <a class="navbar-brand pl-3 pl-md-0 h6 Oswald" href="{{ route('/') }}">V W P</a>
-            <button class="navbar-toggler"
-                    type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar navbar-expand-lg navbar-dark Oswald navbar-main pb-0 position-absolute w-100">
+        <div class="container text-center">
+            <a class="navbar-brand h4" href="{{ route('/') }}">В М П</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav m-auto">
+                   <li class="nav-item active">
+                       <a class="nav-link h4 text-center" href="{{ route('/') }}">Главная<span class="sr-only">(current)</span></a>
+                   </li>
+                   <li class="nav-item active">
+                       <a class="nav-link h4" href="{{ route('posts.index') }}">Блог</a>
+                   </li>
+                   <li class="nav-item active">
+                       <a class="nav-link h4" href="{{ route('products.index') }}">Наши работы</a>
+                   </li>
+               </ul>
+               <ul class="navbar-nav">
+                   <!-- Authentication Links -->
+                   @guest
+                       <li class="nav-item">
+                           <a class="nav-link text-white h5 Oswald" href="{{ route('login') }}">{{ __('Войти') }}</a>
+                       </li>
+                       @if (Route::has('register'))
+                           <li class="nav-item">
+                               <a class="nav-link text-white h5 Oswald"
+                                  href="{{ route('register') }}">{{ __('Регистрация') }}</a>
+                           </li>
+                       @endif
+                   @else
+                       <li class="nav-item dropdown ">
+                           <a id="navbarDropdown" class="nav-link dropdown-toggle text-white h5 Oswald " href="#"
+                              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                              v-pre>
+                               {{ Auth::user()->name }} <span class="caret"></span>
+                           </a>
 
+                           <div class="dropdown-menu mb-1 bg-dark  " aria-labelledby="navbarDropdown">
+                             <p>
+                                 <a class="nav-item h5 Oswald text-white text-decoration-none pl-4"
+                                   href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Мой профиль</a>
+                             </p>
+                               <a class="nav-item h5 Oswald text-white text-decoration-none ml-4" href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                   {{ __('Выход') }}
+                               </a>
 
-            <div class="collapse navbar-collapse position-relative" id="navbarSupportedContent">
-                <div class="w-100 p-0 position-absolute bg-dark navbar-collapse">
-                    <ul class="navbar-nav m-auto main-menu h6">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('/') }}">Главная <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('posts.index') }}">Блог</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products.index') }}">Наши работы</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Войти') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link text-white"
-                                       href="{{ route('register') }}">{{ __('Регистрация') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                   v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                   @csrf
+                               </form>
+                           </div>
+                       </li>
+                   @endguest
+               </ul>
+           </div>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item"
-                                       href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Мой профиль</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        {{ __('Выход') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
         </div>
-
     </nav>
-    <main class="pt-4">
+    <main class="cont my-4">
         @yield('content')
     </main>
 </div>
