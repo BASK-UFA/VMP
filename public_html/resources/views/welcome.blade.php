@@ -1,12 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="row">
-        <div class="col-lg-12 col-md-12 mx-auto welc_header">
-            <img class="" src="{{asset('images/back.jpeg')}}" alt="">
-            <div class="Oswald text-center ">
-                <h1>Виртуальная мастерская програмистов</h1>
-            </div>
+    <div id="welc" class="row">
+        <div class="welc_header d-block mb-4 ">
+           <h1 class="text-white Oswald">Виртуальная мастерская программистов</h1>
         </div>
     </div>
 

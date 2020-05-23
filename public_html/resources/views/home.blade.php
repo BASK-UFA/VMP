@@ -67,7 +67,7 @@
 
     {{-- TODO: Вынести стили в scss --}}
 
-    <div class="container">
+    <div class="container pt-4">
         @include('blog.includes.result_message')
 
         <div class="row">

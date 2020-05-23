@@ -2,9 +2,9 @@
     /** var @var \App\Models\BlogPost $item */
 @endphp
 
-<div class="row justify-content-center">
+<div class="row justify-content-center" >
 
-        <div class="card border-0">
+        <div class="card border-0 pt-4">
             <div class="" >
                 <button type="submit" style="font-family: 'Oswald', sans-serif;" class="btn text-white btn-dark mt-1 big" >Сохранить</button>
             </div>

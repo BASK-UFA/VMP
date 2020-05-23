@@ -195,7 +195,7 @@
             </ul>
         </div>
     </div>
-    <nav class="p-0 navbar-main navbar navbar-expand-lg navbar-dark bg-dark sticky-top h_layouts">
+    <nav class="p-0 navbar-main navbar navbar-expand-lg navbar-dark bg-dark sticky-top h_layouts ">
         <div class="container">
             <a class="navbar-brand pl-3 pl-md-0 h6 Oswald" href="{{ route('/') }}">V W P</a>
             <button class="navbar-toggler"
@@ -261,7 +261,7 @@
         </div>
 
     </nav>
-    <main class="pt-4">
+    <main class="">
         @yield('content')
     </main>
 </div>
