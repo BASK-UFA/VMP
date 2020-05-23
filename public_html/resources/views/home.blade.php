@@ -175,6 +175,10 @@
                                         <a class="btn btn-dark text-white"
                                            href="{{ route('posts.show', ['id' => $post->id]) }}">Читать
                                             полностью</a>
+                                        @can('update', $post)
+                                            <a class="btn btn-primary"
+                                               href="{{ route('posts.edit', ['id' => $post->id]) }}">Редактировать</a>
+                                        @endcan
                                     </div>
                                 </div>
                             @endforeach
