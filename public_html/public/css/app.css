@@ -11065,3 +11065,86 @@ nav {
   font-weight: 300;
 }
 
+
+.work-text {
+  font-size: 50px;
+}
+
+.prod_img {
+  width: 250px !important;
+}
+
+.h-img {
+  height: 60%;
+}
+
+.wc-text {
+  font-size: 1.2rem;
+}
+
+.skill_block:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px 2px;
+}
+
+.h-90 {
+  height: 90% !important;
+}
+
+.Montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.product_excerpt {
+  font-size: 1.7rem;
+  padding-top: 60px;
+}
+
+.product_bg {
+  background-color: rgba(204, 216, 215, 0.83);
+  top: -25px;
+  height: 60vh;
+}
+
+.product_bg::after {
+  content: "";
+  padding-top: 5%;
+  background: linear-gradient(to right top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) left/50% 100% no-repeat, linear-gradient(to left top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) right/50% 100% no-repeat;
+  image-rendering: crisp-edges;
+  position: absolute;
+  top: 100%;
+  left: 2px;
+  right: 2px;
+}
+
+.product_img {
+  background-size: contain;
+  height: 60vh;
+}
+
+.product_avatar {
+  height: 45px;
+  width: 45px;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 600px) {
+  .product_img {
+    height: 40vh;
+    width: 90%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 600px) {
+  .product_excerpt {
+    padding-top: 40px;
+  }
+}
+
+.welc_header{
+    top:-95px;
+    text-align: center;
+}
+.welc_header h1

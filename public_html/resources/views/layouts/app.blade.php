@@ -13,14 +13,17 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
+
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <style>
         .products .card {
@@ -194,7 +197,7 @@
     </div>
     <nav class="p-0 navbar-main navbar navbar-expand-lg navbar-dark bg-dark sticky-top h_layouts">
         <div class="container">
-            <a class="navbar-brand pl-3 pl-md-0" href="{{ route('/') }}">ВМП</a>
+            <a class="navbar-brand pl-3 pl-md-0 h6 Oswald" href="{{ route('/') }}">V W P</a>
             <button class="navbar-toggler"
                     type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
@@ -258,7 +261,7 @@
         </div>
 
     </nav>
-    <main class="py-4">
+    <main class="pt-4">
         @yield('content')
     </main>
 </div>
