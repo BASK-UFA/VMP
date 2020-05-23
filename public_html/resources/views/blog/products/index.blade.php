@@ -7,7 +7,7 @@
     {{--  Для обращения к полю используйте конструкцию в цикле с foreach {{ $product->НАЗВАНИЕ-ПОЛЯ }}   --}}
     {{--  Ниже вывод содержимого пагинатора в виде массива                                               --}}
 
-    <div class="container">
+    <div class="containe pt-4">
         <div class="row">
             <div>
                 <div class="col-md-9 m-auto pt-5 pb-5">
