@@ -11065,3 +11065,124 @@ nav {
   font-weight: 300;
 }
 
+
+.work-text {
+  font-size: 50px;
+}
+
+.prod_img {
+  width: 250px !important;
+}
+
+.h-img {
+  height: 60%;
+}
+
+.wc-text {
+  font-size: 1.2rem;
+}
+
+.skill_block:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px 2px;
+}
+
+.h-90 {
+  height: 90% !important;
+}
+
+.Montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.product_excerpt {
+  font-size: 1.7rem;
+  padding-top: 60px;
+}
+
+.product_bg {
+  background-color: rgba(204, 216, 215, 0.83);
+  height: 60vh;
+    margin-bottom: 50px;
+}
+
+.product_bg::after {
+  content: "";
+  padding-top: 5%;
+  background: linear-gradient(to right top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) left/50% 100% no-repeat, linear-gradient(to left top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) right/50% 100% no-repeat;
+  image-rendering: crisp-edges;
+  position: absolute;
+  top: 100%;
+  left: 2px;
+  right: 2px;
+}
+
+.product_img {
+  background-size: contain;
+  height: 60vh;
+}
+
+.product_avatar {
+  height: 45px;
+  width: 45px;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 1000px) {
+  .product_img {
+    height: 40vh;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .product_excerpt {
+    padding-top: 40px;
+  }
+}
+/*?????????*/
+
+.home{
+    padding-top:4.5rem!important;
+}
+
+
+
+.welc_header{
+   max-width: 100%;
+    height: 60vh;
+    z-index:-1;
+
+}
+#welc h1{
+    margin-left:45px;
+    position: absolute;
+    font-size:5rem;
+    padding-top:160px;
+    text-shadow: #000 0 0 10px !important;
+    z-index: 1;
+}
+#welc img{
+    width:110vw;
+    height: 60vh;
+}
+
+
+
+@media (max-width: 600px) {
+    #welc h1 {
+        padding-top:120px;
+        font-size:2rem;
+    }
+}
+@media (max-width: 600px) {
+    #welc img {
+        height: 40vh;
+    }
+}
+
+.chocolate-text {
+color: chocolate !important;
+}
+
+

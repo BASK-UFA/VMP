@@ -5,42 +5,34 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\BlogPostRepository;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
-
-
-    /**
-     * @var BlogPostRepository
-     */
     private $blogPostRepository;
 
+    /**
+     * Подключение репозиториев
+     *
+     * UserController constructor.
+     */
     public function __construct()
     {
         $this->blogPostRepository = app(BlogPostRepository::class);
     }
 
     /**
-     * Display a listing of the resource.
+     * Показать страницу авторизованного пользователя
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
-        $data = \Auth::user();
-        return view('home', compact('data'));
-    }
+        $data = Auth::user();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('home', compact('data'));
     }
 
     /**
@@ -51,27 +43,28 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data = User::findOrFail($id);
+        $data = User::with(['posts', 'products'])->findOrFail($id);
+
         return view('home', compact('data'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Обновить данные пользователя
      *
-     * @param  \Illuminate\Http\UserUpdateRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UserUpdateRequest $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse|void
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(UserUpdateRequest $request, $id)
     {
+        $model = User::findOrFail($id);
+
+        $this->authorize('update', $model);
+
         $data = $request->all();
 
-        // TODO: Вынести логику из контроллера
-        if ($id != \Auth::user()->id) {
-            return abort(403);
-        }
-
-        $result = User::findOrFail($id)->update($data);
+        $result = $model->update($data);
 
         if ($result) {
             return redirect()
@@ -81,16 +74,5 @@ class UserController extends Controller
             return back()
                 ->withErrors(['msg' => 'Ошибка сохранения']);
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

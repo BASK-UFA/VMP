@@ -1,6 +1,6 @@
 @php /** @var App\Models\BlogPost $item */ @endphp
 
-<div class="row justify-content-center" style="font-family: 'Oswald', sans-serif;">
+<div class="row justify-content-center  home" style="font-family: 'Oswald', sans-serif;">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header  text-white" style="background-color: chocolate; ">

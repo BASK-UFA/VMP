@@ -2,11 +2,10 @@
 
 
 namespace App\Repositories;
+use App\Models\BlogPost;
 use App\Models\BlogPost as Model;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 class BlogPostRepository extends CoreRepository
 {
@@ -16,19 +15,29 @@ class BlogPostRepository extends CoreRepository
         return Model::class;
     }
 
+    /**
+     * Получить все статьи, где GET параметр равен полю name пользователей
+     * Если ни один пользователь не найден, то редирект на posts.index с ошибкой
+     *
+     * @param $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Http\RedirectResponse
+     */
+    public function getSpecificWithPaginate($request)
+    {
+        $name = $request->get('name');
 
-    public function getAllOfUserWithPaginate($id = null) {
-        if ($id === null) {
-            $id = \Auth::user()->id;
+        if (empty($name)) {
+            return $this->getAllWithPaginate();
         }
 
-        /** @var LengthAwarePaginator $result */
-        $result = $this->startConditions()
-            ->where('user_id', $id)
-            ->orderBy('id', 'DESC')
-            ->with(['category', 'user'])
-            ->paginate(10);
+        $usersId = User::where('name', 'LIKE', '%' . $name . '%')->get('id')->toArray();
 
+        $result = BlogPost::whereIn('user_id', $usersId)
+            ->orderBy('id', 'DESC')
+            ->with(['user', 'category'])
+            ->where('is_published', 1)
+            ->paginate(10)
+            ->appends('name', $request->name);
 
         return $result;
     }
@@ -46,7 +55,6 @@ class BlogPostRepository extends CoreRepository
             'excerpt',
             'category_id',
             'user_id',
-            'slug',
             'title',
             'is_published',
             'published_at',
@@ -57,15 +65,32 @@ class BlogPostRepository extends CoreRepository
         $result = $this->startConditions()
             ->select($columns)
             ->orderBy('id', 'DESC')
+            ->where('is_published', 1)
             ->with(['category', 'user'])
-            ->paginate(25);
-
+            ->paginate(10);
 
         return $result;
     }
 
     /**
-     * Получить модель для редактирования в админке.
+     * Получить посты пользователя
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getAllForUserWithPaginate($id)
+    {
+        $user = User::find($id);
+
+        return $user->posts()
+            ->orderBy('id', 'DESC')
+            ->where('is_published', 1)
+            ->with(['user', 'category'])
+            ->paginate(10);
+    }
+
+    /**
+     * Получить модель
      *
      * @param int $id
      *

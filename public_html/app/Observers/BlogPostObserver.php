@@ -19,7 +19,6 @@ class BlogPostObserver
         $this->setPublishedAt($blogPost);
         $this->setHtml($blogPost);
         $this->setImage($blogPost);
-        $this->setSlug($blogPost);
     }
 
     /**
@@ -31,7 +30,6 @@ class BlogPostObserver
     {
         $this->setPublishedAt($blogPost);
         $this->setImage($blogPost);
-        $this->setSlug($blogPost);
         $this->setHtml($blogPost);
         $this->setUser($blogPost);
     }
@@ -39,7 +37,7 @@ class BlogPostObserver
     /**
      * Сохранить промо-картинку в памяти и обновить поле image поста
      *
-     * @param BlogPost $product
+     * @param \App\Models\BlogPost $blogPost
      */
     private function setImage(BlogPost $blogPost)
     {
@@ -52,6 +50,8 @@ class BlogPostObserver
                 ->store('posts/' . $blogPost->id, 'public');
 
             $blogPost->image = 'storage/' . $path;
+        } else {
+            $blogPost->image = 'images/' . rand(1, 6) . '-lg-posts.jpg';
         }
     }
 

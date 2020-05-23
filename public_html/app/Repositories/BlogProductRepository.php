@@ -3,8 +3,8 @@
 
 namespace App\Repositories;
 use App\Models\Product as Model;
+use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 class BlogProductRepository extends CoreRepository
 {
@@ -23,6 +23,7 @@ class BlogProductRepository extends CoreRepository
     {
         $columns = [
             'id',
+            'image',
             'excerpt',
             'content_html',
             'user_id',
@@ -35,7 +36,7 @@ class BlogProductRepository extends CoreRepository
             ->select($columns)
             ->orderBy('id', 'DESC')
             ->with(['user'])
-            ->paginate(10);
+            ->paginate(9);
 
 
         return $result;
@@ -51,5 +52,21 @@ class BlogProductRepository extends CoreRepository
     public function getEdit($id)
     {
         return $this->startConditions()->find($id);
+    }
+
+    /**
+     * Получить работы пользователя в пагинаторе
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getAllForUserWithPaginate($id)
+    {
+        $user = User::find($id);
+
+        return $user->products()
+            ->orderBy('id', 'DESC')
+            ->with(['user'])
+            ->paginate(9);
     }
 }

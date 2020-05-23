@@ -1,6 +1,6 @@
 @php /** @var App\Models\BlogPost $item */ @endphp
 
-<div class="row justify-content-center" style="font-family: 'Oswald', sans-serif;">
+<div class="row justify-content-center  home" style="font-family: 'Oswald', sans-serif;">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-white" style="background-color: chocolate; ">
@@ -33,8 +33,6 @@
                                    required>
                         </div>
 
-
-
                         <div class="form-group">
                             <label for="content_raw">Статья</label>
                             <textarea
@@ -46,14 +44,6 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
-                        <div class="form-group">
-                            <label for="slug">Идентификатор</label>
-                            <input name="slug" value="{{ old('slug', $item->slug) }}"
-                                   type="text"
-                                   id="slug"
-                                   class="form-control">
-                        </div>
-
                         <div class="form-group">
                             <label for="category_id">Родитель</label>
                             <select name="category_id"
