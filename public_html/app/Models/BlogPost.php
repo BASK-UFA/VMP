@@ -45,6 +45,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @mixin \Eloquent
  * @property-read \App\Models\BlogCategory $category
  * @property-read \App\Models\User $user
+ * @property string|null $image
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BlogPost whereImage($value)
  */
 class BlogPost extends Model
 {

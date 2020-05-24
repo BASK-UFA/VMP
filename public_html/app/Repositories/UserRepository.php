@@ -1,8 +1,7 @@
 <?php
-
-
 namespace App\Repositories;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+
+use App\Models\User;
 use App\Models\User as Model;
 
 class UserRepository extends CoreRepository
@@ -14,55 +13,19 @@ class UserRepository extends CoreRepository
     }
 
     /**
-     * Получить модель для редактирования в админке.
+     * Получить модель для редактирования в админке
      *
-     * @param int $id
-     *
-     * @return Model
+     * @param $id
+     * @return \App\Models\User|\App\Models\User[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
-    public function getEdit($id)
+    public function getShow($id)
     {
-        return $this->startConditions()->find($id);
-    }
+        $user = User::with(['posts', 'products'])->findOrFail($id);
 
-    /**
-     * Получить список категорий для вывода в выпадающем списке.
-     *
-     * @return Collection
-     */
-    public function getForComboBox()
-    {
-        $columns = implode(', ', [
-            'id',
-            'CONCAT (id, ". ", title) AS id_title'
-        ]);
+        $user->lastPosts = $user->posts->where('is_published', 1)->last()->limit(5)->get()->load('user');
+        $user->lastProducts = $user->products->last()->limit(3)->get();
+        $user->draftPosts = $user->posts->where('is_published', 0)->load('user');
 
-        /** @var Collection $result */
-        $result = $this
-        ->startConditions()
-        ->selectRaw($columns)
-            ->toBase()
-            ->get();
-
-        return $result;
-    }
-
-    /**
-     * Получить категории для вывода пагинатором
-     *
-     * @param int|null $perPage
-     * @return LengthAwarePaginator
-     */
-    public function getAllWithPaginate($perPage = null) {
-        $columns = ['id', 'title', 'parent_id'];
-
-        /** @var LengthAwarePaginator $result */
-        $result = $this
-            ->startConditions()
-            ->select($columns)
-            ->with(['parentCategory:id,title'])
-            ->paginate($perPage);
-
-        return $result;
+        return $user;
     }
 }
