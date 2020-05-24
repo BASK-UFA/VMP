@@ -87,25 +87,25 @@ class User extends Authenticatable
         return $this->hasMany(BlogPost::class);
     }
 
-//    /**
-//     * Пользователь имеет непубликованые статьи
-//     *
-//     * @return \Illuminate\Database\Eloquent\Collection
-//     */
-//    public function draftPosts()
-//    {
-//        return $this->hasMany(BlogPost::class)->where('is_published', 0)->get();
-//    }
+    /**
+     * Пользователь имеет непубликованые статьи
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function draftPosts()
+    {
+        return $this->hasMany(BlogPost::class)->where('is_published', 0)->get();
+    }
 
-//    /**
-//     * Пользватель имеет последние 5 опубликованных постов
-//     *
-//     * @return \Illuminate\Database\Eloquent\Collection
-//     */
-//    public function lastPosts()
-//    {
-//        return $this->hasMany(BlogPost::class)->where('is_published', 1)->latest()->limit(5)->get();
-//    }
+    /**
+     * Пользватель имеет последние 5 опубликованных постов
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function lastPosts()
+    {
+        return $this->hasMany(BlogPost::class)->where('is_published', 1)->latest()->limit(5)->get();
+    }
 
     /**
      * Пользователь имеет работы
@@ -117,14 +117,14 @@ class User extends Authenticatable
         return $this->hasMany(Product::class);
     }
 
-//    /**
-//     * Пользователь имеет последние 5 работ
-//     *
-//     * @return \Illuminate\Database\Eloquent\Collection
-//     */
-//    public function lastProducts()
-//    {
-//        return $this->hasMany(Product::class)->latest()->limit(3)->get();
-//    }
+    /**
+     * Пользователь имеет последние 5 работ
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function lastProducts()
+    {
+        return $this->hasMany(Product::class)->latest()->limit(3)->get();
+    }
 }
 
