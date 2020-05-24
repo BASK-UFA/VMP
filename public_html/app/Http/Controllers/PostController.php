@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BlogPostSearchRequest;
@@ -199,25 +198,5 @@ class PostController extends Controller
                 ->withErrors(['msg' => "Ошибка удаления"])
                 ->withInput();
         }
-    }
-
-    /**
-     * Получить записи пользователя в пагинаторе
-     * Как назвать такой метод?
-     *
-     * @param $user int
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
-     */
-    public function tag($user)
-    {
-        $paginator = $this->blogPostRepository->getAllForUserWithPaginate($user);
-
-        if ($paginator->isEmpty()) {
-            return redirect()
-                ->route('posts.index')
-                ->withErrors(['msg' => 'Статей по вашему запросу не найдено']);
-        }
-
-        return view('blog.posts.index', compact('paginator'));
     }
 }

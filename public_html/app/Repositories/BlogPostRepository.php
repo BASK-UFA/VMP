@@ -1,7 +1,6 @@
 <?php
-
-
 namespace App\Repositories;
+
 use App\Models\BlogPost;
 use App\Models\BlogPost as Model;
 use App\Models\User;
@@ -9,7 +8,6 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class BlogPostRepository extends CoreRepository
 {
-
     protected function getModelClass()
     {
         return Model::class;
