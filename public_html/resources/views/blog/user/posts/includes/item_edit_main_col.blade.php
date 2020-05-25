@@ -68,6 +68,10 @@
                                 class="form-control"
                                 rows="3">{{ old('excerpt', $item->excerpt)}}</textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Превью</label>
+                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
 
                         <div class="form-check">
                             <input name="is_published" type="hidden" value="0">
