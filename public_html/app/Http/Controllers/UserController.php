@@ -1,26 +1,26 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\BlogPostRepository;
+use App\Repositories\UserRepository;
 use Auth;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
     private $blogPostRepository;
+    private $userRepository;
 
     /**
      * Подключение репозиториев
      *
-     * UserController constructor.
      */
     public function __construct()
     {
         $this->blogPostRepository = app(BlogPostRepository::class);
+        $this->userRepository = app(UserRepository::class);
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data = User::findOrFail($id);
+        $data = $this->userRepository->getShow($id);
 
         return view('home', compact('data'));
     }

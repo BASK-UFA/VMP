@@ -169,6 +169,20 @@
         .posts__item__content:last-child {
             border: 0;
         }
+
+        .skill_block:hover {
+            box-shadow: none !important;
+        }
+
+        .product_bg::after {
+            /*content: none;*/
+            z-index: 0 !important;
+        }
+
+        .product_img {
+            z-index: 1000000 !important;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -177,26 +191,26 @@
     <div class="navbar-add navbar navbar-expand-lg navbar-dark  bg-dark">
         <div class="navbar-collapse container">
             <ul class="navbar-nav text-sm-center">
-                <li class="nav-item active">
+                <li class="nav-item text-left active">
                     <a class="nav-link p-0" href="#">
-                        <div class="mobile">
-                            <i class="ml-md-0 fa fa-mobile"></i>
+                        <div class="mobile pr-md-2">
+                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-mobile"></i>
                             +7-927-33-83-10
                         </div>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item text-left active">
                     <a class="nav-link p-0" href="#">
-                        <div class="mail">
-                            <i class="fa fa-envelope"></i>
+                        <div class="mail pr-md-2">
+                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-envelope"></i>
                             bask.po_31@mail.ru
                         </div>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item text-left active">
                     <a class="nav-link p-0" href="#">
-                        <div class="address">
-                            <i class="fa fa-map-marker"></i>
+                        <div class="address pr-md-2">
+                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-map-marker"></i>
                             ул. Проспект Октября, 174/2
                         </div>
                     </a>
@@ -204,9 +218,9 @@
             </ul>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark Oswald navbar-main pb-0 position-absolute w-100 ">
-       <div class="container text-center">
-           <a class="navbar-brand h4" href="{{ route('/') }}">В М П</a>
+    <nav class="navbar navbar-expand-lg navbar-dark Oswald navbar-main pb-0 position-absolute w-100">
+        <div class="container text-center">
+            <a class="navbar-brand h4" href="{{ route('/') }}">В М П</a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
            </button>
@@ -263,7 +277,7 @@
 
         </div>
     </nav>
-    <main class="cont">
+    <main class="cont my-4">
         @yield('content')
     </main>
 </div>

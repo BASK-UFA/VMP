@@ -73,7 +73,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    @foreach($data->draftPosts()  as $post)
+                    @foreach($data->draftPosts as $post)
                         <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
                             <div>
                                 <a style="font-size: 1.2rem"
@@ -165,7 +165,7 @@
                     </div>
 
                     <div class="card-footer pb-3 pl-md-0 pr-md-0">
-                        @if ($data->lastProducts()->isEmpty())
+                        @if ($data->lastProducts->isEmpty())
                             <div>
                                 <p class="Oswald h3 text-center">Работ пока нет</p>
                             </div>
@@ -173,19 +173,19 @@
                         @endif
                         <div class="card-deck products">
 
-                            @foreach($data->lastProducts() as $product)
+                            @foreach($data->lastProducts as $product)
                                 @php /** PHPDOC @var \App\Models\Product $product */ @endphp
-                                <a class="col-md-4" href="{{route('products.show', ['id' =>$product->id])}}">
-                                <div class="card">
-                                    <div class="card-top">
-                                        <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                <a class="col-md-4 p-0" href="{{route('products.show', ['id' =>$product->id])}}">
+                                    <div class="card">
+                                        <div class="card-top">
+                                            <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                        </div>
+                                        <div class="card-mid">
+                                            <h4 class="card-title">{{ $product->name }}</h4>
+                                            <label class="card-desc">{{ $product->excerpt }}</label>
+                                            <div class="card-blur-zone"></div>
+                                        </div>
                                     </div>
-                                    <div class="card-mid">
-                                        <h4 class="card-title">{{ $product->name }}</h4>
-                                        <label class="card-desc">{{ $product->excerpt }}</label>
-                                        <div class="card-blur-zone"></div>
-                                    </div>
-                                </div>
                                 </a>
                             @endforeach
                         </div>
@@ -213,10 +213,10 @@
                     </div>
                     <div>
                         <div class="card-footer pb-3 posts">
-                            @if ($data->lastPosts()->isEmpty())
+                            @if ($data->lastPosts->isEmpty())
                                 <p class="Oswald h3 text-center">Статей пока нет</p>
                             @endif
-                            @foreach($data->lastPosts() as $post)
+                            @foreach($data->lastPosts as $post)
 
                                 <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
                                     <div>
@@ -247,7 +247,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        @if ($data->lastPosts()->count()>=5)
+                        @if ($data->lastPosts->count()>=5)
                             <div class="card-footer border-top-0 d-flex justify-content-center">
                                 <a href="{{ route('user.posts', ['user' => $data->id]) }}" class="btn btn-dark">Показать все
                                     статьи</a>

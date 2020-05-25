@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -9,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 /**
  * App\Models\User
  *
+ * @property \Illuminate\Database\Eloquent\Collection $lastPosts
+ * @property \Illuminate\Database\Eloquent\Collection $lastProducts
+ * @property \Illuminate\Database\Eloquent\Collection $draftPosts
  * @property int $id
  * @property string $name
  * @property string $avatar
@@ -34,6 +36,12 @@ use Illuminate\Notifications\Notifiable;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BlogPost[] $posts
  * @property-read int|null $post_count
+ * @property string|null $description
+ * @property-read int|null $posts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDescription($value)
  */
 class User extends Authenticatable
 {
@@ -69,29 +77,51 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Пользователь имеет статьи
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function posts()
     {
-        // Пользователь имеет статьи
         return $this->hasMany(BlogPost::class);
     }
 
+    /**
+     * Пользователь имеет непубликованые статьи
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function draftPosts()
     {
-        // Пользователь имеет неопубликованные статьи
         return $this->hasMany(BlogPost::class)->where('is_published', 0)->get();
     }
 
+    /**
+     * Пользватель имеет последние 5 опубликованных постов
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function lastPosts()
     {
         return $this->hasMany(BlogPost::class)->where('is_published', 1)->latest()->limit(5)->get();
     }
 
+    /**
+     * Пользователь имеет работы
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function products()
     {
-        // Пользователь имеет статьи
         return $this->hasMany(Product::class);
     }
 
+    /**
+     * Пользователь имеет последние 5 работ
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function lastProducts()
     {
         return $this->hasMany(Product::class)->latest()->limit(3)->get();
