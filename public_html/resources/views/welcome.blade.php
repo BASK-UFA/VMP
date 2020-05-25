@@ -3,7 +3,7 @@
 
     <div id="welc" class="row mb-5">
         <div class=" d-block mb-1 ">
-           <h1 class="text-white Oswald">Виртуальная мастерская программистов</h1>
+           <h1 class="text-white Oswald text-center">Виртуальная мастерская программистов</h1>
                <img  class="col-md-12" src="{{asset('images/norm.jpg')}}" alt="">
         </div>
     </div>

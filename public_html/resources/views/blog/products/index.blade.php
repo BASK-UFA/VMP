@@ -9,8 +9,8 @@
 
     <div class="containe pt-4">
         <div class="row">
-            <div>
-                <div class="col-md-9 m-auto pt-5 pb-5">
+
+                <div class="col-md-8 m-auto home pb-5">
                     <div class="container">
                         <div class="row">
                             <div class="pt-5 col-md-4">
@@ -32,8 +32,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-deck">
+
+            <div class="card-deck col-md-10 m-auto  ">
                 @foreach($data as $product)
                     <div class="col-md-4 ">
                         <a href="{{route('products.show', ['id' =>$product->id])}}"
