@@ -123,10 +123,7 @@ nav {
     font-weight: 700;
 }
 .anchor{
-
     bottom: -10px;
-
-
     position: relative;
 }
 .arrow-bottom {
@@ -154,8 +151,6 @@ nav {
 .Oswald{
     font-family: 'Oswald', sans-serif!important;
 }
-
-
 
 .post_name h2{
     text-shadow:#000 0 0 5px!important;
@@ -223,44 +218,74 @@ nav {
 }
 .product_bg{
     background-color:rgba(204,216,215,0.83);;
-
-    height: 60vh;
 }
 .product_bg::after {
     content: '';
     padding-top: 5%;
-
-    background:
-        linear-gradient(to right top, transparent 50%,rgba(204,216,215,0.83) 50%) left / 50% 100% no-repeat,
-        linear-gradient(to left top, transparent 50%,rgba(204,216,215,0.83) 50%) right / 50% 100% no-repeat;
-    image-rendering:crisp-edges;
+    display: none !important;
+    background: linear-gradient(to right top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) left / 50% 100% no-repeat,
+    linear-gradient(to left top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) right / 50% 100% no-repeat;
+    image-rendering: crisp-edges;
     position: absolute;
     top: 100%;
     left: 2px;
     right: 2px;
 }
 
+.product__img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.home {
+    padding-top: 4.5rem !important;
+}
 
 .product_img {
     background-size: contain;
-    height: 60vh;
+    max-height: 300px;
 }
-.product_avatar{
+
+.product_avatar {
     height: 45px;
     width: 45px;
-    border-radius:50% !important;
+    border-radius: 50% !important;
 }
+
+#welc h1 {
+    position: absolute;
+    font-size: 5rem;
+    padding-top: 140px;
+    text-shadow: #000 0 0 10px !important;
+    z-index: 1;
+}
+
+#welc img {
+    //max-height: 500px !important;
+    height: 60vh;
+}
+
 @media (max-width: 600px) {
     .product_img {
-        height: 40vh;
         width: 90%;
         -o-object-fit: cover;
         object-fit: cover;
     }
 }
-@media (max-width: 600px) {
-    .product_excerpt{
 
+@media (max-width: 600px) {
+    #welc h1 {
+        padding-top: 120px;
+        font-size: 2rem;
+    }
+
+    #welc img {
+        height: 40vh;
+    }
+
+    .product_excerpt {
         padding-top: 40px;
     }
 }
