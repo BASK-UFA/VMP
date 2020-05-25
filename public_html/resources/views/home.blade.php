@@ -203,14 +203,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    {{--                                    @can('update', $product)--}}
-                                    {{--                                        <div class="text-center">--}}
-                                    {{--                                            <a class="btn btn-dark"--}}
-                                    {{--                                               href="{{ route('products.edit', ['id' => $product->id]) }}">Редактировать</a>--}}
-                                    {{--                                        </div>--}}
-
-                                    {{--                                    @endcan--}}
-                                </div>
+                              </div>
                             @endforeach
                         </div>
                     </div>

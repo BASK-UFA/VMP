@@ -11217,7 +11217,7 @@ nav {
     }
 }
 
-
+/*????????*/
 .pen {
     right: 0;
 }
@@ -11247,4 +11247,19 @@ nav {
         width: 100% !important;
         height: 100% !important;
     }
+}
+#change_post{
+   right: 0;
+
+}
+@media (max-width: 800px) {
+    #change_post {
+        text-align: center!important;
+      display: block;
+        margin: 0;
+        right: 1px;
+        width: 94%;
+        top: -70px;
+    }
+
 }

@@ -28,6 +28,12 @@
     <div class="container" id="article_user">
         <div class="row">
             <div class="col-12">
+                @can('update', $item)
+                        <a class="text-white  "
+                           href="{{ route('posts.edit', ['id' => $item->id]) }}">
+                            <button id="change_post" type="button" class="btn btn-dark text-right  position-absolute  m-3 ">Редактировать</button>
+                        </a>
+                @endcan
                 <div>
                     <span>
                         <img class="img-fluid post_avatar" src="{{ asset($item->user->avatar) }}" alt="Аватарка">
