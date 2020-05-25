@@ -11263,3 +11263,9 @@ nav {
     }
 
 }
+@media (max-width: 800px) {
+.work_lk{
+    margin-left:0!important;
+    }
+
+}

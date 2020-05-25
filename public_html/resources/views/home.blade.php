@@ -176,7 +176,7 @@
                                 @php /** PHPDOC @var \App\Models\Product $product */ @endphp
                                 <div class="col-md-4 p-0">
                                     <a href="{{route('products.show', ['id' =>$product->id])}}">
-                                        <div class="card">
+                                        <div class="card m-3 work_lk">
                                             <div class="card-top position-relative">
                                                 @can('update', $product)
                                                 <div id="change"
