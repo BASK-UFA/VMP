@@ -70,21 +70,7 @@
                     </div>
                 </form>
             </div>
-
         </div>
-
-        @if($paginator->total() > $paginator->count())
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-center">
-                            {{ $paginator->links() }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
     </div>
 
 @endsection
