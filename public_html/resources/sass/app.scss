@@ -322,3 +322,58 @@ nav {
 .chocolate-text {
     color: chocolate !important;
 }
+
+.pen {
+    right: 0;
+}
+
+.br-50 {
+    border-radius: 50% !important;
+}
+
+#change:hover {
+    background-color: rgba(0, 182, 216, 0.83) !important;
+}
+
+@media (max-width: 800px) {
+    .post_name {
+        padding-top: 15px;
+        display: block;
+        margin:0;
+    }
+}
+.post_avatar{
+    width: 15% !important;
+    height: 15% !important;
+
+}
+@media (max-width: 800px) {
+    .post_avatar{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+#change_post{
+    right: 0;
+
+}
+@media (max-width: 800px) {
+    #change_post {
+        text-align: center!important;
+        display: block;
+        margin: 0;
+        right: 1px;
+        width: 94%;
+        top: -70px;
+    }
+
+}
+@media (max-width: 800px) {
+    .work_lk{
+        margin-left:0!important;
+    }
+
+}
+.reset{
+    margin-top: 70px;
+}
