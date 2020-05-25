@@ -3,7 +3,7 @@
 <div class="row justify-content-center  home" style="font-family: 'Oswald', sans-serif;">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header text-white" style="background-color: chocolate; ">
+            <div class="card-header text-white bg-dark Oswald h4">
                 @if($item->is_published)
                     Опубликовано
                 @else
@@ -14,10 +14,13 @@
                 <div class="card-title"></div>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item border-0">
-                        <a id="maindata-tab" href="#maindata" data-toggle="tab" class="nav-link active" role="tab" aria-controls="maindata" aria-selected="true">Основные данные</a>
+                        <a id="maindata-tab" href="#maindata" data-toggle="tab"
+                           class="nav-link active border-0 text-dark h5" role="tab" aria-controls="maindata"
+                           aria-selected="true">Основные данные</a>
                     </li>
                     <li class="nav-item">
-                        <a id="adddata-tab" href="#adddata" data-toggle="tab" class="nav-link" role="tab" aria-controls="adddata" aria-selected="true">Доп. данные</a>
+                        <a id="adddata-tab" href="#adddata" data-toggle="tab" class="nav-link border-0 text-dark h5"
+                           role="tab" aria-controls="adddata" aria-selected="true">Доп. данные</a>
                     </li>
                 </ul>
                 <br>

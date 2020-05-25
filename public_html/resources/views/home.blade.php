@@ -114,8 +114,6 @@
         </div>
     </div>
 
-    {{-- TODO: Вынести стили в scss --}}
-
     <div class="container home">
         @include('blog.includes.result_message')
 
@@ -180,8 +178,9 @@
                                             <div class="card-top position-relative">
                                                 @can('update', $product)
                                                 <div id="change"
+                                                     style="top: 0; z-index: 100;"
                                                      class="text-right pen position-absolute bg-primary m-1 shadow p-2 br-50">
-                                                    <a class="text-white  "
+                                                    <a class="text-white"
                                                        href="{{ route('products.edit', ['id' => $product->id]) }}">
                                                         <svg class="bi bi-pencil-square " width="2em"
                                                              height="2em" viewBox="0 0 16 16" fill="currentColor"

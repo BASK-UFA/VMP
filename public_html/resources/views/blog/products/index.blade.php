@@ -32,13 +32,21 @@
                     </div>
                 </div>
             @endif
+
+            @if($data->total() > $data->count())
+                <div class="col-md-12 pb-2">
+                    <div class="card-body d-flex justify-content-center">{{ $data->links() }}</div>
+                </div>
+            @endif
+
             <div class="card-deck">
                 @foreach($data as $product)
                     <div class="col-md-4 position-relative">
                         @can('update', $product)
                             <div id="change"
+                                 style="top: 0; z-index: 2;"
                                  class="text-right pen position-absolute bg-primary m-1 shadow p-2 br-50">
-                                <a class="text-white  "
+                                <a class="text-white"
                                    href="{{ route('products.edit', ['id' => $product->id]) }}">
                                     <svg class="bi bi-pencil-square " width="2em"
                                          height="2em" viewBox="0 0 16 16" fill="currentColor"
@@ -70,17 +78,10 @@
         </div>
     </div>
     @if($data->total() > $data->count())
-        <br>
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body d-flex justify-content-center">
-                        {{ $data->links() }}
-                    </div>
-                </div>
+                <div class="card-body d-flex justify-content-center">{{ $data->links() }}</div>
             </div>
         </div>
     @endif
-    {{--        @dd($data)--}}
-
 @endsection

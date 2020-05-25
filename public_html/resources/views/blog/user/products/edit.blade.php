@@ -11,7 +11,6 @@
                     @endif
                     @csrf
                     <div class="container">
-
                         @include('blog.user.products.includes.result_message')
 
                         <div class="row justify-content-center">
