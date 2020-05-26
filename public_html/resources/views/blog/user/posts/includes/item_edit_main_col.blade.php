@@ -45,23 +45,6 @@
                                 class="form-control"
                                 rows="3">{{ old('content_raw', $item->content_raw)}}</textarea>
                         </div>
-                        @if ($item->exists)
-                            <br>
-                            <form method="POST" action="{{ route('posts.destroy', $item->id) }}">
-                                @method('DELETE')
-                                @csrf
-                                <div class=" pb-1 form-group">
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-12 ">
-                                                <div class="text-right">
-                                                    <button type="submit" class=" btn-dark btn-lg">Удалить</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                </div>
-                            </form>
-                        @endif
 
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
@@ -104,7 +87,7 @@
                                            checked="checked"
                                        @endif
                                        type="checkbox">
-                                <h5>Опубликовано</h5>
+                                <span class="h5">Опубликовано</span>
                             </label>
                         </div>
                     </div>

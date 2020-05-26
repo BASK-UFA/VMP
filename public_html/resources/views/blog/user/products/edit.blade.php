@@ -25,13 +25,13 @@
                     </div>
                 </form>
 
+                @if ($item->exists)
+                    <div class="container mt-2">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="card p-2">
 
-                <div class="container mt-2">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="card p-2">
-                                @if ($item->exists)
-                                    <form method="POST" action="{{ route('posts.destroy', $item->id) }}">
+                                    <form method="POST" action="{{ route('products.destroy', $item->id) }}">
                                         @method('DELETE')
                                         @csrf
                                         <div class="row justify-content-center">
@@ -43,11 +43,12 @@
                                             <div class="col-md-3"></div>
                                         </div>
                                     </form>
-                                @endif
+
                             </div>
                         </div>
                         <div class="col-md-3"></div>
                     </div>
                 </div>
+    @endif
 
 @endsection
