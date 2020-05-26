@@ -16,6 +16,7 @@ class ProductObserver
     public function updating(Product $product)
     {
         $this->setImage($product);
+        $this->setHtml($product);
     }
 
     /**
@@ -26,6 +27,7 @@ class ProductObserver
     public function creating(Product $product)
     {
         $this->setImage($product);
+        $this->setRandImage($product);
         $this->setHtml($product);
         $this->setUser($product);
     }
@@ -44,11 +46,21 @@ class ProductObserver
             $file = $product->image;
 
             $path = $file
-                ->store('products/' . $product->id, 'public');
+                ->store('products/'.$product->id, 'public');
 
-            $product->image = 'storage/' . $path;
-        } else {
-            $product->image = 'images/' . rand(1, 6) . '-product-sm.png';
+            $product->image = 'storage/'.$path;
+        }
+    }
+
+    /**
+     * Установить картинку по умолчанию, если картинка не пришла
+     *
+     * @param  \App\Models\Product  $product
+     */
+    private function setRandImage(Product $product)
+    {
+        if (!$product->isDirty('image')) {
+            $product->image = 'images/'.rand(1, 6).'-product-sm.png';
         }
     }
 
@@ -56,7 +68,7 @@ class ProductObserver
      * Если дата публикации не установлена и происходит установка флага - Опубликовано,
      * то устанавливаем дату публикации на текующую.
      *
-     * @param \App\Models\Product $product
+     * @param  \App\Models\Product  $product
      */
     private function setPublishedAt(Product $product)
     {

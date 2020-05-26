@@ -3,7 +3,7 @@
 @section('content')
     @php /** PHPDOC @var \App\Models\Product $item */ @endphp
 
-    <div class="product_bg col-md-12" style="margin-top: -1.5rem; padding-top: 4rem">
+    <div class="product_bg col-md-12" style="margin-top: -1.6rem; padding-top: 4rem">
         <div class="col-md-9 m-auto pb-5">
             <div class="container pt-md-5">
                 <div class="row">

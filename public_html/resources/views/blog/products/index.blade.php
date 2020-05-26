@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @php /** PHPDOC @var \Illuminate\Pagination\LengthAwarePaginator $data */ @endphp     --}}
+    @php /** PHPDOC @var \Illuminate\Pagination\LengthAwarePaginator $data */ @endphp
 
     <div class="container pt-4">
         <div class="row">
@@ -30,12 +30,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            @endif
-
-            @if($data->total() > $data->count())
-                <div class="col-md-12 pb-2">
-                    <div class="card-body d-flex justify-content-center">{{ $data->links() }}</div>
                 </div>
             @endif
 
