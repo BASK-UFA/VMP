@@ -30,6 +30,7 @@ class BlogPostObserver
     {
         $this->setPublishedAt($blogPost);
         $this->setImage($blogPost);
+        $this->setRandImage($blogPost);
         $this->setHtml($blogPost);
         $this->setUser($blogPost);
     }
@@ -47,11 +48,21 @@ class BlogPostObserver
             $file = $blogPost->image;
 
             $path = $file
-                ->store('posts/' . $blogPost->id, 'public');
+                ->store('posts/'.$blogPost->id, 'public');
 
-            $blogPost->image = 'storage/' . $path;
-        } else {
-            $blogPost->image = 'images/' . rand(1, 6) . '-lg-posts.jpg';
+            $blogPost->image = 'storage/'.$path;
+        }
+    }
+
+    /**
+     * Установить картинку по умолчанию, если картинка не пришла
+     *
+     * @param  BlogPost  $blogPost
+     */
+    private function setRandImage(BlogPost $blogPost)
+    {
+        if (!$blogPost->isDirty('image')) {
+            $blogPost->image = 'images/'.rand(1, 6).'-lg-posts.jpg';
         }
     }
 
@@ -59,7 +70,7 @@ class BlogPostObserver
      * Если дата публикации не установлена и происходит установка флага - Опубликовано,
      * то устанавливаем дату публикации на текующую.
      *
-     * @param BlogPost $blogPost
+     * @param  BlogPost  $blogPost
      */
     private function setPublishedAt(BlogPost $blogPost)
     {
