@@ -277,7 +277,7 @@
 
         </div>
     </nav>
-    <main class="cont my-4">
+    <main class="cont my-4" style="padding-top: 4.4rem">
         @yield('content')
     </main>
 </div>

@@ -3,14 +3,6 @@
 @section('content')
     @php /** PHPDOC @var \App\Models\BlogPost $item */ @endphp
 
-    {{--  Верстайте тут, в $item будет модель BlogPost                              --}}
-    {{--  Для обращения к полю используйте конструкцию {{ $item->НАЗВАНИЕ-ПОЛЯ }}   --}}
-    {{--  Ниже вывод всех полей модели через дебагер                                --}}
-    {{-- TODO: Исправить этот гениальный слайдер в одну картинку в что-то другое   --}}
-    {{-- TODO: Сделать 'это' адаптивным для разных устройств  --}}
-
-
-
     <div class="carousel intro_read" data-ride="carousel">
         <ol class="carousel-indicators"></ol>
         <div class="carousel-inner">

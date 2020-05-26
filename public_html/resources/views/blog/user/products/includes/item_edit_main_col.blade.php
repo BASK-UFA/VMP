@@ -1,6 +1,6 @@
 @php /** @var App\Models\BlogPost $item */ @endphp
 
-<div class="row justify-content-center  home" style="font-family: 'Oswald', sans-serif;">
+<div class="row justify-content-center" style="font-family: 'Oswald', sans-serif;">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-white bg-dark Oswald h4">
@@ -48,24 +48,6 @@
                                 <label for="exampleFormControlFile1" class="h5">Изображения</label>
                                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
                             </div>
-                        @if ($item->exists)
-                            <br>
-                            <form method="POST" action="{{ route('posts.destroy', $item->id) }}">
-                                @method('DELETE')
-                                @csrf
-                                <div class=" pb-1 form-group">
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-12 ">
-                                            <div class="text-right">
-                                                <button type="submit" class=" btn-dark btn-lg">Удалить</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                </div>
-                            </form>
-                        @endif
-
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
                         <div class="form-group">
@@ -80,7 +62,6 @@
                             <label for="exampleFormControlFile1" class="h5">Превью</label>
                             <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                         </div>
-
                     </div>
                 </div>
             </div>

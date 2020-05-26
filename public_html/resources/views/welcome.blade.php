@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div id="welc" class="row mb-5" style="margin-top: -1.5rem; margin-right: 0;">
+    <div id="welc" class="row mb-5" style="margin-top: -6.1rem; margin-right: 0;">
         <div class="w-100 d-block mb-1 text-center">
             <h1 class="w-100 text-white Oswald" style="margin-left: 0 !important; right: 0;">Виртуальная мастерская
                 программистов</h1>
