@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-12">
                 @can('update', $item)
-                        <a class="text-white  "
+                        <a class="text-white"
                            href="{{ route('posts.edit', ['id' => $item->id]) }}">
                             <button id="change_post" type="button" class="btn btn-dark text-right  position-absolute  m-3 ">Редактировать</button>
                         </a>
@@ -34,7 +34,7 @@
                             {{ $item->user->name }}
                         </span>
                 </div>
-                <div class="mt-4 h4"><p class="article_txt">{!! $item->content_html !!}</p></div>
+                <div class="mt-4"><p class="article_txt">{!! $item->content_html !!}</p></div>
             </div>
         </div>
     </div>
