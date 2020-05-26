@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
-    <div id="welc" class="row mb-5" style="margin-top: -1.5rem; margin-right: 0;">
+    <div id="welc" class="row" style="margin-top: -1.5rem; margin-right: 0;">
         <div class="w-100 d-block mb-1 text-center">
             <h1 class="w-100 text-white Oswald" style="margin-left: 0 !important; right: 0;">Виртуальная мастерская
                 программистов</h1>
-            <img class="col-md-12" src="{{asset('images/norm.jpg')}}" alt=""
+            <img class="col-md-12 " src="{{asset('images/norm.jpg')}}" alt=""
                  style="width: 100% !important; padding-right: 0;">
         </div>
     </div>

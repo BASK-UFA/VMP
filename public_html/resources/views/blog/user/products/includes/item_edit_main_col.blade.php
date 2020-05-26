@@ -1,6 +1,6 @@
 @php /** @var App\Models\BlogPost $item */ @endphp
 
-<div class="row justify-content-center  home" style="font-family: 'Oswald', sans-serif;">
+<div class="row justify-content-center " style="font-family: 'Oswald', sans-serif;">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-white bg-dark Oswald h4">
@@ -18,8 +18,9 @@
                            class="nav-link active border-0 text-dark h5" role="tab" aria-controls="maindata"
                            aria-selected="true">Основные данные</a>
                     </li>
-                    <li class="nav-item" >
-                        <a id="adddata-tab" href="#adddata" data-toggle="tab" class="nav-link border-0 text-dark h5" role="tab" aria-controls="adddata" aria-selected="true">Доп. данные</a>
+                    <li class="nav-item">
+                        <a id="adddata-tab" href="#adddata" data-toggle="tab" class="nav-link border-0 text-dark h5"
+                           role="tab" aria-controls="adddata" aria-selected="true">Доп. данные</a>
                     </li>
                 </ul>
                 <br>
@@ -44,27 +45,11 @@
                                 rows="3">{{ old('content_raw', $item->content_raw)}}</textarea>
                         </div>
 
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1" class="h5">Изображения</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
-                        @if ($item->exists)
-                            <br>
-                            <form method="POST" action="{{ route('posts.destroy', $item->id) }}">
-                                @method('DELETE')
-                                @csrf
-                                <div class=" pb-1 form-group">
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-12 ">
-                                            <div class="text-right">
-                                                <button type="submit" class=" btn-dark btn-lg">Удалить</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                </div>
-                            </form>
-                        @endif
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1" class="h5">Изображения</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+
 
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
