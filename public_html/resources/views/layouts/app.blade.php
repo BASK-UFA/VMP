@@ -16,7 +16,7 @@
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -191,26 +191,26 @@
     <div class="navbar-add navbar navbar-expand-lg navbar-dark  bg-dark">
         <div class="navbar-collapse container">
             <ul class="navbar-nav text-sm-center">
-                <li class="nav-item active">
+                <li class="nav-item text-left active">
                     <a class="nav-link p-0" href="#">
-                        <div class="mobile">
-                            <i class="ml-md-0 fa fa-mobile"></i>
+                        <div class="mobile pr-md-2">
+                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-mobile"></i>
                             +7-927-33-83-10
                         </div>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item text-left active">
                     <a class="nav-link p-0" href="#">
-                        <div class="mail">
-                            <i class="fa fa-envelope"></i>
+                        <div class="mail pr-md-2">
+                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-envelope"></i>
                             bask.po_31@mail.ru
                         </div>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item text-left active">
                     <a class="nav-link p-0" href="#">
-                        <div class="address">
-                            <i class="fa fa-map-marker"></i>
+                        <div class="address pr-md-2">
+                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-map-marker"></i>
                             ул. Проспект Октября, 174/2
                         </div>
                     </a>
@@ -277,7 +277,7 @@
 
         </div>
     </nav>
-    <main class="cont my-4">
+    <main class="cont my-4" style="padding-top: 4.4rem">
         @yield('content')
     </main>
 </div>
