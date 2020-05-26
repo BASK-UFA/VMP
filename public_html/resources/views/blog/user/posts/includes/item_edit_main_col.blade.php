@@ -1,6 +1,6 @@
 @php /** @var App\Models\BlogPost $item */ @endphp
 
-<div class="row justify-content-center  home" style="font-family: 'Oswald', sans-serif;">
+<div class="row justify-content-center Oswald home">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-white bg-dark Oswald h4">
@@ -35,7 +35,6 @@
                                    minlength="3"
                                    required>
                         </div>
-
                         <div class="form-group">
                             <label for="content_raw" class="h5">Статья</label>
                             <textarea
@@ -45,23 +44,7 @@
                                 class="form-control"
                                 rows="3">{{ old('content_raw', $item->content_raw)}}</textarea>
                         </div>
-{{--                        @if ($item->exists)--}}
-{{--                            <br>--}}
-{{--                            <form method="POST" action="{{ route('posts.destroy', $item->id) }}">--}}
-{{--                                @method('DELETE')--}}
-{{--                                @csrf--}}
-{{--                                <div class=" pb-1 form-group">--}}
-{{--                                    <div class="row justify-content-center">--}}
-{{--                                        <div class="col-md-12 ">--}}
-{{--                                                <div class="text-right">--}}
-{{--                                                    <button type="submit" class=" btn-dark btn-lg">Удалить</button>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-md-3"></div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
-{{--                        @endif--}}
+
 
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
@@ -80,7 +63,6 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="excerpt" class="h5">Выдержка</label>
                             <textarea
@@ -93,7 +75,6 @@
                             <label for="exampleFormControlFile1" class="h5">Превью</label>
                             <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                         </div>
-
                         <div class="form-check">
                             <input name="is_published" type="hidden" value="0">
                             <label>

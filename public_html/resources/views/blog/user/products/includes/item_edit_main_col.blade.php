@@ -12,7 +12,7 @@
             </div>
             <div class="card-footer border-0">
                 <div class="card-title"></div>
-                <ul class="nav  nav-tabs" role="tablist">
+                <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item border-0">
                         <a id="maindata-tab" href="#maindata" data-toggle="tab"
                            class="nav-link active border-0 text-dark h5" role="tab" aria-controls="maindata"
@@ -44,13 +44,10 @@
                                 class="form-control"
                                 rows="3">{{ old('content_raw', $item->content_raw)}}</textarea>
                         </div>
-
                         <div class="form-group">
                             <label for="exampleFormControlFile1" class="h5">Изображения</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1">
                         </div>
-
-
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
                         <div class="form-group">
@@ -65,7 +62,6 @@
                             <label for="exampleFormControlFile1" class="h5">Превью</label>
                             <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                         </div>
-
                     </div>
                 </div>
             </div>

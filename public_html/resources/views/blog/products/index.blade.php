@@ -3,12 +3,12 @@
 @section('content')
     @php /** PHPDOC @var \Illuminate\Pagination\LengthAwarePaginator $data */ @endphp     --}}
 
-    <div class="container pt-4">
+    <div class="container">
         <div class="row">
             {{-- Описание страницы "наши работы" если маршрут - products.index --}}
             @if (Request::path() == 'products')
                 <div>
-                    <div class="col-md-9 m-auto pt-5 pb-5">
+                    <div class="col-md-9 m-auto ">
                         <div class="container">
                             <div class="row">
                                 <div class="pt-5 col-md-4">
@@ -32,13 +32,11 @@
                     </div>
                 </div>
             @endif
-
             @if($data->total() > $data->count())
                 <div class="col-md-12 pb-2">
                     <div class="card-body d-flex justify-content-center">{{ $data->links() }}</div>
                 </div>
             @endif
-
             <div class="card-deck">
                 @foreach($data as $product)
                     <div class="col-md-4 position-relative">
@@ -79,7 +77,7 @@
     </div>
     @if($data->total() > $data->count())
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 m-auto">
                 <div class="card-body d-flex justify-content-center">{{ $data->links() }}</div>
             </div>
         </div>

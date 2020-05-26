@@ -10,7 +10,6 @@
     </div>
 </div>
 @endif
-
 @if(session('success'))
 <div class="row justify-content-center home">
     <div class="col-md-12">

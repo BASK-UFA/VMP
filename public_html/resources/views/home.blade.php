@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <div class="container pt-5">
+    <div class="container">
         @include('blog.includes.result_message')
 
         <div class="row">

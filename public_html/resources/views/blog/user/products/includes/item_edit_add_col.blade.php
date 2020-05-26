@@ -8,7 +8,6 @@
             <div class="mb-3">
                 <button type="submit" class="btn-lg text-white btn-dark mt-1 Oswald h4">Сохранить</button>
             </div>
-
             @if($item->exists)
         <div class="row justify-content-center">
             <div class="col-md-12">

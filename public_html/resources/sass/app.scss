@@ -377,3 +377,16 @@ nav {
 .reset{
     margin-top: 70px;
 }
+
+.mb-7{
+    margin-bottom:4rem!important;
+}
+ .welc_img{
+     top:-50px;
+ }
+
+@media (max-width: 1000px) {
+    .welc_txt{
+        top:100px;
+    }
+}

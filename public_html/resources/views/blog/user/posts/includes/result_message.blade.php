@@ -5,12 +5,11 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">x</span>
             </button>
-            {{  $errors->first() }}
+            {{ $errors->first() }}
         </div>
     </div>
 </div>
 @endif
-
 @if(session('success'))
 <div class="row justify-content-center home">
     <div class="col-md-12">

@@ -15,11 +15,9 @@
                 </div>
             </div>
         @endif
-
         <div class="row">
             @php /** var @var \Illuminate\Pagination\LengthAwarePaginator $paginator */ @endphp
             @php /** var @var \App\Models\BlogPost $item */ @endphp
-
             <div class="col-md-9">
                 @foreach($paginator as $item)
                     <div style="font-family: 'Oswald', sans-serif;">
@@ -48,12 +46,10 @@
                     </div>
                     <hr class="w-100">
                 @endforeach
-
                 @if($paginator->isEmpty())
                     <div class="text-center h3">Статей по вашему запросу не найдено :(</div>
                 @endif
             </div>
-
             <div class="col-md-3">
                 <form method="GET" action="{{ route('posts.search') }}">
                     <div class="card">

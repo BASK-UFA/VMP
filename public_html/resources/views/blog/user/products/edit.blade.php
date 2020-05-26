@@ -4,7 +4,7 @@
     @php /** var @var \App\Models\Product $item */ @endphp
 
     @if($item->exists)
-        <form class="pt-5" enctype="multipart/form-data" method="POST" action="{{ route('products.update', $item->id) }}">
+        <form class="" enctype="multipart/form-data" method="POST" action="{{ route('products.update', $item->id) }}">
             @method('PATCH')
             @else
                 <form class="pt-5" enctype="multipart/form-data" method="POST" action="{{ route('products.store') }}">

@@ -4,10 +4,10 @@
     @php /** var @var \App\Models\BlogPost $item */ @endphp
 
     @if($item->exists)
-        <form class="pt-5" enctype="multipart/form-data" method="POST" action="{{ route('posts.update', $item->id) }}">
+        <form class="" enctype="multipart/form-data" method="POST" action="{{ route('posts.update', $item->id) }}">
             @method('PATCH')
             @else
-                <form class="pt-5" enctype="multipart/form-data" method="POST" action="{{ route('posts.store') }}">
+                <form class="" enctype="multipart/form-data" method="POST" action="{{ route('posts.store') }}">
                     @endif
                     @csrf
                     <div class="container">

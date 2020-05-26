@@ -19,7 +19,6 @@
                                 <th>Дата публикации</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             @php
                                 /** @var \App\Models\BlogPost $post */
