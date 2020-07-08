@@ -288,20 +288,25 @@ nav {
     margin-left:45px;
     position: absolute;
     font-size:5rem;
-    padding-top:160px;
+    padding-top: 160px;
     text-shadow: #000 0 0 10px !important;
     z-index: 1;
 }
 
-#welc img{
-    width:110vw;
+#welc img {
+    width: 110vw;
     height: 60vh;
+}
+
+#welc h1 {
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 @media (max-width: 1000px) {
     #welc h1 {
-        padding-top:100px;
-        font-size:3rem;
+        padding-top: 100px;
+        font-size: 3rem;
     }
 }
 
