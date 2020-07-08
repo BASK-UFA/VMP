@@ -12,8 +12,8 @@ $factory->define(Product::class, function (Faker $faker) {
     $createdAt = $faker->dateTimeBetween('-3 months', '-2 days');
 
     $data = [
-        'user_id' => (rand(1, 5) == 5) ? 1 : 2,
-        'image' => 'images/' . rand(1, 6) . '-product-sm.png',
+        'user_id' => 1,
+        'image' => 'images/'.rand(1, 6).'-product-sm.png',
         'name' => $name,
         'excerpt' => $faker->text(rand(40, 100)),
         'content_raw' => $txt,
