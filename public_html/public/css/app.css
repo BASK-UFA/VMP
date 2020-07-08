@@ -10061,6 +10061,11 @@ nav {
     height: 60vh
 }
 
+#welc h1 {
+    padding-left: 40px;
+    padding-right: 40px
+}
+
 @media (max-width: 1000px) {
     #welc h1 {
         padding-top: 100px;

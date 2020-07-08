@@ -195,7 +195,7 @@
                     <a class="nav-link p-0" href="#">
                         <div class="mobile pr-md-2">
                             <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-mobile"></i>
-                            +7-927-33-83-10
+                            +7-000-00-00-00
                         </div>
                     </a>
                 </li>
@@ -211,7 +211,7 @@
                     <a class="nav-link p-0" href="#">
                         <div class="address pr-md-2">
                             <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-map-marker"></i>
-                            ул. Проспект Октября, 174/2
+                            адрес
                         </div>
                     </a>
                 </li>
