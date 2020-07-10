@@ -7,27 +7,21 @@
         <div class="row">
             {{-- Описание страницы "наши работы" если маршрут - products.index --}}
             @if (Request::path() == 'products')
-                <div>
-                    <div class="col-md-9 m-auto pt-5 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="pt-5 col-md-4">
-                                    <h5>PORTFOLIO</h5>
-                                    <h1 class="Oswald work-text">
-                                        <div>OUR LATEST</div>
-                                        <div>PROJECTS</div>
-                                    </h1>
-                                </div>
-                                <div class="col-md-8 pt-5 pl-4 ">
-                                    <p>
-                                        Our team of 1,200 employees hails from every craft and expertise in the field,
-                                        allowing us to combine innovative construction methods and accountable project
-                                        management to get the job done, and to get it done right.
-                                        To do this, we work closely with architects, engineers,
-                                        subcontractors, and clients at every stage of the process.
-                                    </p>
-                                </div>
+                <div class="col-md-9 m-auto pt-5 pb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="pt-5 col-md-12">
+                                <h5>ПОРТФОЛИО</h5>
+                                <h1 class="Oswald work-text">
+                                    <div>НАШИ ПОСЛЕДНИЕ</div>
+                                    <div>ПРОЕКТЫ</div>
+                                </h1>
                             </div>
+                            {{--                                <div class="col-md-7 pt-5 pl-4">--}}
+                            {{--                                    <p>--}}
+                            {{--                                       тут что-то будет--}}
+                            {{--                                    </p>--}}
+                            {{--                                </div>--}}
                         </div>
                     </div>
                 </div>

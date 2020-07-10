@@ -97,6 +97,7 @@
       <path value="$PROJECT_DIR$/public_html/vendor/justinrainbow/json-schema" />
       <path value="$PROJECT_DIR$/public_html/vendor/caouecs/laravel-lang" />
       <path value="$PROJECT_DIR$/public_html/vendor/andreasindal/laravel-markdown" />
+      <path value="$PROJECT_DIR$/public_html/vendor/spatie/laravel-permission" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
