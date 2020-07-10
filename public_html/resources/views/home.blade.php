@@ -173,10 +173,9 @@
                             @foreach($data->lastProducts as $product)
                                 @php /** PHPDOC @var \App\Models\Product $product */ @endphp
                                 <div class="col-md-4 p-0">
-                                    <a href="{{route('products.show', ['id' =>$product->id])}}">
-                                        <div class="card m-3 work_lk">
-                                            <div class="card-top position-relative">
-                                                @can('update', $product)
+                                    <div>
+                                        <div class="card m-3 work_lk position-relative">
+                                            @can('update', $product)
                                                 <div id="change"
                                                      style="top: 0; z-index: 100;"
                                                      class="text-right pen position-absolute bg-primary m-1 shadow p-2 br-50">
@@ -192,17 +191,21 @@
                                                         </svg>
                                                     </a>
                                                 </div>
-                                                @endcan
-                                                <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
-                                            </div>
-                                            <div class="card-mid">
-                                                <h4 class="card-title">{{ $product->name }}</h4>
-                                                <label class="card-desc">{{ $product->excerpt }}</label>
-                                                <div class="card-blur-zone"></div>
-                                            </div>
+                                            @endcan
+                                            <a href="{{route('products.show', ['id' =>$product->id])}}">
+                                                <div class="card-top position-relative">
+                                                    <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
+                                                </div>
+                                                <div class="card-mid">
+                                                    <h4 class="card-title text-dark">{{ $product->name }}</h4>
+                                                    <label class="card-desc">{{ $product->excerpt }}</label>
+                                                    <div class="card-blur-zone"></div>
+                                                </div>
+                                            </a>
+
                                         </div>
-                                    </a>
-                              </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
