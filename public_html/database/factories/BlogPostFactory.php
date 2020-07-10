@@ -16,8 +16,8 @@ $factory->define(BlogPost::class, function (Faker $faker) {
 
     $data = [
         'category_id' => rand(1, 11),
-        'image' => 'images/' . rand(1, 6) . '-lg-posts.jpg',
-        'user_id' => (rand(1, 5) == 5) ? 1 : 2,
+        'image' => 'images/'.rand(1, 6).'-lg-posts.jpg',
+        'user_id' => 1,
         'title' => $title,
         'excerpt' => $faker->text(rand(40, 100)),
         'content_raw' => $txt,
