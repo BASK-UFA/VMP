@@ -203,7 +203,7 @@
                     <a class="nav-link p-0" href="#">
                         <div class="mail pr-md-2">
                             <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-envelope"></i>
-                            bask.po_31@mail.ru
+                            test@mail.ru
                         </div>
                     </a>
                 </li>
