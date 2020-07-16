@@ -20,3 +20,9 @@ Route::get('user/{user}/products', 'AllProductUser')->name('user.products');
 // Профиль
 Route::patch('user/{id}', 'UserController@update')->name('user.update')->middleware('auth');
 Route::get('user/{id}', 'UserController@show')->name('user.show');
+
+// Изображения
+Route::resource('upload', 'ImageController@upload')
+    ->only('store')
+    ->middleware('auth')
+    ->names('image');
