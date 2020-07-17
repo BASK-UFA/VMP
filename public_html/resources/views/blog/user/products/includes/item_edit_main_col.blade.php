@@ -44,10 +44,11 @@
                                 rows="3">{{ old('content_raw', $item->content_raw)}}</textarea>
                         </div>
 
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1" class="h5">Изображения</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                                Загрузить изображение
+                            </button>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
                         <div class="form-group">
