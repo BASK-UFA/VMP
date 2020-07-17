@@ -45,6 +45,11 @@
                                 class="form-control"
                                 rows="3">{{ old('content_raw', $item->content_raw)}}</textarea>
                         </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                                Загрузить изображение
+                            </button>
+                        </div>
 
                     </div>
                     <div class="tab-pane fade" id="adddata" role="tabpanel" aria-labelledby="adddata-tab">
