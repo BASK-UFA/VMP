@@ -100,7 +100,7 @@
                     var image = document.querySelector('#file')
                     data.file = image.files[0];
                     axios
-                        .post('http://vmp.local/api/image', data, {
+                        .post('/api/image', data, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data',
                                     'X-CSRF-TOKEN': document.querySelector("#load-form [name='_token']").value
