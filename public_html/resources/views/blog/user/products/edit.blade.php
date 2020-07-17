@@ -112,11 +112,11 @@
                             this.value = response.data.value;
                             var textarea = document.getElementById('content_raw');
                             if (!this.checked) {
-                                textarea.append("\n<img class='img-fluid' src='" + this.value + "' alt='Описание'>");
+                                textarea.value += "\n<img class='img-fluid' src='" + this.value + "' alt='Описание'>";
                             } else {
                                 var height = document.getElementById('height').value;
                                 var width = document.getElementById('width').value;
-                                textarea.append("\n<img style='max-width: 100%' width='" + width + "' height='" + height + "' src='" + this.value + "' alt='Описание'>");
+                                textarea.value += "\n<img style='max-width: 100%' width='" + width + "' height='" + height + "' src='" + this.value + "' alt='Описание'>";
                             }
                         })
                         .catch(error => {
