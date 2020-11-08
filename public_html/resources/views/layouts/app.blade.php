@@ -184,6 +184,7 @@
             padding-bottom: 20px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -227,13 +228,25 @@
            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav m-auto">
                    <li class="nav-item active">
-                       <a class="nav-link h4 text-center" href="{{ route('/') }}">Главная<span class="sr-only">(current)</span></a>
+                       <a class="nav-link h4 text-center" href="{{ route('/') }}">Главная<span
+                               class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item active">
                        <a class="nav-link h4" href="{{ route('posts.index') }}">Блог</a>
                    </li>
                    <li class="nav-item active">
                        <a class="nav-link h4" href="{{ route('products.index') }}">Наши работы</a>
+                   </li>
+                   <li class="nav-item active position-relative">
+                       <a class="nav-link h4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">Платформа обучения</a>
+                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                           <a class="dropdown-item" href="{{ route('education.web') }}">Динамическое WEB
+                               программирование</a>
+                           <a class="dropdown-item" href="{{ route('education.system') }}">Сетевое и системное
+                               администрирование</a>
+                           <a class="dropdown-item" href="{{ route('education.school') }}">Школа юного программиста</a>
+                       </div>
                    </li>
                </ul>
                <ul class="navbar-nav">
