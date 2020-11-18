@@ -20,11 +20,11 @@ class UserRepository extends CoreRepository
      */
     public function getShow($id)
     {
-        $user = User::with(['posts', 'products'])->findOrFail($id);
+        $user = User::findOrFail($id);
 
-        $user->lastPosts = $user->posts->where('is_published', 1)->last()->limit(5)->get()->load('user');
-        $user->lastProducts = $user->products->last()->limit(3)->get();
-        $user->draftPosts = $user->posts->where('is_published', 0)->load('user');
+        $user->lastPosts = $user->lastPosts()->load('user');
+        $user->lastProducts = $user->lastProducts();
+        $user->draftPosts = $user->draftPosts()->load('user');
 
         return $user;
     }

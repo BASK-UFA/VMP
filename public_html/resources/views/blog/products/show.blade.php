@@ -3,21 +3,25 @@
 @section('content')
     @php /** PHPDOC @var \App\Models\Product $item */ @endphp
 
-    {{--  Верстайте тут, в $item будет модель Product                               --}}
-    {{--  Для обращения к полю используйте конструкцию {{ $item->НАЗВАНИЕ-ПОЛЯ }}   --}}
-    {{--  Ниже вывод всех полей модели через дебагер                                --}}
-
-    <div class="product_bg col-md-12" style="margin-top: -1.5rem">
+    <div class="product_bg col-md-12" style="margin-top: -6rem; padding-top: 4rem">
         <div class="col-md-9 m-auto pb-5">
-            <div class="container">
+            <div class="container pt-md-5">
                 <div class="row">
-                    <div class="pt-5 col-md-3">
-                        <h1 class="Oswald product_excerpt text-center">
+                    <div class="pt-5 col-md-6 pb-3 pb-md-0">
+                        <h1 class="Oswald product_excerpt text-center text-white">
                             {{ $item->name }}
                         </h1>
+                        <div class="text-center text-light">
+                            {{ $item->excerpt }}
+                        </div>
                     </div>
-                    <div class="col-md-9">
-                        <img class="product_img d-block mx-auto rounded" src="{{asset($item->image)}}" alt="">
+                    <div class="col-md-6">
+                        <img style="max-height: 300px;
+                                background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+                                border-radius: 1.5rem;
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, .2);"
+                             class="img-fluid d-block mx-auto"
+                             src="{{ asset($item->image) }}" alt="">
                     </div>
                 </div>
             </div>
@@ -38,9 +42,4 @@
             </div>
         </div>
     </div>
-
-
-
-    {{--    @dd($item->getAttributes())--}}
-
 @endsection

@@ -24,7 +24,6 @@ nav {
     background: #000;
 }
 
-
 .intro {
     background: #ffca85;
 }
@@ -123,10 +122,7 @@ nav {
     font-weight: 700;
 }
 .anchor{
-
     bottom: -10px;
-
-
     position: relative;
 }
 .arrow-bottom {
@@ -138,13 +134,6 @@ nav {
     height: 60px;
     border-top: 10px solid #fff;
     border-right: 10px solid #fff;
-
-}
-
-.article_avatar{
-
-    width: 150px;
-    height: 150px;
 }
 
 .post_name {
@@ -154,8 +143,6 @@ nav {
 .Oswald{
     font-family: 'Oswald', sans-serif!important;
 }
-
-
 
 .post_name h2{
     text-shadow:#000 0 0 5px!important;
@@ -178,7 +165,7 @@ nav {
 }
 .intro_read {
     top: -95px;
-    height: 90vh;
+    height: 95vh;
 }
 @media (max-width: 600px) {
     .intro_read{
@@ -206,8 +193,6 @@ nav {
 }
 
 .skill_block:hover {
-
-
     transform: scale(1.1);
     box-shadow: 0 0 5px 2px;
 }
@@ -221,46 +206,184 @@ nav {
     font-size: 1.7rem;
     padding-top: 60px;
 }
-.product_bg{
-    background-color:rgba(204,216,215,0.83);;
-
-    height: 60vh;
+.product_bg {
+    //background-color:rgba(204,216,215,0.83);;
+    background: linear-gradient(to bottom, rgba(120, 107, 175, 1), rgba(40, 140, 255, 1));
+    background-color: transparent;
+    background-repeat: no-repeat;
 }
 .product_bg::after {
     content: '';
     padding-top: 5%;
-
-    background:
-        linear-gradient(to right top, transparent 50%,rgba(204,216,215,0.83) 50%) left / 50% 100% no-repeat,
-        linear-gradient(to left top, transparent 50%,rgba(204,216,215,0.83) 50%) right / 50% 100% no-repeat;
-    image-rendering:crisp-edges;
+    display: none !important;
+    background: linear-gradient(to right top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) left / 50% 100% no-repeat,
+    linear-gradient(to left top, transparent 50%, rgba(204, 216, 215, 0.83) 50%) right / 50% 100% no-repeat;
+    image-rendering: crisp-edges;
     position: absolute;
     top: 100%;
     left: 2px;
     right: 2px;
 }
 
+.product__img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
 
 .product_img {
     background-size: contain;
-    height: 60vh;
+    max-height: 300px;
 }
-.product_avatar{
+
+.product_avatar {
     height: 45px;
     width: 45px;
-    border-radius:50% !important;
+    border-radius: 50% !important;
 }
+
+#welc h1 {
+    position: absolute;
+    font-size: 5rem;
+    padding-top: 140px;
+    text-shadow: #000 0 0 10px !important;
+    z-index: 1;
+}
+
+#welc img {
+    //max-height: 500px !important;
+    height: 60vh;
+}
+
 @media (max-width: 600px) {
     .product_img {
-        height: 40vh;
         width: 90%;
         -o-object-fit: cover;
         object-fit: cover;
     }
 }
-@media (max-width: 600px) {
-    .product_excerpt{
 
+@media (max-width: 600px) {
+    #welc h1 {
+        padding-top: 120px;
+        font-size: 2rem;
+    }
+
+    #welc img {
+        height: 40vh;
+    }
+
+    .product_excerpt {
         padding-top: 40px;
     }
 }
+
+.welc_header{
+    max-width: 100%;
+    height: 60vh;
+    z-index:-1;
+
+}
+#welc h1 {
+    margin-left: 45px;
+    position: absolute;
+    font-size: 5rem;
+    padding-top: 128px;
+    text-shadow: #000 0 0 10px !important;
+    z-index: 1;
+}
+
+#welc img {
+    width: 110vw;
+    height: 60vh;
+}
+
+#welc h1 {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+@media (max-width: 1000px) {
+    #welc h1 {
+        padding-top: 100px;
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #welc img {
+        height: 40vh;
+    }
+}
+
+.chocolate-text {
+    color: chocolate !important;
+}
+
+.pen {
+    right: 0;
+}
+
+.br-50 {
+    border-radius: 50% !important;
+}
+
+#change:hover {
+    background-color: rgba(0, 182, 216, 0.83) !important;
+}
+
+@media (max-width: 800px) {
+    .post_name {
+        padding-top: 15px;
+        display: block;
+        margin:0;
+    }
+}
+.post_avatar{
+    width: 15% !important;
+    height: 15% !important;
+
+}
+@media (max-width: 800px) {
+    .post_avatar{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+#change_post{
+    right: 0;
+
+}
+@media (max-width: 800px) {
+    #change_post {
+        text-align: center!important;
+        display: block;
+        margin: 0;
+        right: 1px;
+        width: 94%;
+        top: -70px;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .work_lk {
+        margin-left: 0 !important;
+    }
+
+}
+
+.reset {
+    margin-top: 70px;
+}
+
+@media (min-width: 576px) {
+    .card-deck.products {
+        margin-right: 15px !important;
+    }
+}
+
+
+
+
