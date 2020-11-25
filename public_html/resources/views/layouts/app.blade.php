@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +26,14 @@
 
 
     <style>
+
+        #app {
+            position: relative;
+            min-height: 100%;
+            height: fit-content;
+            padding-bottom: 29px;
+        }
+
         .products .card {
             width: 100%;
             background-color: white;
@@ -186,7 +194,7 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="h-100">
 
 <div id="app">
     <div class="navbar-add navbar navbar-expand-lg navbar-dark  bg-dark">
@@ -294,7 +302,7 @@
     <main class="cont my-4" style="padding-top: 4.4rem">
         @yield('content')
     </main>
-    <footer class="navbar-dark text-white text-center bg-dark">
+    <footer class="navbar-dark text-white text-center bg-dark position-absolute" style="bottom: 0; left: 0; right: 0">
         <div>Сайт преподавателя ГАПОУ БАСК Басырова Г.Р.</div>
     </footer>
 </div>
