@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +26,14 @@
 
 
     <style>
+
+        #app {
+            position: relative;
+            min-height: 100%;
+            height: fit-content;
+            padding-bottom: 29px;
+        }
+
         .products .card {
             width: 100%;
             background-color: white;
@@ -184,18 +192,19 @@
             padding-bottom: 20px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="h-100">
 
 <div id="app">
     <div class="navbar-add navbar navbar-expand-lg navbar-dark  bg-dark">
         <div class="navbar-collapse container">
             <ul class="navbar-nav text-sm-center">
                 <li class="nav-item text-left active">
-                    <a class="nav-link p-0" href="#">
+                    <a class="nav-link p-0" href="tel:+79177416045">
                         <div class="mobile pr-md-2">
                             <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-mobile"></i>
-                            +7-000-00-00-00
+                            +7 (917) 741-60-45
                         </div>
                     </a>
                 </li>
@@ -203,37 +212,50 @@
                     <a class="nav-link p-0" href="#">
                         <div class="mail pr-md-2">
                             <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-envelope"></i>
-                            test@mail.ru
+                            basirovaufa@mail.ru
                         </div>
                     </a>
                 </li>
-                <li class="nav-item text-left active">
-                    <a class="nav-link p-0" href="#">
-                        <div class="address pr-md-2">
-                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-map-marker"></i>
-                            адрес
-                        </div>
-                    </a>
-                </li>
+                {{--                <li class="nav-item text-left active">--}}
+                {{--                    <a class="nav-link p-0" href="#">--}}
+                {{--                        <div class="address pr-md-2">--}}
+                {{--                            <i class="mr-md-1 mr-0 pl-0 pl-md-2 ml-0 fa fa-map-marker"></i>--}}
+                {{--                            адрес--}}
+                {{--                        </div>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
             </ul>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark Oswald navbar-main pb-0 position-absolute w-100">
         <div class="container text-center">
-            <a class="navbar-brand h4" href="{{ route('/') }}">В М П</a>
-           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-           </button>
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav m-auto">
-                   <li class="nav-item active">
-                       <a class="nav-link h4 text-center" href="{{ route('/') }}">Главная<span class="sr-only">(current)</span></a>
-                   </li>
-                   <li class="nav-item active">
+            <a class="navbar-brand h4" href="{{ route('/') }}">ВМП</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link h4 text-center" href="{{ route('/') }}">Главная<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
                        <a class="nav-link h4" href="{{ route('posts.index') }}">Блог</a>
                    </li>
                    <li class="nav-item active">
                        <a class="nav-link h4" href="{{ route('products.index') }}">Наши работы</a>
+                   </li>
+                   <li class="nav-item active position-relative">
+                       <a class="nav-link h4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">Платформа обучения</a>
+                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                           <a class="dropdown-item" href="{{ route('education.web') }}">Динамическое WEB
+                               программирование</a>
+                           <a class="dropdown-item" href="{{ route('education.system') }}">Сетевое и системное
+                               администрирование</a>
+                           <a class="dropdown-item" href="{{ route('education.school') }}">Школа юного программиста</a>
+                       </div>
                    </li>
                </ul>
                <ul class="navbar-nav">
@@ -280,6 +302,9 @@
     <main class="cont my-4" style="padding-top: 4.4rem">
         @yield('content')
     </main>
+    <footer class="navbar-dark text-white text-center bg-dark position-absolute" style="bottom: 0; left: 0; right: 0">
+        <div>Сайт преподавателя ГАПОУ БАСК Басырова Г.Р.</div>
+    </footer>
 </div>
 </body>
 </html>

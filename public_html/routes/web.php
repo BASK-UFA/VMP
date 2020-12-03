@@ -26,3 +26,27 @@ Route::resource('upload', 'ImageController@upload')
     ->only('store')
     ->middleware('auth')
     ->names('image');
+
+// Образование
+Route::prefix('education')->group(
+    function () {
+        Route::get(
+            'web-programming',
+            function () {
+                return view('education.web');
+            }
+        )->name('education.web');
+        Route::get(
+            'network-systems-administration',
+            function () {
+                return 1;
+            }
+        )->name('education.system');
+        Route::get(
+            'school-of-young-programmer',
+            function () {
+                return 1;
+            }
+        )->name('education.school');
+    }
+);

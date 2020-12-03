@@ -179,7 +179,7 @@ return [
         /*
          * Permission Service Provider
          */
-        Spatie\Permission\PermissionServiceProvider::class,
+//        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
