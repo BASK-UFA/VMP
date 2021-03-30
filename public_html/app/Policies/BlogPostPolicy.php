@@ -36,12 +36,13 @@ class BlogPostPolicy
     /**
      * Determine whether the user can create blog posts.
      *
-     * @param \App\Models\User $user
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\BlogPost  $blogPost
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, BlogPost $blogPost)
     {
-        return true;
+        return $this->checkPermissionModerate($blogPost);
     }
 
     /**
@@ -53,7 +54,7 @@ class BlogPostPolicy
      */
     public function update(User $user, BlogPost $blogPost)
     {
-        return $user->id === $blogPost->user->id;
+        return ($user->id === $blogPost->user->id) && $this->checkPermissionModerate($blogPost);
     }
 
     /**
@@ -83,12 +84,29 @@ class BlogPostPolicy
     /**
      * Determine whether the user can permanently delete the blog post.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\BlogPost $blogPost
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\BlogPost  $blogPost
      * @return mixed
      */
     public function forceDelete(User $user, BlogPost $blogPost)
     {
         return false;
+    }
+
+    /**
+     * Проверить право на публикацию статьи
+     *
+     * @param  \App\Models\BlogPost  $blogPost
+     * @return bool
+     */
+    private function checkPermissionModerate(BlogPost $blogPost): bool
+    {
+        if ($blogPost->isDirty('is_moderated')) {
+            if (\Auth::user()->hasPermission('public-blog-post')) {
+                return true;
+            }
+            return false;
+        }
+        return true;
     }
 }

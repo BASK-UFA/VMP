@@ -35,6 +35,7 @@ class BlogPostObserver
         $this->setUser($blogPost);
     }
 
+
     /**
      * Сохранить промо-картинку в памяти и обновить поле image поста
      *
@@ -99,7 +100,6 @@ class BlogPostObserver
     protected function setHtml(BlogPost $blogPost)
     {
         if ($blogPost->isDirty('content_raw')) {
-            // TODO: Тут должна быть генерация markdown -> html
             $blogPost->content_html = markdown($blogPost->content_raw);
         }
     }

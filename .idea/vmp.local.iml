@@ -27,8 +27,6 @@
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/filp/whoops" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/hamcrest/hamcrest-php" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/jakub-onderka/php-console-color" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/laravel/tinker" />
@@ -102,6 +100,14 @@
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/php-parallel-lint/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/php-parallel-lint/php-console-color" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
