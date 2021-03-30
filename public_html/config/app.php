@@ -180,6 +180,8 @@ return [
          * Permission Service Provider
          */
 //        Spatie\Permission\PermissionServiceProvider::class,
+        \App\Providers\RolesServiceProvider::class,
+        \App\Providers\PermissionServiceProvider::class
     ],
 
     /*

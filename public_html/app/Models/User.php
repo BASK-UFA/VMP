@@ -89,7 +89,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Пользователь имеет непубликованые статьи
+     * Пользователь имеет неопубликованные статьи
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */

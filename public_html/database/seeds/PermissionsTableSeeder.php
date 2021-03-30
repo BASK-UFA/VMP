@@ -20,5 +20,8 @@ class PermissionsTableSeeder extends Seeder
         $publicProduct->name = 'Опубликовать работу на главной странице';
         $publicProduct->slug = 'public-product';
         $publicProduct->save();
+
+        DB::table('roles_permissions')->insert(['role_id' => 1, 'permission_id' => 1]);
+        DB::table('roles_permissions')->insert(['role_id' => 1, 'permission_id' => 2]);
     }
 }
