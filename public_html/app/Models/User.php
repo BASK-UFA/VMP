@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Traits\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,7 +46,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRolesAndPermissions;
 
     // Администратор - первая запись в бд
     const ADMIN = 1;
@@ -125,6 +126,14 @@ class User extends Authenticatable
     public function lastProducts()
     {
         return $this->hasMany(Product::class)->latest()->limit(3)->get();
+    }
+
+    /**
+     * Пользователь имеет роли
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'users_roles');
     }
 }
 
