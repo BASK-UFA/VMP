@@ -36,6 +36,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Product withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Product withoutTrashed()
  * @mixin \Eloquent
+ * @property int $is_moderated
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereIsModerated($value)
  */
 class Product extends Model
 {

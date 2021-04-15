@@ -43,6 +43,10 @@ use Illuminate\Notifications\Notifiable;
  * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDescription($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @property-read int|null $roles_count
  */
 class User extends Authenticatable
 {

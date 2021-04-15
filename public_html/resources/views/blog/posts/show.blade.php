@@ -9,10 +9,12 @@
             <div class="carousel-item active">
                 <img src="{{ asset($item->image) }}" alt="Превью" class="d-block w-100 intro_read bg-secondary">
                 <div class="carousel-caption text-center d-md-block Oswald">
-                    <h2 class="Oswald"> {{ $item->title }}</h2>
-                    <a href="#article_user">
-                        <div class="arrow arrow-bottom" id="article_user"></div>
-                    </a>
+                    <div class="" style="width: max-content; margin: 0 auto">
+                        <h2 class="Oswald"> {{ $item->title }}</h2>
+                        <a href="#article_user">
+                            <div class="arrow arrow-bottom" id="article_user"></div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,8 +23,8 @@
         <div class="row">
             <div class="col-12">
                 @can('update', $item)
-                        <a class="text-white"
-                           href="{{ route('posts.edit', ['id' => $item->id]) }}">
+                    <a class="text-white"
+                       href="{{ route('posts.edit', ['id' => $item->id]) }}">
                             <button id="change_post" type="button" class="btn btn-dark text-right  position-absolute  m-3 ">Редактировать</button>
                         </a>
                 @endcan

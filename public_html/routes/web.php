@@ -5,7 +5,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
-// Аунтификация
 Auth::routes();
 
 // Статьи
@@ -26,6 +25,20 @@ Route::resource('upload', 'ImageController@upload')
     ->only('store')
     ->middleware('auth')
     ->names('image');
+
+// Администратор
+Route::prefix('admin')->middleware('role:admin')->group(
+    function () {
+        Route::get(
+            '/home',
+            function () {
+                return redirect()->route('admin');
+            }
+        );
+        Route::get('/', 'Admin\HomeController@index')->name('admin.index');
+        Route::get('posts', 'Admin\AllPost')->name('admin.posts');
+    }
+);
 
 // Образование
 Route::prefix('education')->group(

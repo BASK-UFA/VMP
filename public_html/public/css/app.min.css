@@ -11098,6 +11098,19 @@ nav {
   height: 95vh;
 }
 
+.intro_read:before {
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00000000", endColorstr="#b3000000", GradientType=0);
+  transition: background-color 0.2s ease;
+}
+
 @media (max-width: 600px) {
   .intro_read {
     height: 60vh;
@@ -11319,11 +11332,5 @@ nav {
   .card-deck.products {
     margin-right: 15px !important;
   }
-}
-
-.web__wrapper {
-  background-color: #0e779f;
-  color: #fff;
-  background-image: url(/images/web__wrapper-background.svg?8f0368772b7386f47ef1ebec8cf86885);
 }
 

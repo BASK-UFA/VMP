@@ -279,11 +279,18 @@
                            </a>
 
                            <div class="dropdown-menu mb-1 bg-dark  " aria-labelledby="navbarDropdown">
-                             <p>
-                                 <a class="nav-item h5 Oswald text-white text-decoration-none pl-4"
-                                   href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Мой профиль</a>
-                             </p>
-                               <a class="nav-item h5 Oswald text-white text-decoration-none ml-4" href="{{ route('logout') }}"
+                               <p>
+                                   <a class="nav-item h5 Oswald text-white text-decoration-none pl-4"
+                                      href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Мой профиль</a>
+                               </p>
+                               @role('admin')
+                               <p>
+                                   <a class="nav-item h5 Oswald text-white text-decoration-none pl-4"
+                                      href="{{ route('admin.index')}}">Админ-панель</a>
+                               </p>
+                               @endrole
+                               <a class="nav-item h5 Oswald text-white text-decoration-none ml-4"
+                                  href="{{ route('logout') }}"
                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                    {{ __('Выход') }}
                                </a>

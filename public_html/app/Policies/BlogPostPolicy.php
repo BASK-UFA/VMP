@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\BlogPost;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Gate;
 
 class BlogPostPolicy
 {
@@ -54,7 +55,8 @@ class BlogPostPolicy
      */
     public function update(User $user, BlogPost $blogPost)
     {
-        return ($user->id === $blogPost->user->id) && $this->checkPermissionModerate($blogPost);
+        $is_admin = Gate::allows('public-blog-post');
+        return $is_admin || (($user->id === $blogPost->user->id) && $this->checkPermissionModerate($blogPost));
     }
 
     /**
