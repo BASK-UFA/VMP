@@ -182,7 +182,7 @@
                                     <tr>
                                         <td>
                                             <a class=""
-                                               href="{{ route('posts.show', ['id' => $product->id]) }}">{{ $product->name }}</a>
+                                               href="{{ route('products.show', ['id' => $product->id]) }}">{{ $product->name }}</a>
                                         </td>
                                         <td>
                                             @if($product->is_moderated)

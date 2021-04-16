@@ -7,6 +7,7 @@ use App\Http\Requests\BlogPostUpdateRequest;
 use App\Models\BlogPost;
 use App\Repositories\BlogCategoryRepository;
 use App\Repositories\BlogPostRepository;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -68,7 +69,17 @@ class PostController extends Controller
     {
         $item = BlogPost::findOrFail($id);
 
-        return view('blog.posts.show', compact('item'));
+        if ($item->is_published && $item->is_moderated) {
+            return view('blog.posts.show', compact('item'));
+        }
+
+        if (Auth::user()) {
+            if (Auth::user()->hasRole('admin')) {
+                return view('blog.posts.show', compact('item'));
+            }
+        }
+
+        abort(404);
     }
 
     /**

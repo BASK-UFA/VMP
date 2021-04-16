@@ -25,16 +25,19 @@
                 @can('update', $item)
                     <a class="text-white"
                        href="{{ route('posts.edit', ['id' => $item->id]) }}">
-                            <button id="change_post" type="button" class="btn btn-dark text-right  position-absolute  m-3 ">Редактировать</button>
-                        </a>
+                        <button id="change_post" type="button" class="btn btn-dark text-right  position-absolute  m-3 ">
+                            Редактировать
+                        </button>
+                    </a>
                 @endcan
-                <div>
-                    <span>
-                        <img class="img-fluid post_avatar" src="{{ asset($item->user->avatar) }}" alt="Аватарка">
+                <div class="">
+                    <span class="">
+                        <img class="img-fluid post_avatar" src="{{ asset($item->user->avatar) }}" alt="Аватарка"
+                             style="width: auto !important; max-height: 65px">
                     </span>
-                    <span class="h2 Oswald post_name ml-4">
-                            {{ $item->user->name }}
-                        </span>
+                    <span class="h5 Oswald post_name ml-4" style="display: inline !important;">
+                            <a href="{{ route('user.show', ['id' => $item->user->id]) }}">{{ $item->user->name }}</a>
+                    </span>
                 </div>
                 <div class="mt-4"><p class="article_txt">{!! $item->content_html !!}</p></div>
             </div>
