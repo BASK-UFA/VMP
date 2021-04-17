@@ -121,7 +121,7 @@
 
             {{-- Личная информация пользователя --}}
             <div class="col-md-3">
-                <div class="pb-4 pb-md-0">
+                <div class="pb-4 pb-md-0" style="position: sticky; top: 20px">
                     <img class="img-fluid home_avatar" src="{{ asset($data->avatar) }}" alt="">
                     <div class="mt-4 Oswald">
                         <div>

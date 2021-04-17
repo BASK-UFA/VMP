@@ -121,7 +121,7 @@
 
             {{-- Личная информация пользователя --}}
             <div class="col-md-3">
-                <div class="pb-4 pb-md-0">
+                <div class="pb-4 pb-md-0" style="position: sticky; top: 20px">
                     <img class="img-fluid home_avatar" src="{{ asset($data->avatar) }}" alt="">
                     <div class="mt-4 Oswald">
                         <div>
@@ -236,17 +236,17 @@
                                             {{ $post->created_at }}
                                         </div>
                                         <div>
-                                            @if($post->published_at)
-                                                Опубликован
+                                            @if($post->is_published)
+                                                <span class="text-success">Опубликован</span>
                                             @else
-                                                Не опубликован
+                                                <span class="text-secondary">Не опубликован</span>
                                             @endif
                                         </div>
                                         <div>
                                             @if($post->is_moderated)
-                                                В общем блоге
+                                                <span class="text-success">В общем блоге</span>
                                             @else
-                                                Только на странице пользователя
+                                                <span class="text-secondary">Только на странице пользователя</span>
                                             @endif
                                         </div>
                                     </div>
@@ -260,7 +260,7 @@
                                         {{ $post->excerpt }}
                                     </div>
                                     <div class="mb-3 mt-3">
-                                        @if(!$post->published_at || !$post->is_moderated)
+                                        @if(!$post->is_published || !$post->is_moderated)
                                             <form method="post" class="d-inline"
                                                   action="{{ route('posts.update', ['id' => $post->id]) }}">
                                                 @method('PUT')
