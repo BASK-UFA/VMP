@@ -217,7 +217,8 @@
                             {{--                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"--}}
                             {{--                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>--}}
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('user.posts', ['user' => $data->id]) }}">Показать все статьи</a>
+                               href="{{ route('user.posts', ['user' => $data->id]) }}">Показать все статьи
+                                пользователей</a>
                         </div>
                     </div>
                     <div>
@@ -225,7 +226,7 @@
                             @if ($data->lastPosts->isEmpty())
                                 <p class="Oswald h3 text-center">Статей пока нет</p>
                             @endif
-                            @foreach($data->lastPosts as $post)
+                            @foreach($data->posts as $post)
 
                                 <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
                                     <div>
@@ -233,6 +234,20 @@
                                            href="{{ route('user.show', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a>
                                         <div>
                                             {{ $post->created_at }}
+                                        </div>
+                                        <div>
+                                            @if($post->published_at)
+                                                Опубликован
+                                            @else
+                                                Не опубликован
+                                            @endif
+                                        </div>
+                                        <div>
+                                            @if($post->is_moderated)
+                                                В общем блоге
+                                            @else
+                                                Только на странице пользователя
+                                            @endif
                                         </div>
                                     </div>
                                     <a href="{{ route('posts.show', ['id' => $post->id]) }}" style="font-size:2em;"
@@ -245,6 +260,18 @@
                                         {{ $post->excerpt }}
                                     </div>
                                     <div class="mb-3 mt-3">
+                                        @if(!$post->published_at || !$post->is_moderated)
+                                            <form method="post" class="d-inline"
+                                                  action="{{ route('posts.update', ['id' => $post->id]) }}">
+                                                @method('PUT')
+                                                @csrf
+                                                <input type="hidden" name="is_published" value="1">
+                                                <input type="hidden" name="is_moderated" value="1">
+                                                <button type="submit" class="btn btn-success text-white mt-2">
+                                                    Опубликовать в блог
+                                                </button>
+                                            </form>
+                                        @endif
                                         <a class="btn btn-dark text-white mt-2"
                                            href="{{ route('posts.show', ['id' => $post->id]) }}">Читать
                                             полностью</a>

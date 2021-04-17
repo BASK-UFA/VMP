@@ -26,11 +26,11 @@ class BlogPostUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:200',
-            'slug'  =>  'max:200',
+            'title' => 'min:5|max:200',
+            'slug' => 'max:200',
             'excerpt' => 'max:500',
-            'content_raw' => 'required|string|min:5|max:10000',
-            'category_id' => 'required|integer|exists:blog_categories,id',
+            'content_raw' => 'string|min:5|max:10000',
+            'category_id' => 'integer|exists:blog_categories,id',
         ];
     }
 }

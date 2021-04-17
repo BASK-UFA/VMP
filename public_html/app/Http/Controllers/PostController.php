@@ -118,7 +118,7 @@ class PostController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('posts.edit', [$item->id])
+                ->back()
                 ->with(['success' => 'Успешно создано']);
         } else {
             return back()
@@ -175,7 +175,7 @@ class PostController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('posts.edit', $item->id)
+                ->back()
                 ->with(['success' => 'Успешно сохранено']);
         } else {
             return back()
@@ -202,7 +202,7 @@ class PostController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('posts.create')
+                ->back()
                 ->with(['success' => "Статья удалена"]);
         } else {
             return back()
