@@ -37,6 +37,7 @@ Route::prefix('admin')->middleware('role:admin')->group(
         );
         Route::get('/', 'Admin\HomeController@index')->name('admin.index');
         Route::get('posts', 'Admin\AllPost')->name('admin.posts');
+        Route::get('products', 'Admin\AllProduct')->name('admin.products');
     }
 );
 

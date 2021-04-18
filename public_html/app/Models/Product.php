@@ -45,6 +45,7 @@ class Product extends Model
 
     protected $fillable = [
         'name', 'image', 'excerpt', 'category_id', 'content_raw', 'is_published', 'published_at',
+        'is_moderated'
     ];
 
     /**

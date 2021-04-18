@@ -79,7 +79,7 @@ class PostController extends Controller
             }
         }
 
-        abort(404);
+        return view('blog.posts.show', compact('item'));
     }
 
     /**

@@ -55,8 +55,9 @@ class BlogPostPolicy
      */
     public function update(User $user, BlogPost $blogPost)
     {
-        $is_admin = Gate::allows('public-blog-post');
-        return $is_admin || (($user->id === $blogPost->user->id) && $this->checkPermissionModerate($blogPost));
+        return $user->hasRole('admin') || (($user->id === $blogPost->user->id) && $this->checkPermissionModerate(
+                    $blogPost
+                ));
     }
 
     /**
@@ -68,7 +69,7 @@ class BlogPostPolicy
      */
     public function delete(User $user, BlogPost $blogPost)
     {
-        return $user->id === $blogPost->user->id;
+        return $user->hasRole('admin') || ($user->id === $blogPost->user->id);
     }
 
     /**

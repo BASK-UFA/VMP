@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\BlogPost;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AllPost extends Controller
+class AllProduct extends Controller
 {
     /**
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
     {
-        $posts = BlogPost::orderby('created_at', 'desc')->paginate(20);
+        $products = Product::orderby('created_at', 'desc')->paginate(20);
 
-        return view('admin.posts.all', compact('posts'));
+        return view('admin.products.all', compact('products'));
     }
 }

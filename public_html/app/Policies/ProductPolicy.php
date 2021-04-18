@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Gate;
 
 class ProductPolicy
 {
@@ -30,7 +31,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        return true;
+        return ($user->id === $product->user->id) || $product->is_moderated || $user->hasRole('admin');
     }
 
     /**
@@ -39,9 +40,9 @@ class ProductPolicy
      * @param \App\Models\User $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Product $product)
     {
-        return true;
+        return $this->checkPermissionModerate($product);
     }
 
     /**
@@ -53,7 +54,9 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        return $user->id === $product->user->id;
+        return $user->hasRole('admin') || (($user->id === $product->user->id) && $this->checkPermissionModerate(
+                    $product
+                ));
     }
 
     /**
@@ -65,7 +68,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        return $user->id === $product->user->id;
+        return $user->hasRole('admin') || $user->id === $product->user->id;
     }
 
     /**
@@ -77,18 +80,35 @@ class ProductPolicy
      */
     public function restore(User $user, Product $product)
     {
-        return $user->id === $product->user->id;
+        return $user->hasRole('admin') || $user->id === $product->user->id;
     }
 
     /**
      * Determine whether the user can permanently delete the product.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Product $product
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Product  $product
      * @return mixed
      */
     public function forceDelete(User $user, Product $product)
     {
         return false;
+    }
+
+    /**
+     * Проверить право на публикацию статьи
+     *
+     * @param  \App\Models\BlogPost  $product
+     * @return bool
+     */
+    private function checkPermissionModerate(Product $product): bool
+    {
+        if ($product->isDirty('is_moderated')) {
+            if (\Auth::user()->hasPermission('public-product')) {
+                return true;
+            }
+            return false;
+        }
+        return true;
     }
 }

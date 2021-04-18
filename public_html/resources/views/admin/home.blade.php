@@ -160,7 +160,7 @@
                                    href="{{ route('products.create') }}">Добавить новую работу</a>
                             @endcan
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('admin.posts')}}">Показать все
+                               href="{{ route('admin.products')}}">Показать все
                                 работы пользователей</a>
                         </div>
                     </div>
@@ -170,34 +170,41 @@
                             <div>
                                 <p class="Oswald h3 text-center">Работ пока нет</p>
                             </div>
-                        @endif
-                        <div class="w-100 table table-responsive pl-3 pr-3">
-                            <table class="w-100">
-                                <tr>
-                                    <th class="border-top-0">Название</th>
-                                    <th class="border-top-0">Опубликовано</th>
-                                </tr>
-                                @foreach($data->products as $product)
-                                    @php /** PHPDOC @var \App\Models\Product $product */ @endphp
+                        @else
+                            <div class="w-100 table table-responsive pl-3 pr-3">
+                                <table class="w-100">
                                     <tr>
-                                        <td>
-                                            <a class=""
-                                               href="{{ route('products.show', ['id' => $product->id]) }}">{{ $product->name }}</a>
-                                        </td>
-                                        <td>
-                                            @if($product->is_moderated)
-                                                Да
-                                            @else
-                                                Нет
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-primary">Изменить</button>
-                                        </td>
+                                        <th class="border-top-0">Картинка</th>
+                                        <th class="border-top-0">Название</th>
+                                        <th class="border-top-0">Опубликовано</th>
                                     </tr>
-                                @endforeach
-                            </table>
-                        </div>
+                                    @foreach($data->products as $product)
+                                        @php /** PHPDOC @var \App\Models\Product $product */ @endphp
+                                        <tr>
+                                            <td>
+                                                <img class="img-fluid" style="height: 40px"
+                                                     src="{{ asset($product->image) }}" alt="">
+                                            </td>
+                                            <td>
+                                                <a class=""
+                                                   href="{{ route('products.show', ['id' => $product->id]) }}">{{ $product->name }}</a>
+                                            </td>
+                                            <td>
+                                                @if($product->is_moderated)
+                                                    Да
+                                                @else
+                                                    Нет
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('products.edit', ['id' => $product->id]) }}"
+                                                   class="btn btn-primary">Изменить</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -217,7 +224,7 @@
                             {{--                            <a class="mt-2 mt-md-0 btn btn-secondary text-white"--}}
                             {{--                               href="{{ route('blog.user.posts.show', ['id' => $data->id]) }}">Показать все статьи</a>--}}
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('user.posts', ['user' => $data->id]) }}">Показать все статьи
+                               href="{{ route('admin.posts') }}">Показать все статьи
                                 пользователей</a>
                         </div>
                     </div>
@@ -285,7 +292,7 @@
                         </div>
                         @if ($data->lastPosts->count()>=5)
                             <div class="card-footer border-top-0 d-flex justify-content-center">
-                                <a href="{{ route('user.posts', ['user' => $data->id]) }}" class="btn btn-dark">Показать
+                                <a href="{{ route('admin.posts') }}" class="btn btn-dark">Показать
                                     все
                                     статьи</a>
                             </div>
