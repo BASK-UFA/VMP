@@ -32,12 +32,26 @@ Route::prefix('admin')->middleware('role:admin')->group(
         Route::get(
             '/home',
             function () {
-                return redirect()->route('admin');
+                return redirect()->route('admin.index');
             }
         );
         Route::get('/', 'Admin\HomeController@index')->name('admin.index');
         Route::get('posts', 'Admin\AllPost')->name('admin.posts');
         Route::get('products', 'Admin\AllProduct')->name('admin.products');
+    }
+);
+
+// Учитель
+Route::prefix('teacher')->middleware('role:teacher')->group(
+    function () {
+        Route::get(
+            '/home',
+            function () {
+                return redirect()->route('teacher.index');
+            }
+        );
+
+        Route::get('/', 'Teacher\HomeController@index');
     }
 );
 

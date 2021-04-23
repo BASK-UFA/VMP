@@ -176,7 +176,7 @@
                                     <tr>
                                         <th class="border-top-0">Картинка</th>
                                         <th class="border-top-0">Название</th>
-                                        <th class="border-top-0">Опубликовано</th>
+                                        <th class="border-top-0">В общем списке</th>
                                     </tr>
                                     @foreach($data->products as $product)
                                         @php /** PHPDOC @var \App\Models\Product $product */ @endphp

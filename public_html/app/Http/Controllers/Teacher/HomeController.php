@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Teacher;
 
+use App\Models\BlogPost;
+use App\Models\Product;
 use App\Repositories\BlogPostRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
-use App\Models\BlogPost;
+
 
 class HomeController extends Controller
 {
@@ -29,10 +29,6 @@ class HomeController extends Controller
     {
         $data = $this->userRepository->getShow();
 
-        $data['posts'] = BlogPost::orderBy('id', 'desc')->take(5)->get();;
-
-        $data['products'] = Product::orderBy('id', 'desc')->take(5)->get();;
-
-        return view('admin.home', compact('data'));
+        return view('teacher.home', compact('data'));
     }
 }

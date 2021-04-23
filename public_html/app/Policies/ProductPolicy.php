@@ -31,7 +31,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        return ($user->id === $product->user->id) || $product->is_moderated || $user->hasRole('admin');
+        return true;
     }
 
     /**

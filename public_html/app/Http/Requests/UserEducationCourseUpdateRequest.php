@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImageStoreRequest extends FormRequest
+class UserEducationCourseUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class ImageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => ['required', 'file', 'max:20480']
+            'user_id' => 'required|int|exists:id,users',
+            'course_id' => 'required|int|exists:id,education_courses',
         ];
     }
 }

@@ -9,7 +9,7 @@
             <div class="carousel-item active">
                 <img src="{{ asset($item->image) }}" alt="Превью" class="d-block w-100 intro_read bg-secondary">
                 <div class="carousel-caption text-center d-md-block Oswald">
-                    <div class="" style="width: max-content; margin: 0 auto">
+                    <div class="" style="margin: 0 auto">
                         <h2 class="Oswald"> {{ $item->title }}</h2>
                         <a href="#article_user">
                             <div class="arrow arrow-bottom" id="article_user"></div>
