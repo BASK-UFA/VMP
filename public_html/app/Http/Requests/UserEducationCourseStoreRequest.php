@@ -24,8 +24,10 @@ class UserEducationCourseStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|int|exists:id,users',
-            'course_id' => 'required|int|exists:id,education_courses',
+            'user_id' => 'nullable|int|exists:id,users',
+            'course_id' => 'required|int|exists:education_courses,id',
+            'user_name' => 'required|string',
+            'user_phone' => 'required|string'
         ];
     }
 }

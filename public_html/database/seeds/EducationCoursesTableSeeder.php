@@ -33,6 +33,8 @@ class EducationCoursesTableSeeder extends Seeder
             ]
         )->save();
 
-        DB::table('users_education_courses')->insert(['user_id' => 1, 'course_id' => 1]);
+        DB::table('users_education_courses')->insert(
+            ['user_id' => 1, 'course_id' => 1, 'user_name' => 'Прытков Данил', 'user_phone' => '+7 987 133 01 01']
+        );
     }
 }

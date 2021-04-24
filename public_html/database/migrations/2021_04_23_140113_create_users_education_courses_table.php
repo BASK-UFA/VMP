@@ -17,7 +17,9 @@ class CreateUsersEducationCoursesTable extends Migration
             'users_education_courses',
             function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->unsignedBigInteger('user_id');
+                $table->unsignedBigInteger('user_id')->nullable();
+                $table->string('user_name');
+                $table->string('user_phone');
                 $table->unsignedBigInteger('course_id');
                 $table->timestamps();
 

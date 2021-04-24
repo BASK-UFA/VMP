@@ -67,14 +67,18 @@ Route::prefix('education')->group(
         Route::get(
             'network-systems-administration',
             function () {
-                return 1;
+                return view('education.network');
             }
         )->name('education.system');
         Route::get(
             'school-of-young-programmer',
             function () {
-                return 1;
+                return view('education.school');
             }
         )->name('education.school');
     }
 );
+
+// Курсы
+
+Route::resource('user-course', 'UserEducationCourseController');

@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <div class="card-deck">
+            <div class="card-deck w-100">
                 @foreach($data as $product)
                     <div class="col-md-4 position-relative">
                         @can('update', $product)

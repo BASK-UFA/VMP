@@ -72,7 +72,7 @@
     </div>
 
     <div class="web__header">
-        <h1 class="text-center">Динамическое WEB программирование</h1>
+        <h1 class="text-center">Школа юного программиста</h1>
     </div>
 
     <div class="web__content">

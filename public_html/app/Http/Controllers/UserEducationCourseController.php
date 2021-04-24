@@ -35,9 +35,13 @@ class UserEducationCourseController extends Controller
      */
     public function store(UserEducationCourseStoreRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $data = $request->all();
+        $data = $request->except(['_token']);
 
-        $result = \DB::insert('education_courses', $data);
+        if (\Auth::user()) {
+            $data['user_id'] = \Auth::user()->id;
+        }
+
+        $result = \DB::table('users_education_courses')->insert($data);
 
         if ($result) {
             return back()
