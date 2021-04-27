@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Traits\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,10 +43,16 @@ use Illuminate\Notifications\Notifiable;
  * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDescription($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @property string|null $phone
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRolesAndPermissions;
 
     // Администратор - первая запись в бд
     const ADMIN = 1;
@@ -56,7 +63,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'description'
+        'name',
+        'email',
+        'password',
+        'avatar',
+        'description',
+        'phone'
     ];
 
     /**
@@ -88,7 +100,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Пользователь имеет непубликованые статьи
+     * Пользователь имеет неопубликованные статьи
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -125,6 +137,14 @@ class User extends Authenticatable
     public function lastProducts()
     {
         return $this->hasMany(Product::class)->latest()->limit(3)->get();
+    }
+
+    /**
+     * Пользователь имеет роли
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'users_roles');
     }
 }
 

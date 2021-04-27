@@ -5,7 +5,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
-// Аунтификация
 Auth::routes();
 
 // Статьи
@@ -27,6 +26,35 @@ Route::resource('upload', 'ImageController@upload')
     ->middleware('auth')
     ->names('image');
 
+// Администратор
+Route::prefix('admin')->middleware('role:admin')->group(
+    function () {
+        Route::get(
+            '/home',
+            function () {
+                return redirect()->route('admin.index');
+            }
+        );
+        Route::get('/', 'Admin\HomeController@index')->name('admin.index');
+        Route::get('posts', 'Admin\AllPost')->name('admin.posts');
+        Route::get('products', 'Admin\AllProduct')->name('admin.products');
+    }
+);
+
+// Учитель
+Route::prefix('teacher')->middleware('role:teacher')->group(
+    function () {
+        Route::get(
+            '/home',
+            function () {
+                return redirect()->route('teacher.index');
+            }
+        );
+
+        Route::get('/', 'Teacher\HomeController@index')->name('teacher.index');
+    }
+);
+
 // Образование
 Route::prefix('education')->group(
     function () {
@@ -39,14 +67,18 @@ Route::prefix('education')->group(
         Route::get(
             'network-systems-administration',
             function () {
-                return 1;
+                return view('education.network');
             }
         )->name('education.system');
         Route::get(
             'school-of-young-programmer',
             function () {
-                return 1;
+                return view('education.school');
             }
         )->name('education.school');
     }
 );
+
+// Курсы
+
+Route::resource('user-course', 'UserEducationCourseController');

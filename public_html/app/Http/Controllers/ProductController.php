@@ -5,6 +5,7 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use App\Repositories\BlogProductRepository;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -42,6 +43,8 @@ class ProductController extends Controller
     {
         $item = Product::findOrFail($id);
 
+        $this->authorize('view', $item);
+
         return view('blog.products.show', compact('item'));
     }
 
@@ -77,7 +80,7 @@ class ProductController extends Controller
 
         if ($item->exists()) {
             return redirect()
-                ->route('products.edit', ['id' => $item->id])
+                ->back()
                 ->with(['success' => 'Успешно обновлено']);
         } else {
             return back()
@@ -122,7 +125,7 @@ class ProductController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('products.edit', ['id' => $id])
+                ->back()
                 ->with(['success' => 'Успешно обновлено']);
         } else {
             return back()
@@ -148,7 +151,7 @@ class ProductController extends Controller
 
         if ($result) {
             return redirect()
-                ->route('products.create')
+                ->back()
                 ->with(['success' => 'Работа успешно удалена']);
         } else {
             return back()

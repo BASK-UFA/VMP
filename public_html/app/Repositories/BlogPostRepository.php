@@ -64,6 +64,7 @@ class BlogPostRepository extends CoreRepository
             ->select($columns)
             ->orderBy('id', 'DESC')
             ->where('is_published', 1)
+            ->where('is_moderated', 1)
             ->with(['category', 'user'])
             ->paginate(10);
 

@@ -47,6 +47,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\User $user
  * @property string|null $image
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BlogPost whereImage($value)
+ * @property int $is_moderated
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogPost whereIsModerated($value)
  */
 class BlogPost extends Model
 {
@@ -60,7 +62,14 @@ class BlogPost extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'excerpt', 'image', 'category_id', 'content_raw', 'is_published', 'published_at',
+        'title',
+        'excerpt',
+        'image',
+        'category_id',
+        'content_raw',
+        'is_published',
+        'published_at',
+        'is_moderated'
     ];
 
     public function category()
