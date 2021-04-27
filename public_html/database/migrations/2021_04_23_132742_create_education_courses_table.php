@@ -17,9 +17,12 @@ class CreateEducationCoursesTable extends Migration
             'education_courses',
             function (Blueprint $table) {
                 $table->bigIncrements('id');
+                $table->unsignedBigInteger('user_id')->nullable();
                 $table->string('name')->default('Не указано');
                 $table->text('content');
                 $table->timestamps();
+
+                $table->foreign('user_id')->references('id')->on('users');
             }
         );
     }

@@ -38,7 +38,7 @@
                 </div>
                 <form method="POST" action="{{ route('user-course.store') }}">
                     @csrf
-                    <input type="hidden" name="course_id" value="1">
+                    <input type="hidden" name="course_id" value="2">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="" for="user_name">Имя</label>

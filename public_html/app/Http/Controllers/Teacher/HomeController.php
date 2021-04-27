@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Models\BlogPost;
+use App\Models\EducationCourse;
 use App\Models\Product;
 use App\Repositories\BlogPostRepository;
 use App\Repositories\UserRepository;
@@ -28,6 +29,17 @@ class HomeController extends Controller
     public function index()
     {
         $data = $this->userRepository->getShow();
+
+        $userCourseRequests = \DB::table('users_education_courses')->where('user_id', $data->id)->get();
+
+        $userCourses = EducationCourse::where('user_id', $data->id)->get();
+
+        $data->userCourseRequests = $userCourseRequests;
+        $data->userCourses = $userCourses;
+
+        foreach ($data->userCourseRequests as $userCourseRequest) {
+            $userCourseRequest->course_name = $userCourses->where('id', $userCourseRequest->course_id)->first()->name;
+        }
 
         return view('teacher.home', compact('data'));
     }

@@ -200,6 +200,19 @@
                                                 <a href="{{ route('products.edit', ['id' => $product->id]) }}"
                                                    class="btn btn-primary">Изменить</a>
                                             </td>
+                                            <td>
+                                                @if(!$product->is_moderated)
+                                                    <form method="post" class=""
+                                                          action="{{ route('products.update', ['id' => $product->id]) }}">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <input type="hidden" name="is_moderated" value="1">
+                                                        <button type="submit" class="btn btn-success text-white">
+                                                            Опубликовать
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </table>

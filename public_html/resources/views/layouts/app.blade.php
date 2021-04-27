@@ -283,6 +283,12 @@
                                    <a class="nav-item h5 Oswald text-white text-decoration-none pl-4"
                                       href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Мой профиль</a>
                                </p>
+                               @role('teacher')
+                               <p>
+                                   <a class="nav-item h5 Oswald text-white text-decoration-none pl-4"
+                                      href="{{ route('teacher.index')}}">Кабинет учителя</a>
+                               </p>
+                               @endrole
                                @role('admin')
                                <p>
                                    <a class="nav-item h5 Oswald text-white text-decoration-none pl-4"
