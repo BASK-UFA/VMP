@@ -21,6 +21,7 @@ class CreateUsersEducationCoursesTable extends Migration
                 $table->string('user_name');
                 $table->string('user_phone');
                 $table->unsignedBigInteger('course_id');
+                $table->boolean('is_checked')->default(false);
                 $table->timestamps();
 
                 $table->foreign('user_id')->references('id')->on('users');

@@ -30,15 +30,37 @@ class HomeController extends Controller
     {
         $data = $this->userRepository->getShow();
 
-        $userCourseRequests = \DB::table('users_education_courses')->where('user_id', $data->id)->get();
+        $userCourseRequests = \DB::table('users_education_courses')->where(
+            [['user_id', $data->id], ['is_checked', false]]
+        )->get();
+        $userCourseRequestsChecked = \DB::table('users_education_courses')->where(
+            [['user_id', $data->id], ['is_checked', true]]
+        )->get();
 
         $userCourses = EducationCourse::where('user_id', $data->id)->get();
 
         $data->userCourseRequests = $userCourseRequests;
+        $data->userCourseRequestsChecked = $userCourseRequestsChecked;
         $data->userCourses = $userCourses;
 
+        //dd($userCourseRequests);
+
         foreach ($data->userCourseRequests as $userCourseRequest) {
-            $userCourseRequest->course_name = $userCourses->where('id', $userCourseRequest->course_id)->first()->name;
+            if ($userCourses->where('id', $userCourseRequest->course_id)->first() !== null) {
+                $userCourseRequest->course_name = $userCourses->where('id', $userCourseRequest->course_id)->first(
+                )->name;
+            } else {
+                $userCourseRequest->course_name = 'Неизвестно';
+            }
+        }
+
+        foreach ($data->userCourseRequestsChecked as $userCourseRequest) {
+            if ($userCourses->where('id', $userCourseRequest->course_id)->first() !== null) {
+                $userCourseRequest->course_name = $userCourses->where('id', $userCourseRequest->course_id)->first(
+                )->name;
+            } else {
+                $userCourseRequest->course_name = 'Неизвестно';
+            }
         }
 
         return view('teacher.home', compact('data'));

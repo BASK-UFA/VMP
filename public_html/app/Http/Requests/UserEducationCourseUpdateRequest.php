@@ -24,8 +24,8 @@ class UserEducationCourseUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|int|exists:id,users',
-            'course_id' => 'required|int|exists:id,education_courses',
+            'user_id' => 'int|exists:id,users',
+            'course_id' => 'int|exists:id,education_courses',
         ];
     }
 }

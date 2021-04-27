@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|EducationCourse whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EducationCourse whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int|null $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|EducationCourse whereUserId($value)
  */
 class EducationCourse extends Model
 {

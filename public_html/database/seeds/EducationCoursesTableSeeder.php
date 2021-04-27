@@ -15,6 +15,7 @@ class EducationCoursesTableSeeder extends Seeder
         (new EducationCourse())->fill(
             [
                 'name' => 'Динамическое WEB программирование',
+                'user_id' => 1,
                 'content' => 'Веб-разработчики используют для создания веб-сайтов специальные программы, языки программирования и разметки, которые связывают ссылки на различные веб-страницы, другие веб-сайты, графические элементы, текст и фото в единый функциональный и удобный информационный продукт.'
             ]
         )->save();
@@ -22,6 +23,7 @@ class EducationCoursesTableSeeder extends Seeder
         (new EducationCourse())->fill(
             [
                 'name' => 'Сетевое и системное администрирование',
+                'user_id' => 1,
                 'content' => ' '
             ]
         )->save();
@@ -29,6 +31,7 @@ class EducationCoursesTableSeeder extends Seeder
         (new EducationCourse())->fill(
             [
                 'name' => 'Школа юного программиста',
+                'user_id' => 1,
                 'content' => ' '
             ]
         )->save();

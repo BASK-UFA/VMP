@@ -19,5 +19,4 @@ class UserEducationCoursePolicy
         //
     }
 
-    public function create(User $user)
 }
