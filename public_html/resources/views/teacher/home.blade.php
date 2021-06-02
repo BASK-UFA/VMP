@@ -176,7 +176,7 @@
                                                     <td>{{ $request->course_name }}</td>
                                                     <td>{{ $request->user_name }}</td>
                                                     <td>{{ $request->user_phone }}</td>
-                                                    <td>
+                                                    <td class="text-right">
                                                         <form method="POST"
                                                               action="{{ route('user-course.update', ['id' => $request->id]) }}">
                                                             @csrf
@@ -215,7 +215,7 @@
                                             @foreach($data->userCourses as $request)
                                                 <tr>
                                                     <td>{{ $request->name }}</td>
-                                                    <td>
+                                                    <td class="text-right">
                                                         <form method="POST"
                                                               action="{{ route('user-course.update', ['id' => $request->id]) }}">
                                                             @csrf
@@ -234,9 +234,46 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-12 col-md-12 mb-5">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <span>Программы</span>
+                                <div class="float-md-right">
+                                    <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                                       href="{{ route('teacher.programs.create') }}">
+                                        Добавить
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @if ($data->programs->count() === 0)
+                                    <div class="h4 text-center">Нет программ на данный момент</div>
+                                @else
+                                    <div class="table table-responsive">
+                                        <table class="table">
+                                            <tr>
+                                                <th class="border-top-0">Название</th>
+                                                <th class="border-top-0">Уроков</th>
+                                                <th class="border-top-0"></th>
+                                            </tr>
 
-                {{-- Заявки на курсы --}}
+                                            @foreach($data->programs as $program)
+                                                <tr>
+                                                    <td>{{ $program->name }}</td>
+                                                    <td>{{ $program->lessons->count() }}</td>
+                                                    <td class="text-right">
+                                                        <a href="{{ route('teacher.programs.show', ['id' => $program->id]) }}"
+                                                           type="submit" class="btn btn-success">Открыть</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

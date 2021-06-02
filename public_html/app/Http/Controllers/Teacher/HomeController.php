@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Models\BlogPost;
 use App\Models\EducationCourse;
+use App\Models\EducationLesson;
+use App\Models\EducationProgram;
 use App\Models\Product;
 use App\Repositories\BlogPostRepository;
 use App\Repositories\UserRepository;
@@ -62,6 +64,10 @@ class HomeController extends Controller
                 $userCourseRequest->course_name = 'Неизвестно';
             }
         }
+
+        $programs = EducationProgram::with(['lessons'])->where('user_id', $data->id)->latest()->take(5)->get();
+
+        $data->programs = $programs;
 
         return view('teacher.home', compact('data'));
     }

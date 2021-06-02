@@ -52,6 +52,8 @@ Route::prefix('teacher')->middleware('role:teacher')->group(
         );
 
         Route::get('/', 'Teacher\HomeController@index')->name('teacher.index');
+        Route::resource('programs', 'Teacher\EducationProgramController')->names('teacher.programs');
+        Route::resource('lessons', 'Teacher\EducationLessonController')->names('teacher.lessons');
     }
 );
 
