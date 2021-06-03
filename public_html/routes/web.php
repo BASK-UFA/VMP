@@ -1,11 +1,22 @@
 <?php
 
 // Главная страница
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+Route::get(
+    '/',
+    function () {
+        $blogPosts = \App\Models\BlogPost::latest()->take(3)->get();
+        return view('layouts.new', compact('blogPosts'));
+    }
+)->name('/');
 
 Auth::routes();
+
+Route::get(
+    '/home',
+    function () {
+        return redirect()->route('posts.index');
+    }
+);
 
 // Статьи
 Route::resource('posts', 'PostController')->names('posts');
@@ -85,5 +96,9 @@ Route::prefix('education')->group(
 );
 
 // Курсы
-
 Route::resource('user-course', 'UserEducationCourseController');
+
+// new
+//Route::get('new', function () {
+//   return view('layouts.new');
+//});

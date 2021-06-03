@@ -252,7 +252,7 @@
                     <li class="nav-item active position-relative">
                         <a class="nav-link h4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Курсы</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{ route('education.web') }}">Динамическое WEB
                                 программирование</a>
                             <a class="dropdown-item" href="{{ route('education.system') }}">Сетевое и системное
