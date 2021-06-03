@@ -190,7 +190,7 @@
 
                                                         <div class="form-group">
                                                             <label for="title" class="h5">Заголовок</label>
-                                                            <input name="title" value="{{ old('title', $item->title) }}"
+                                                            <input name="name" value="{{ old('name', $item->name) }}"
                                                                    type="text"
                                                                    id="title"
                                                                    class="form-control"
@@ -251,7 +251,7 @@
                             <div class="col-md-9">
                                 <div class="card p-2">
 
-                                    <form method="POST" action="{{ route('posts.destroy', $item->id) }}">
+                                    <form method="POST" action="{{ route('teacher.lessons.destroy', $item->id) }}">
                                         @method('DELETE')
                                         @csrf
                                         <div class="row justify-content-center">

@@ -60,6 +60,9 @@ Route::prefix('teacher')->middleware('role:teacher')->group(
 // Образование
 Route::prefix('education')->group(
     function () {
+        Route::resource('programs', 'EducationProgramController')->names('education.programs');
+        Route::resource('lessons', 'EducationLessonController')->names('education.lessons');
+
         Route::get(
             'web-programming',
             function () {

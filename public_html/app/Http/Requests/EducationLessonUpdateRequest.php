@@ -13,7 +13,7 @@ class EducationLessonUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class EducationLessonUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'program_id' => 'integer',
+            'image' => 'file',
+            'name' => 'string',
+            'excerpt' => 'string|nullable',
+            'content_raw' => 'string|nullable',
+            'content_html' => 'string|nullable'
         ];
     }
 }

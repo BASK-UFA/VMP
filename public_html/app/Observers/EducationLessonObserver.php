@@ -27,6 +27,7 @@ class EducationLessonObserver
     public function creating(EducationLesson $educationLesson)
     {
         $this->setImage($educationLesson);
+        $this->setRandImage($educationLesson);
         $this->setHtml($educationLesson);
         $this->setUser($educationLesson);
     }

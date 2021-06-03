@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Requests\EducationProgramStoreRequest;
+use App\Http\Requests\EducationProgramUpdateRequest;
 use App\Models\EducationLesson;
 use App\Models\EducationProgram;
 use App\Repositories\BlogPostRepository;
@@ -47,7 +48,7 @@ class EducationProgramController extends Controller
     {
         $data = $this->userRepository->getShow();
 
-        $programs = EducationProgram::where('user_id', $data->id)->all();
+        $programs = EducationProgram::where('user_id', $data->id)->get();
 
         $item = (new EducationProgram());
 
@@ -112,11 +113,11 @@ class EducationProgramController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\EducationProgramUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, int $id): \Illuminate\Http\RedirectResponse
+    public function update(EducationProgramUpdateRequest $request, int $id): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
 

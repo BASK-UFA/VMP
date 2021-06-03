@@ -126,31 +126,34 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
-                            <div>
-                                <a style="font-size: 1.2rem"
-                                   href="{{ route('user.show', ['id' => $item->id]) }}">{{ $item->name }}</a>
+                        @foreach($item->lessons as $lesson)
+                            <div class="posts__item__header" style="font-family: 'Oswald', sans-serif;">
                                 <div>
-                                    {{ $item->created_at }}
+                                    <a style="font-size: 1.2rem"
+                                       href="{{ route('teacher.lessons.show', $lesson->id) }}">{{ $lesson->name }}</a>
+                                    <div>
+                                        {{ $lesson->created_at }}
+                                    </div>
+                                </div>
+                                <a href="{{ route('teacher.lessons.show', $lesson->id) }}" style="font-size:2em;"
+                                   class="pt-2">{{ $lesson->name }}</a>
+                            </div>
+                            <div class="posts__item__content">
+                                <img class="d-flex justify-content-center h-25 w-50" src="{{ asset($lesson->image) }}"
+                                     alt="">
+                                <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">
+                                    {{ $lesson->excerpt }}
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <a class="btn btn-dark text-white mt-2"
+                                       href="{{ route('teacher.lessons.show', $lesson->id) }}">Читать
+                                        полностью</a>
+                                    <a class="btn btn-primary mt-2"
+                                       href="{{ route('teacher.lessons.edit', $lesson->id) }}">Редактировать</a>
                                 </div>
                             </div>
-                            <a href="{{ route('posts.show', ['id' => $item->id]) }}" style="font-size:2em;"
-                               class="pt-2">{{ $item->title }}</a>
-                        </div>
-                        <div class="posts__item__content">
-                            <img class="d-flex justify-content-center h-25 w-50" src="{{ asset($item->image) }}"
-                                 alt="">
-                            <div style="font-family: 'Oswald', sans-serif; font-size:1.5em">
-                                text
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <a class="btn btn-dark text-white mt-2"
-                                   href="{{ route('posts.show', ['id' => $item->id]) }}">Читать
-                                    полностью</a>
-                                <a class="btn btn-primary mt-2"
-                                   href="{{ route('posts.edit', ['id' => $item->id]) }}">Редактировать</a>
-                            </div>
-                        </div>
+                            <hr>
+                        @endforeach
                     </div>
                 </div>
             </div>

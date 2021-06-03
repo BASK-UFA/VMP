@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Http\Requests\EducationLessonStoreRequest;
+use App\Http\Requests\EducationLessonUpdateRequest;
 use App\Models\EducationLesson;
 use App\Models\EducationProgram;
 use App\Repositories\BlogPostRepository;
@@ -56,10 +58,10 @@ class EducationLessonController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\EducationLessonStoreRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    public function store(EducationLessonStoreRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
 
@@ -109,11 +111,11 @@ class EducationLessonController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\EducationLessonUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, int $id): \Illuminate\Http\RedirectResponse
+    public function update(EducationLessonUpdateRequest $request, int $id): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
 

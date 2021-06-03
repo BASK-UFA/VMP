@@ -18,6 +18,6 @@ class EducationLesson extends Model
 
     public function program()
     {
-        return $this->belongsTo(EducationProgram::class, 'program_id');
+        return $this->belongsTo(EducationProgram::class, 'program_id')->with(['lessons']);
     }
 }
