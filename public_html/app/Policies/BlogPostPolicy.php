@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\BlogPost;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Gate;
 
 class BlogPostPolicy
 {
@@ -54,7 +55,9 @@ class BlogPostPolicy
      */
     public function update(User $user, BlogPost $blogPost)
     {
-        return ($user->id === $blogPost->user->id) && $this->checkPermissionModerate($blogPost);
+        return $user->hasRole('admin') || (($user->id === $blogPost->user->id) && $this->checkPermissionModerate(
+                    $blogPost
+                ));
     }
 
     /**
@@ -66,7 +69,7 @@ class BlogPostPolicy
      */
     public function delete(User $user, BlogPost $blogPost)
     {
-        return $user->id === $blogPost->user->id;
+        return $user->hasRole('admin') || ($user->id === $blogPost->user->id);
     }
 
     /**

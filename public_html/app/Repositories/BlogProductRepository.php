@@ -34,10 +34,10 @@ class BlogProductRepository extends CoreRepository
         /** @var LengthAwarePaginator $result */
         $result = $this->startConditions()
             ->select($columns)
+            ->where('is_moderated', 1)
             ->orderBy('id', 'DESC')
             ->with(['user'])
             ->paginate(9);
-
 
         return $result;
     }

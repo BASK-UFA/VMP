@@ -1,0 +1,37 @@
+/*@font-face {*/
+/*    font-family: 'Quacker-Regular', sans-serif;*/
+/*    src: url("../fonts/Quacker-Regular.otf");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*    src: url("../fonts/Montserrat-Regular.ttf");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Montserrat-Light', sans-serif;*/
+/*    src: url("../fonts/montserrat-light-webfont.woff2");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Montserrat-Medium', sans-serif;*/
+/*    src: url("../fonts/Montserrat-Medium.ttf");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Montserrat-Black', sans-serif;*/
+/*    src: url("../fonts/Montserrat-Black.ttf");*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Montserrat-Thin', sans-serif;*/
+/*    src: url("../fonts/Montserrat-Thin.ttf");*/
+/*}*/
+
+.navbar-nav .nav-item a {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif !important;
+}

@@ -18,8 +18,12 @@ class UserRepository extends CoreRepository
      * @param $id
      * @return \App\Models\User|\App\Models\User[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
-    public function getShow($id)
+    public function getShow($id = null)
     {
+        if (empty($id)) {
+            $id = auth()->id();
+        }
+
         $user = User::findOrFail($id);
 
         $user->lastPosts = $user->lastPosts()->load('user');

@@ -1,12 +1,22 @@
 <?php
 
 // Главная страница
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+Route::get(
+    '/',
+    function () {
+        $blogPosts = \App\Models\BlogPost::latest()->take(3)->get();
+        return view('layouts.new', compact('blogPosts'));
+    }
+)->name('/');
 
-// Аунтификация
 Auth::routes();
+
+Route::get(
+    '/home',
+    function () {
+        return redirect()->route('posts.index');
+    }
+);
 
 // Статьи
 Route::resource('posts', 'PostController')->names('posts');
@@ -27,9 +37,43 @@ Route::resource('upload', 'ImageController@upload')
     ->middleware('auth')
     ->names('image');
 
+// Администратор
+Route::prefix('admin')->middleware('role:admin')->group(
+    function () {
+        Route::get(
+            '/home',
+            function () {
+                return redirect()->route('admin.index');
+            }
+        );
+        Route::get('/', 'Admin\HomeController@index')->name('admin.index');
+        Route::get('posts', 'Admin\AllPost')->name('admin.posts');
+        Route::get('products', 'Admin\AllProduct')->name('admin.products');
+    }
+);
+
+// Учитель
+Route::prefix('teacher')->middleware('role:teacher')->group(
+    function () {
+        Route::get(
+            '/home',
+            function () {
+                return redirect()->route('teacher.index');
+            }
+        );
+
+        Route::get('/', 'Teacher\HomeController@index')->name('teacher.index');
+        Route::resource('programs', 'Teacher\EducationProgramController')->names('teacher.programs');
+        Route::resource('lessons', 'Teacher\EducationLessonController')->names('teacher.lessons');
+    }
+);
+
 // Образование
 Route::prefix('education')->group(
     function () {
+        Route::resource('programs', 'EducationProgramController')->names('education.programs');
+        Route::resource('lessons', 'EducationLessonController')->names('education.lessons');
+
         Route::get(
             'web-programming',
             function () {
@@ -39,14 +83,22 @@ Route::prefix('education')->group(
         Route::get(
             'network-systems-administration',
             function () {
-                return 1;
+                return view('education.network');
             }
         )->name('education.system');
         Route::get(
             'school-of-young-programmer',
             function () {
-                return 1;
+                return view('education.school');
             }
         )->name('education.school');
     }
 );
+
+// Курсы
+Route::resource('user-course', 'UserEducationCourseController');
+
+// new
+//Route::get('new', function () {
+//   return view('layouts.new');
+//});

@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $admin = \App\Models\Role::where('slug', 'admin')->first();
+        $teacher = \App\Models\Role::where('slug', 'teacher')->first();
         $publicBlogPost = \App\Models\Permission::where('slug', 'public-blog-post')->first();
 
         $data = [
@@ -24,6 +25,7 @@ class UsersTableSeeder extends Seeder
 
         $user = \App\Models\User::create($data);
         $user->roles()->attach($admin);
+        $user->roles()->attach($teacher);
         $user->permissions()->attach($publicBlogPost);
     }
 }

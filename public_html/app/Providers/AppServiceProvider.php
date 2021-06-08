@@ -4,10 +4,14 @@ namespace App\Providers;
 
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use App\Models\EducationLesson;
+use App\Models\EducationProgram;
 use App\Models\Product;
 use App\Models\User;
 use App\Observers\BlogCategoryObserver;
 use App\Observers\BlogPostObserver;
+use App\Observers\EducationLessonObserver;
+use App\Observers\EducationProgramObserver;
 use App\Observers\ProductObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
@@ -35,5 +39,7 @@ class AppServiceProvider extends ServiceProvider
         Product::observe(ProductObserver::class);
         BlogCategory::observe(BlogCategoryObserver::class);
         User::observe(UserObserver::class);
+        EducationProgram::observe(EducationProgramObserver::class);
+        EducationLesson::observe(EducationLessonObserver::class);
     }
 }
