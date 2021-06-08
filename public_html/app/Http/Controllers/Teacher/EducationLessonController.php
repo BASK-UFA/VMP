@@ -88,7 +88,9 @@ class EducationLessonController extends Controller
     {
         $item = EducationLesson::findOrFail($id);
 
-        return view('teacher.lessons.show', compact('item'));
+        return redirect()
+            ->route('education.lessons.show', ['lesson' => $item->id]);
+        //return view('education.lessons.show', compact('item'));
     }
 
     /**
@@ -128,7 +130,7 @@ class EducationLessonController extends Controller
         }
 
         return redirect()
-            ->route('teacher.lessons.show', ['lesson' => $item->id])
+            ->route('education.lessons.show', ['lesson' => $item->id])
             ->with(['success' => 'Урок успешно обновлен']);
     }
 
@@ -150,7 +152,7 @@ class EducationLessonController extends Controller
         }
 
         return redirect()
-            ->route('teacher.lessons.index')
+            ->route('teacher.index')
             ->with(['success' => 'Урок успешно удален']);
     }
 }

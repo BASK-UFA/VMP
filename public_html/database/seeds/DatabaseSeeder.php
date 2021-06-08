@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(EducationCoursesTableSeeder::class);
 
-        factory(BlogPost::class, 30)->create();
-        factory(Product::class, 30)->create();
+        //factory(BlogPost::class, 30)->create();
+        //factory(Product::class, 30)->create();
     }
 }

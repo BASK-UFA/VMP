@@ -655,7 +655,7 @@
                             <ul class="meta">
                                 <li>Автор: <a href="#">{{ $post->user->name }}</a></li>
                             </ul>
-                            <p class="text">{{ $post->excerpt }}</p>
+                            <p class="text">{{ $post->title }}</p>
                             <a class="more" href="{{ route('posts.show', $post->id) }}">Читать далее <i
                                     class="lni-chevron-right"></i></a>
                         </div>

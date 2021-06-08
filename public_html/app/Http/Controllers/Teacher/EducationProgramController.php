@@ -105,7 +105,7 @@ class EducationProgramController extends Controller
 
         $item = EducationProgram::findOrFail($id);
 
-        $programs = EducationProgram::where('user_id', $data->id)->all();
+        $programs = EducationProgram::where('user_id', $data->id)->get();
 
         return view('teacher.programs.edit', compact('item', 'programs'));
     }
