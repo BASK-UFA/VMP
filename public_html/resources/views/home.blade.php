@@ -192,7 +192,7 @@
                                                     </a>
                                                 </div>
                                             @endcan
-                                            <a href="{{route('products.show', ['id' =>$product->id])}}">
+                                            <a href="{{route('products.show', ['id' => $product->id])}}">
                                                 <div class="card-top position-relative">
                                                     <img class="card-image" alt="" src="{{ asset($product->image) }}"/>
                                                 </div>

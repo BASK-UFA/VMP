@@ -241,21 +241,24 @@
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                       <a class="nav-link h4" href="{{ route('posts.index') }}">Блог</a>
-                   </li>
-                   <li class="nav-item active">
-                       <a class="nav-link h4" href="{{ route('products.index') }}">Наши работы</a>
-                   </li>
-                   <li class="nav-item active position-relative">
-                       <a class="nav-link h4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">Платформа обучения</a>
-                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                           <a class="dropdown-item" href="{{ route('education.web') }}">Динамическое WEB
-                               программирование</a>
-                           <a class="dropdown-item" href="{{ route('education.system') }}">Сетевое и системное
-                               администрирование</a>
-                           <a class="dropdown-item" href="{{ route('education.school') }}">Школа юного программиста</a>
-                       </div>
+                        <a class="nav-link h4" href="{{ route('posts.index') }}">Блог</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link h4" href="{{ route('products.index') }}">Наши работы</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link h4" href="{{ route('education.programs.index') }}">Обучение</a>
+                    </li>
+                    <li class="nav-item active position-relative">
+                        <a class="nav-link h4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Курсы</a>
+                        <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{ route('education.web') }}">Динамическое WEB
+                                программирование</a>
+                            <a class="dropdown-item" href="{{ route('education.system') }}">Сетевое и системное
+                                администрирование</a>
+                            <a class="dropdown-item" href="{{ route('education.school') }}">Школа юного программиста</a>
+                        </div>
                    </li>
                </ul>
                <ul class="navbar-nav">

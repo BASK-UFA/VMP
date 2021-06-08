@@ -91,10 +91,16 @@
                         систем и сетевого оборудования
                     </p>
                     <p>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#SingUpModal">Записаться на
-                            курс
-                        </button>
-                    </p>
+                        @auth()
+                            <button class="btn btn-success" data-toggle="modal" data-target="#SingUpModal">Записаться на
+                                курс
+                            </button>
+                    @else
+                        <div class="alert alert-danger">
+                            Авторизуйтесь на сайте, чтобы иметь возможность записаться на курс
+                        </div>
+                        @endauth
+                        </p>
                 </div>
                 <div class="col-md-4 d-none d-md-block">
                     <img class="img-fluid" src="{{ asset('images/3-product-sm.png') }}" alt="">

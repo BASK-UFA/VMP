@@ -5,7 +5,7 @@
 <div class="row justify-content-center mt-2 mt-md-0">
     <div class="col-md-12">
         <div class="card p-2">
-            <div class="mb-3">
+            <div class="mb-3 text-center">
                 <button type="submit" class="btn-lg text-white btn-dark mt-1 Oswald h4">Сохранить</button>
             </div>
             @if($item->exists)

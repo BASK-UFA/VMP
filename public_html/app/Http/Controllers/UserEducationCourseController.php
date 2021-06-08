@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserEducationCourseStoreRequest;
+use App\Http\Requests\UserEducationCourseUpdateRequest;
+use App\Models\UserEducationCourse;
 use Illuminate\Http\Request;
 
 class UserEducationCourseController extends Controller
@@ -41,7 +43,7 @@ class UserEducationCourseController extends Controller
             $data['user_id'] = \Auth::user()->id;
         }
 
-        $result = \DB::table('users_education_courses')->insert($data);
+        $result = UserEducationCourse::create($data)->save();
 
         if ($result) {
             return back()
@@ -79,21 +81,60 @@ class UserEducationCourseController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEducationCourseUpdateRequest $request, $id)
     {
-        //
+        $data = $request->except(['_token']);
+
+        $courseRequest = UserEducationCourse::findOrFail($id);
+
+        if (\Auth::user()) {
+            if ($courseRequest['user_id'] !== \Auth::user()->id) {
+                abort(403);
+            }
+        } else {
+            abort(403);
+        }
+
+
+        $result = $courseRequest->update($data);
+
+        if ($result) {
+            return back()
+                ->with(['success' => 'Заявка успешно обновлена']);
+        }
+
+        return back()
+            ->withErrors(['msg' => 'Ошибка обновления заявки']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        $courseRequest = UserEducationCourse::findOrFail($id);
+
+        if (\Auth::user()) {
+            if ($courseRequest['user_id'] !== \Auth::user()->id) {
+                abort(403);
+            }
+        } else {
+            abort(403);
+        }
+
+        $result = $courseRequest->delete();
+
+        if ($result) {
+            return back()
+                ->with(['success' => 'Заявка успешно обновлена']);
+        }
+
+        return back()
+            ->withErrors(['msg' => 'Ошибка обновления заявки']);
     }
 }

@@ -1,11 +1,22 @@
 <?php
 
 // Главная страница
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+Route::get(
+    '/',
+    function () {
+        $blogPosts = \App\Models\BlogPost::latest()->take(3)->get();
+        return view('layouts.new', compact('blogPosts'));
+    }
+)->name('/');
 
 Auth::routes();
+
+Route::get(
+    '/home',
+    function () {
+        return redirect()->route('posts.index');
+    }
+);
 
 // Статьи
 Route::resource('posts', 'PostController')->names('posts');
@@ -52,12 +63,17 @@ Route::prefix('teacher')->middleware('role:teacher')->group(
         );
 
         Route::get('/', 'Teacher\HomeController@index')->name('teacher.index');
+        Route::resource('programs', 'Teacher\EducationProgramController')->names('teacher.programs');
+        Route::resource('lessons', 'Teacher\EducationLessonController')->names('teacher.lessons');
     }
 );
 
 // Образование
 Route::prefix('education')->group(
     function () {
+        Route::resource('programs', 'EducationProgramController')->names('education.programs');
+        Route::resource('lessons', 'EducationLessonController')->names('education.lessons');
+
         Route::get(
             'web-programming',
             function () {
@@ -80,5 +96,9 @@ Route::prefix('education')->group(
 );
 
 // Курсы
-
 Route::resource('user-course', 'UserEducationCourseController');
+
+// new
+//Route::get('new', function () {
+//   return view('layouts.new');
+//});
