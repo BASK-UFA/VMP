@@ -202,7 +202,7 @@ class PostController extends Controller
 
         if ($result) {
             return redirect()
-                ->back()
+                ->route('user.show', ['id' => Auth::user()->id])
                 ->with(['success' => "Статья удалена"]);
         } else {
             return back()

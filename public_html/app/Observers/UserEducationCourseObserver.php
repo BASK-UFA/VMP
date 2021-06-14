@@ -36,15 +36,13 @@ class UserEducationCourseObserver
     public function updated(UserEducationCourse $userEducationCourse)
     {
         if ($userEducationCourse->isDirty('is_checked')) {
-            if ($userEducationCourse->is_checked === 1) {
-                $user = User::findOrFail($userEducationCourse->user_id);
+            $user = User::findOrFail($userEducationCourse->user_id);
 
-                $course = EducationCourse::findOrFail($userEducationCourse->course_id);
+            $course = EducationCourse::findOrFail($userEducationCourse->course_id);
 
-                $email = $user->email;
+            $email = $user->email;
 
-                \Mail::to($email)->send(new EducationCourseRequestChecked($user, $course));
-            }
+            \Mail::to($email)->send(new EducationCourseRequestChecked($user, $course));
         }
     }
 

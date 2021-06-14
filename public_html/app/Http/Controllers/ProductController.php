@@ -43,7 +43,7 @@ class ProductController extends Controller
     {
         $item = Product::findOrFail($id);
 
-        $this->authorize('view', $item);
+        //$this->authorize('view', $item);
 
         return view('blog.products.show', compact('item'));
     }
@@ -74,9 +74,11 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $this->authorize('create', Product::class);
+        $item = new Product();
 
-        $item = (new Product())->create($data);
+        $this->authorize('create', $item);
+
+        $item->create($data);
 
         if ($item->exists()) {
             return redirect()
@@ -151,7 +153,7 @@ class ProductController extends Controller
 
         if ($result) {
             return redirect()
-                ->back()
+                ->route('user.show', ['id' => Auth::user()->id])
                 ->with(['success' => 'Работа успешно удалена']);
         } else {
             return back()
