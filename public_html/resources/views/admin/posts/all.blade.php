@@ -27,7 +27,7 @@
                             <td>
                                 <img src="{{ asset($post->image) }}" style="height: 40px" alt="">
                             </td>
-                            <td>{{ $post->title }}</td>
+                            <td><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></td>
                             <td>{{ $post->is_published? 'Да' : 'Нет'}}</td>
                             <td>{{ $post->is_moderated ? 'Блог' : 'Страница пользователя'}}</td>
                             <td>{{ $post->user->name }}</td>
@@ -44,6 +44,16 @@
                                         <input type="hidden" name="is_moderated" value="1">
                                         <button type="submit" class="btn btn-success text-white">
                                             Опубликовать
+                                        </button>
+                                    </form>
+                                @else
+                                    <form method="post" class=""
+                                          action="{{ route('posts.update', ['id' => $post->id]) }}">
+                                        @method('PUT')
+                                        @csrf
+                                        <input type="hidden" name="is_moderated" value="0">
+                                        <button type="submit" class="btn btn-warning text-white">
+                                            Скрыть
                                         </button>
                                     </form>
                                 @endif

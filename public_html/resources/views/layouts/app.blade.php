@@ -311,16 +311,16 @@
                        </li>
                    @endguest
                </ul>
-           </div>
+            </div>
 
         </div>
     </nav>
     <main class="cont my-4" style="padding-top: 4.4rem">
         @yield('content')
     </main>
-    <footer class="navbar-dark text-white text-center bg-dark position-absolute" style="bottom: 0; left: 0; right: 0">
-        <div>Сайт преподавателя ГАПОУ БАСК Басырова Г.Р.</div>
-    </footer>
+    {{--    <footer class="navbar-dark text-white text-center bg-dark position-absolute" style="bottom: 0; left: 0; right: 0">--}}
+    {{--        <div>Сайт преподавателя ГАПОУ БАСК Басырова Г.Р.</div>--}}
+    {{--    </footer>--}}
 </div>
 </body>
 </html>

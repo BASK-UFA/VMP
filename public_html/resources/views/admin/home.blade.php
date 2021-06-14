@@ -98,8 +98,6 @@
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-primary">Удалить</button>
-
-
                                         <a class="btn btn-primary "
                                            href="{{ route('posts.edit', ['id' => $post->id]) }}">Редактировать</a>
                                         <hr class="bg-dark">
@@ -211,6 +209,16 @@
                                                             Опубликовать
                                                         </button>
                                                     </form>
+                                                @else
+                                                    <form method="post" class=""
+                                                          action="{{ route('products.update', ['id' => $product->id]) }}">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <input type="hidden" name="is_moderated" value="0">
+                                                        <button type="submit" class="btn btn-warning text-white">
+                                                            Скрыть
+                                                        </button>
+                                                    </form>
                                                 @endif
                                             </td>
                                         </tr>
@@ -292,6 +300,17 @@
                                                 </button>
                                             </form>
                                         @endif
+                                        @if($post->is_moderated)
+                                            <form method="post" class="d-inline"
+                                                  action="{{ route('posts.update', ['id' => $post->id]) }}">
+                                                @method('PUT')
+                                                @csrf
+                                                <input type="hidden" name="is_moderated" value="0">
+                                                <button type="submit" class="btn btn-warning text-white mt-2">
+                                                    Скрыть с блога
+                                                </button>
+                                            </form>
+                                        @endif
                                         <a class="btn btn-dark text-white mt-2"
                                            href="{{ route('posts.show', ['id' => $post->id]) }}">Читать
                                             полностью</a>
@@ -301,7 +320,7 @@
                                         @endcan
                                     </div>
                                 </div>
-                            @endforeach
+                                @endforeach
                         </div>
                         @if ($data->lastPosts->count()>=5)
                             <div class="card-footer border-top-0 d-flex justify-content-center">
