@@ -35,7 +35,7 @@ class EducationCourseRequestChecked extends Mailable
     public function build()
     {
         return $this->from('support@vmp-ufa.ru')
-            ->view('mail.default')
+            ->markdown('mail.default')
             ->with(
                 [
                     'userName' => $this->user->name,
