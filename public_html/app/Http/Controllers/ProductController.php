@@ -153,7 +153,7 @@ class ProductController extends Controller
 
         if ($result) {
             return redirect()
-                ->back()
+                ->route('user.show', ['id' => Auth::user()->id])
                 ->with(['success' => 'Работа успешно удалена']);
         } else {
             return back()
