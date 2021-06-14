@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
     <!--====== Title ======-->
-    <title>Basic - SaaS Landing Page</title>
+    <title>Виртуальная мастерская программиста</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,10 +150,10 @@
                     <div class="header-hero-content text-center">
                         {{--                        <h3 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Basic - SaaS Landing Page</h3>--}}
                         <h1 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">Виртуальная
-                            мастерская программистов</h1>
+                            мастерская программиста</h1>
                         {{--                        <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>--}}
-                        <a href="{{ route('education.programs.index') }}" class="main-btn wow fadeInUp"
-                           data-wow-duration="1.3s" data-wow-delay="1.1s">Начать</a>
+                        <a href="{{ route('login') }}" class="main-btn wow fadeInUp"
+                           data-wow-duration="1.3s" data-wow-delay="1.1s">Присоединиться</a>
                     </div> <!-- header hero content -->
                 </div>
             </div> <!-- row -->
@@ -204,91 +204,100 @@
 
 {{--<!--====== SERVICES PART START ======-->--}}
 
-{{--<section id="features" class="services-area pt-120">--}}
-{{--    <div class="container">--}}
-{{--        <div class="row justify-content-center">--}}
-{{--            <div class="col-lg-10">--}}
-{{--                <div class="section-title text-center pb-40">--}}
-{{--                    <div class="line m-auto"></div>--}}
-{{--                    <h3 class="title">Clean and simple design, <span> Comes with everything you need to get started!</span></h3>--}}
-{{--                </div> <!-- section title -->--}}
-{{--            </div>--}}
-{{--        </div> <!-- row -->--}}
-{{--        <div class="row justify-content-center">--}}
-{{--            <div class="col-lg-4 col-md-7 col-sm-8">--}}
-{{--                <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">--}}
-{{--                    <div class="services-icon">--}}
-{{--                        <img class="shape" src="assets/images/services-shape.svg" alt="shape">--}}
-{{--                        <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">--}}
-{{--                        <i class="lni-baloon"></i>--}}
-{{--                    </div>--}}
-{{--                    <div class="services-content mt-30">--}}
-{{--                        <h4 class="services-title"><a href="#">Clean</a></h4>--}}
-{{--                        <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>--}}
-{{--                        <a class="more" href="#">Learn More <i class="lni-chevron-right"></i></a>--}}
-{{--                    </div>--}}
-{{--                </div> <!-- single services -->--}}
-{{--            </div>--}}
-{{--            <div class="col-lg-4 col-md-7 col-sm-8">--}}
-{{--                <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">--}}
-{{--                    <div class="services-icon">--}}
-{{--                        <img class="shape" src="assets/images/services-shape.svg" alt="shape">--}}
-{{--                        <img class="shape-1" src="assets/images/services-shape-2.svg" alt="shape">--}}
-{{--                        <i class="lni-cog"></i>--}}
-{{--                    </div>--}}
-{{--                    <div class="services-content mt-30">--}}
-{{--                        <h4 class="services-title"><a href="#">Robust</a></h4>--}}
-{{--                        <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>--}}
-{{--                        <a class="more" href="#">Learn More <i class="lni-chevron-right"></i></a>--}}
-{{--                    </div>--}}
-{{--                </div> <!-- single services -->--}}
-{{--            </div>--}}
-{{--            <div class="col-lg-4 col-md-7 col-sm-8">--}}
-{{--                <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">--}}
-{{--                    <div class="services-icon">--}}
-{{--                        <img class="shape" src="assets/images/services-shape.svg" alt="shape">--}}
-{{--                        <img class="shape-1" src="assets/images/services-shape-3.svg" alt="shape">--}}
-{{--                        <i class="lni-bolt-alt"></i>--}}
-{{--                    </div>--}}
-{{--                    <div class="services-content mt-30">--}}
-{{--                        <h4 class="services-title"><a href="#">Powerful</a></h4>--}}
-{{--                        <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>--}}
-{{--                        <a class="more" href="#">Learn More <i class="lni-chevron-right"></i></a>--}}
-{{--                    </div>--}}
-{{--                </div> <!-- single services -->--}}
-{{--            </div>--}}
-{{--        </div> <!-- row -->--}}
-{{--    </div> <!-- container -->--}}
-{{--</section>--}}
+<section id="features" class="services-area pt-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="section-title text-center pb-40">
+                    <div class="line m-auto"></div>
+                    <h3 class="title"><span>ВМП — образовательная платформа и конструктор
+                        онлайн-курсов.  Наша цель — сделать образование открытым и удобным.</span></h3>
+                </div> <!-- section title -->
+            </div>
+        </div> <!-- row -->
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-7 col-sm-8">
+                <div class="single-services text-center mt-30 wow fadeIn h-100" data-wow-duration="1s"
+                     data-wow-delay="0.2s">
+                    <div class="services-icon">
+                        <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                        <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                        <i class="lni-play"></i>
+                    </div>
+                    <div class="services-content mt-30">
+                        <h4 class="services-title"><a href="#">Процесс</a></h4>
+                        <p class="text">Учиться на ВМП удобно: сайт адаптивен для компьютеров, смартфонов и
+                            планшетов</p>
+                    </div>
+                </div> <!-- single services -->
+            </div>
+            <div class="col-lg-4 col-md-7 col-sm-8">
+                <div class="single-services text-center mt-30 wow fadeIn h-100" data-wow-duration="1s"
+                     data-wow-delay="0.5s">
+                    <div class="services-icon">
+                        <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                        <img class="shape-1" src="assets/images/services-shape-2.svg" alt="shape">
+                        <i class="lni-layout"></i>
+                    </div>
+                    <div class="services-content mt-30">
+                        <h4 class="services-title"><a href="#">Платформа</a></h4>
+                        <p class="text">Открытый доступ к курсам и возможность создания собственного образовательного
+                            материала</p>
+                    </div>
+                </div> <!-- single services -->
+            </div>
+            <div class="col-lg-4 col-md-7 col-sm-8">
+                <div class="single-services text-center mt-30 wow fadeIn h-100" data-wow-duration="1s"
+                     data-wow-delay="0.8s">
+                    <div class="services-icon">
+                        <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                        <img class="shape-1" src="assets/images/services-shape-3.svg" alt="shape">
+                        <i class="lni-users"></i>
+                    </div>
+                    <div class="services-content mt-30">
+                        <h4 class="services-title"><a href="#">Командная работа</a></h4>
+                        <p class="text">Платформа нацелена на активную работу с учениками. Для этого разработан ряд
+                            инструментов: блоги и профили</p>
+                    </div>
+                </div> <!-- single services -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
 
 {{--<!--====== SERVICES PART ENDS ======-->--}}
 
 {{--<!--====== ABOUT PART START ======-->--}}
 
-{{--<section id="about" class="about-area pt-70">--}}
-{{--    <div class="container">--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-lg-6">--}}
-{{--                <div class="about-content mt-50 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">--}}
-{{--                    <div class="section-title">--}}
-{{--                        <div class="line"></div>--}}
-{{--                        <h3 class="title">Quick & Easy <span>to Use Bootstrap Template</span></h3>--}}
-{{--                    </div> <!-- section title -->--}}
-{{--                    <p class="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seiam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.</p>--}}
-{{--                    <a href="#" class="main-btn">Try it Free</a>--}}
-{{--                </div> <!-- about content -->--}}
-{{--            </div>--}}
-{{--            <div class="col-lg-6">--}}
-{{--                <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">--}}
-{{--                    <img src="assets/images/about1.svg" alt="about">--}}
-{{--                </div> <!-- about image -->--}}
-{{--            </div>--}}
-{{--        </div> <!-- row -->--}}
-{{--    </div> <!-- container -->--}}
-{{--    <div class="about-shape-1">--}}
-{{--        <img src="assets/images/about-shape-1.svg" alt="shape">--}}
-{{--    </div>--}}
-{{--</section>--}}
+<section id="about" class="about-area pt-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-content mt-50 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="section-title">
+                        <div class="line"></div>
+                        <h3 class="title">Помогаем учиться, <span>а также создавать свои курсы и обучать</span></h3>
+                    </div> <!-- section title -->
+                    <p class="text">
+                        Виртуальная мастерская программиста - это сервис с комплексным подходом к обучению, который
+                        позволяет стать программистом (и не только). Простая регистрация — и вы участник сообщества, в
+                        котором изучают и преподают программирование.
+                    </p>
+                    <a href="{{ route('login') }}" class="main-btn">Присоединиться</a>
+                </div> <!-- about content -->
+            </div>
+            <div class="col-lg-6">
+                <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s"
+                     data-wow-delay="0.5s">
+                    <img src="assets/images/about1.svg" alt="about">
+                </div> <!-- about image -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+    <div class="about-shape-1">
+        <img src="assets/images/about-shape-1.svg" alt="shape">
+    </div>
+</section>
 
 {{--<!--====== ABOUT PART ENDS ======-->--}}
 
@@ -649,7 +658,8 @@
                 <div class="col-lg-4 col-md-7">
                     <div class="single-blog mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                         <div class="blog-image">
-                            <img src="{{ asset($post->image) }}" alt="blog">
+                            <img class="img-fluid" style="object-fit: cover; height: 234px"
+                                 src="{{ asset($post->image) }}" alt="blog">
                         </div>
                         <div class="blog-content">
                             <ul class="meta">
@@ -759,7 +769,7 @@
                 <div class="col-lg-12">
                     <div class="copyright d-sm-flex justify-content-between">
                         <div class="copyright-content">
-                            <p class="text">Сайт преподавателя Басыровы Г.Р.</p>
+                            <p class="text">Сайт преподавателя Басыровой Г.Р.</p>
                         </div> <!-- copyright content -->
                     </div> <!-- copyright -->
                 </div>

@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Mail\EducationCourseRequestChecked;
 use App\Mail\EducationCourseRequestCreated;
+use App\Models\EducationCourse;
 use App\Models\User;
 use App\Models\UserEducationCourse;
 
@@ -19,9 +20,11 @@ class UserEducationCourseObserver
     {
         $user = User::findOrFail($userEducationCourse->user_id);
 
+        $course = EducationCourse::findOrFail($userEducationCourse->course_id);
+
         $email = $user->email;
 
-        \Mail::to($email)->send(new EducationCourseRequestCreated($user, $userEducationCourse));
+        \Mail::to($email)->send(new EducationCourseRequestCreated($user, $course));
     }
 
     /**
@@ -33,13 +36,13 @@ class UserEducationCourseObserver
     public function updated(UserEducationCourse $userEducationCourse)
     {
         if ($userEducationCourse->isDirty('is_checked')) {
-            if ($userEducationCourse->is_checked === 1) {
-                $user = User::findOrFail($userEducationCourse->user_id);
+            $user = User::findOrFail($userEducationCourse->user_id);
 
-                $email = $user->email;
+            $course = EducationCourse::findOrFail($userEducationCourse->course_id);
 
-                \Mail::to($email)->send(new EducationCourseRequestChecked($user, $userEducationCourse));
-            }
+            $email = $user->email;
+
+            \Mail::to($email)->send(new EducationCourseRequestChecked($user, $course));
         }
     }
 

@@ -8,7 +8,7 @@
             <div class="col-md-12 m-auto">
                 <div class="container">
                     <div class="row">
-                        <div class="pt-5 col-md-12 text-center">
+                        <div class="pt-5 mb-3 col-md-12 text-center">
                             <h1 class="work-text Oswald">
                                 <div>УЧЕБНЫЕ ПРОГРАММЫ</div>
                             </h1>
