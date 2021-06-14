@@ -34,12 +34,12 @@ class EducationCourseRequestCreated extends Mailable
     public function build()
     {
         return $this->from('support@vmp-ufa.ru')
-            ->view('mail.default')
+            ->markdown('mail.default')
             ->with(
                 [
                     'userName' => $this->user->name,
                     'courseName' => $this->course->name,
-                    'text' => "Здравствуйте, ".$this->user->name." Ваша заявка на курс ".$this->course->name." была принята."
+                    'text' => "Здравствуйте, ".$this->user->name." Ваша заявка на курс ".$this->course->name." была создана, ожидайте подтверждения."
                 ]
             );
     }
