@@ -73,9 +73,86 @@
         </div>
     </div>
 
+    <div class="modal fade" id="videoUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Загрузить видео</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="videoUploadForm" method="POST" enctype="multipart/form-data"
+                      action="{{ route('image.store') }}">
+                    @csrf
+                    <div class="modal-body">
+                        <div>
+                            <section class="alert alert-danger" v-if="errored">
+                                <div><b>Не удалось загрузить видео.</b></div>
+                            </section>
+
+                            <section v-else>
+                                <div class="alert alert-info" v-if="loading">Загрузка ...</div>
+                                <div class="alert alert-success" v-if="message">
+                                    <div class="text-break">Ваше видео загружено в статью. Не забудьте сохранить
+                                        изменения.
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="form-check">
+                            <input v-bind:value="true" v-model="file" class="form-check-input" type="radio"
+                                   name="exampleRadios" id="radioFileUpload" checked>
+                            <label class="form-check-label" for="radioFileUpload">
+                                Загрузить с файла
+                            </label>
+                        </div>
+
+                        <div class="form-check mb-2">
+                            <input v-bind:value="false" v-model="file" class="form-check-input" type="radio"
+                                   name="exampleRadios" id="radioFileLink">
+                            <label class="form-check-label" for="radioFileLink">
+                                Загрузить по ссылке
+                            </label>
+                        </div>
+
+                        <div v-if="file" class="form-row mb-4">
+                            <div class="form-group">
+                                <input id="videoFile" name="file" type="file" class="form-control-file" required>
+                            </div>
+                        </div>
+
+                        <div v-else>
+                            <div class="form-group">
+                                <label for="videoLink">Ссылка на видео</label>
+                                <input class="col form-control" id="videoLink" name="VideoLink" type="text"
+                                       placeholder="Ссылка">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button v-on:click="upload" type="button" class="btn btn-primary">Загрузить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
     <script>
+        function getId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+
+            return (match && match[2].length === 11)
+                ? "https://www.youtube.com/embed/" + match[2]
+                : url;
+        }
+
         let vm = new Vue({
             el: '#load-form',
             data() {
@@ -125,6 +202,63 @@
                             this.errored = true;
                         })
                         .finally(() => (this.loading = false));
+                }
+            }
+        });
+
+        let videoUpload = new Vue({
+            el: '#videoUpload',
+            data() {
+                return {
+                    file: true,
+                    checked: false,
+                    message: null,
+                    loading: false,
+                    errored: false,
+                    errors: null,
+                    value: null
+                };
+            },
+            methods: {
+                upload: function (event) {
+                    this.errored = false;
+                    this.loading = true;
+                    this.message = null;
+                    this.errors = null;
+                    this.value = null;
+
+                    var data = new FormData(document.getElementById("videoUploadForm"));
+                    var image = document.querySelector('#videoFile')
+                    var link = document.querySelector('#videoLink')
+
+                    if (this.file) {
+                        data.file = image.files[0];
+                        axios
+                            .post('/api/image', data, {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data',
+                                        'X-CSRF-TOKEN': document.querySelector("#videoUploadForm [name='_token']").value
+                                    }
+                                }
+                            )
+                            .then(response => {
+                                this.message = response.data.message;
+                                this.value = response.data.value;
+                                var textarea = document.getElementById('content_raw');
+                                textarea.value += "\n<video controls style='max-width: 100%' src='" + this.value + "' alt='Описание'><source height='100%' width='100%' src='" + this.value + "'></video>";
+                            })
+                            .catch(error => {
+                                this.errors = error.response.data;
+                                console.log(this.errors);
+                                this.errored = true;
+                            })
+                            .finally(() => (this.loading = false));
+                    } else {
+                        var textarea = document.getElementById('content_raw');
+                        let value = getId(link.value)
+                        textarea.value += "\n<div class='lesson-container'><iframe src='" + value + "' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><div>";
+                        this.loading = false
+                    }
                 }
             }
         });
@@ -201,6 +335,10 @@
 
                                                         <div class="form-group">
                                                             <label for="content_raw" class="h5">Содержание урока</label>
+                                                            <div>
+                                                                <button class="btn btn-outline-dark"><strong>B</strong>
+                                                                </button>
+                                                            </div>
                                                             <textarea
                                                                 style="height: 400px;"
                                                                 name="content_raw"
@@ -212,6 +350,11 @@
                                                             <button type="button" class="btn btn-dark"
                                                                     data-toggle="modal" data-target="#exampleModal">
                                                                 Загрузить изображение
+                                                            </button>
+
+                                                            <button type="button" class="btn btn-dark"
+                                                                    data-toggle="modal" data-target="#videoUpload">
+                                                                Загрузить видео
                                                             </button>
                                                         </div>
 

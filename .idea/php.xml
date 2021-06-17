@@ -93,7 +93,6 @@
       <path value="$PROJECT_DIR$/public_html/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/public_html/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/public_html/vendor/justinrainbow/json-schema" />
-      <path value="$PROJECT_DIR$/public_html/vendor/caouecs/laravel-lang" />
       <path value="$PROJECT_DIR$/public_html/vendor/andreasindal/laravel-markdown" />
       <path value="$PROJECT_DIR$/public_html/vendor/spatie/laravel-permission" />
       <path value="$PROJECT_DIR$/public_html/vendor/league/mime-type-detection" />
@@ -104,6 +103,7 @@
       <path value="$PROJECT_DIR$/public_html/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/public_html/vendor/php-parallel-lint/php-console-highlighter" />
       <path value="$PROJECT_DIR$/public_html/vendor/php-parallel-lint/php-console-color" />
+      <path value="$PROJECT_DIR$/public_html/vendor/doctrine/deprecations" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
