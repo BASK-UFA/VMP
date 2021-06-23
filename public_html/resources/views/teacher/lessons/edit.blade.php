@@ -315,7 +315,7 @@
                                                                     required>
                                                                 @foreach($programs as $program)
                                                                     <option value="{{ $program->id }}"
-                                                                            @if($program->id == $item->product_id) selected @endif>
+                                                                            @if($program->id == $item->product_id || (int) Request::get('program') === $program->id) selected @endif>
                                                                         {{ $program->name }}
                                                                     </option>
                                                                 @endforeach
