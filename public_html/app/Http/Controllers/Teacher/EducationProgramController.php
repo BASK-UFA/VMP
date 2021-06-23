@@ -52,6 +52,8 @@ class EducationProgramController extends Controller
 
         $item = (new EducationProgram());
 
+        $this->authorize('create', $item);
+
         return view('teacher.programs.edit', compact('item', 'programs'));
     }
 
@@ -66,6 +68,8 @@ class EducationProgramController extends Controller
         $data = $request->all();
 
         $item = (new EducationProgram())->fill($data);
+
+        $this->authorize('create', $item);
 
         $result = $item->save();
 
@@ -90,6 +94,8 @@ class EducationProgramController extends Controller
 
         $item = EducationProgram::findOrFail($id);
 
+        $this->authorize('update', $item);
+
         return view('teacher.programs.show', compact('item', 'data'));
     }
 
@@ -104,6 +110,8 @@ class EducationProgramController extends Controller
         $data = $this->userRepository->getShow();
 
         $item = EducationProgram::findOrFail($id);
+
+        $this->authorize('update', $item);
 
         $programs = EducationProgram::where('user_id', $data->id)->get();
 
@@ -122,6 +130,8 @@ class EducationProgramController extends Controller
         $data = $request->all();
 
         $item = EducationProgram::findOrFail($id)->fill($data);
+
+        $this->authorize('update', $item);
 
         $result = $item->save();
 
@@ -145,6 +155,8 @@ class EducationProgramController extends Controller
     {
         $item = EducationProgram::findOrFail($id);
 
+        $this->authorize('delete', $item);
+
         $result = $item->delete();
 
         if (!$result) {
@@ -152,7 +164,7 @@ class EducationProgramController extends Controller
         }
 
         return redirect()
-            ->route('teacher.programs.index')
+            ->route('teacher.index')
             ->with(['success' => 'Программа успешно удалена']);
     }
 }
