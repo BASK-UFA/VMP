@@ -120,7 +120,7 @@
                         <span>Уроки</span>
                         <div class="float-md-right">
                             <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                               href="{{ route('teacher.lessons.create') }}">
+                               href="{{ route('teacher.lessons.create', ['program' => $item->id]) }}">
                                 Добавить новый урок
                             </a>
                         </div>
