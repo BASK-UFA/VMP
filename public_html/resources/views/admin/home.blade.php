@@ -251,7 +251,7 @@
                     </div>
                     <div>
                         <div class="card-footer pb-3 posts">
-                            @if ($data->lastPosts->isEmpty())
+                            @if ($data->posts->isEmpty())
                                 <p class="Oswald h3 text-center">Статей пока нет</p>
                             @endif
                             @foreach($data->posts as $post)
@@ -322,7 +322,7 @@
                                 </div>
                                 @endforeach
                         </div>
-                        @if ($data->lastPosts->count()>=5)
+                        @if ($data->posts->count()>=5)
                             <div class="card-footer border-top-0 d-flex justify-content-center">
                                 <a href="{{ route('admin.posts') }}" class="btn btn-dark">Показать
                                     все
