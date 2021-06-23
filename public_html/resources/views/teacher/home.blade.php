@@ -149,91 +149,93 @@
                 <h1 class="mb-5">Кабинет учителя</h1>
 
                 <div class="row">
-                    <div class="col-12 col-md-12 mb-5">
-                        <div class="card">
-                            <div class="card-header bg-dark text-white">
-                                <span>Заявки на курсы</span>
-                                <div class="float-md-right">
-                                    <a class="mt-2 mt-md-0 btn btn-secondary text-white"
-                                       href="#" data-toggle="modal" data-target="#DraftModal">
-                                        Архив заявок
-                                    </a>
+                    @if ($data->courses()->count() > 0)
+                        <div class="col-12 col-md-12 mb-5">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white">
+                                    <span>Заявки на курсы</span>
+                                    <div class="float-md-right">
+                                        <a class="mt-2 mt-md-0 btn btn-secondary text-white"
+                                           href="#" data-toggle="modal" data-target="#DraftModal">
+                                            Архив заявок
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @if ($data->userCourseRequests->count() === 0)
+                                        <div class="h4 text-center">Нет новых заявок</div>
+                                    @else
+                                        <div class="table table-responsive">
+                                            <table class="table">
+                                                <tr>
+                                                    <th class="border-top-0">Курс</th>
+                                                    <th class="border-top-0">Имя</th>
+                                                    <th class="border-top-0">Телефон</th>
+                                                </tr>
+                                                @foreach($data->userCourseRequests as $request)
+                                                    <tr>
+                                                        <td>{{ $request->course_name }}</td>
+                                                        <td>{{ $request->user_name }}</td>
+                                                        <td>{{ $request->user_phone }}</td>
+                                                        <td class="text-right">
+                                                            <form method="POST"
+                                                                  action="{{ route('user-course.update', ['id' => $request->id]) }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="is_checked" value="1">
+                                                                <button type="submit" class="btn btn-success">
+                                                                    Подтвердить
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="card-body">
-                                @if ($data->userCourseRequests->count() === 0)
-                                    <div class="h4 text-center">Нет новых заявок</div>
-                                @else
-                                    <div class="table table-responsive">
-                                        <table class="table">
-                                            <tr>
-                                                <th class="border-top-0">Курс</th>
-                                                <th class="border-top-0">Имя</th>
-                                                <th class="border-top-0">Телефон</th>
-                                            </tr>
-                                            @foreach($data->userCourseRequests as $request)
-                                                <tr>
-                                                    <td>{{ $request->course_name }}</td>
-                                                    <td>{{ $request->user_name }}</td>
-                                                    <td>{{ $request->user_phone }}</td>
-                                                    <td class="text-right">
-                                                        <form method="POST"
-                                                              action="{{ route('user-course.update', ['id' => $request->id]) }}">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <input type="hidden" name="is_checked" value="1">
-                                                            <button type="submit" class="btn btn-success">
-                                                                Подтвердить
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </table>
-                                    </div>
-                                @endif
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-12 mb-5">
-                        <div class="card">
-                            <div class="card-header bg-dark text-white">
-                                <span>Мои курсы</span>
-                                <div class="float-md-right">
-                                    <button class="btn btn-secondary">Добавить</button>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                @if ($data->userCourses->count() === 0)
-                                    <div class="h4 text-center">Нет новых заявок</div>
-                                @else
-                                    <div class="table table-responsive">
-                                        <table class="table">
-                                            <tr>
-                                                <th class="border-top-0">Курс</th>
-                                            </tr>
-                                            @foreach($data->userCourses as $request)
-                                                <tr>
-                                                    <td>{{ $request->name }}</td>
-                                                    <td class="text-right">
-                                                        <form method="POST"
-                                                              action="{{ route('user-course.update', ['id' => $request->id]) }}">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <input type="hidden" name="is_checked" value="1">
-                                                            <button type="submit" class="btn btn-danger">
-                                                                Удалить
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </table>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+                    {{--                    <div class="col-12 col-md-12 mb-5">--}}
+                    {{--                        <div class="card">--}}
+                    {{--                            <div class="card-header bg-dark text-white">--}}
+                    {{--                                <span>Мои курсы</span>--}}
+                    {{--                                <div class="float-md-right">--}}
+                    {{--                                    <button class="btn btn-secondary">Добавить</button>--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <div class="card-body">--}}
+                    {{--                                @if ($data->userCourses->count() === 0)--}}
+                    {{--                                    <div class="h4 text-center">Нет новых заявок</div>--}}
+                    {{--                                @else--}}
+                    {{--                                    <div class="table table-responsive">--}}
+                    {{--                                        <table class="table">--}}
+                    {{--                                            <tr>--}}
+                    {{--                                                <th class="border-top-0">Курс</th>--}}
+                    {{--                                            </tr>--}}
+                    {{--                                            @foreach($data->userCourses as $request)--}}
+                    {{--                                                <tr>--}}
+                    {{--                                                    <td>{{ $request->name }}</td>--}}
+                    {{--                                                    <td class="text-right">--}}
+                    {{--                                                        <form method="POST"--}}
+                    {{--                                                              action="{{ route('user-course.update', ['id' => $request->id]) }}">--}}
+                    {{--                                                            @csrf--}}
+                    {{--                                                            @method('PUT')--}}
+                    {{--                                                            <input type="hidden" name="is_checked" value="1">--}}
+                    {{--                                                            <button type="submit" class="btn btn-danger">--}}
+                    {{--                                                                Удалить--}}
+                    {{--                                                            </button>--}}
+                    {{--                                                        </form>--}}
+                    {{--                                                    </td>--}}
+                    {{--                                                </tr>--}}
+                    {{--                                            @endforeach--}}
+                    {{--                                        </table>--}}
+                    {{--                                    </div>--}}
+                    {{--                                @endif--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                     <div class="col-12 col-md-12 mb-5">
                         <div class="card">
                             <div class="card-header bg-dark text-white">

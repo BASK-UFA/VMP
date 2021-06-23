@@ -11,7 +11,6 @@
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/beyondcode/laravel-dump-server" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/caouecs/laravel-lang" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/dnoegel/php-xdg-base-dir" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/cache" />
