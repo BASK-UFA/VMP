@@ -215,7 +215,7 @@
                                                         @method('PUT')
                                                         @csrf
                                                         <input type="hidden" name="is_moderated" value="0">
-                                                        <button type="submit" class="btn btn-warning text-white">
+                                                        <button type="submit" class="btn btn-danger text-white">
                                                             Скрыть
                                                         </button>
                                                     </form>
@@ -306,11 +306,11 @@
                                                 @method('PUT')
                                                 @csrf
                                                 <input type="hidden" name="is_moderated" value="0">
-                                                <button type="submit" class="btn btn-warning text-white mt-2">
+                                                <button type="submit" class="btn btn-danger text-white mt-2">
                                                     Скрыть с блога
                                                 </button>
                                             </form>
-                                        @endif
+                                            @endif
                                         <a class="btn btn-dark text-white mt-2"
                                            href="{{ route('posts.show', ['id' => $post->id]) }}">Читать
                                             полностью</a>

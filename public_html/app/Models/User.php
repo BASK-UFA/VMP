@@ -146,5 +146,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'users_roles');
     }
+
+    /**
+     * Пользователь имеет курсы
+     */
+    public function courses()
+    {
+        return $this->hasMany(EducationCourse::class, 'user_id');
+    }
 }
 

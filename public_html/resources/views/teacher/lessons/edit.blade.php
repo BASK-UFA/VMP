@@ -335,10 +335,10 @@
 
                                                         <div class="form-group">
                                                             <label for="content_raw" class="h5">Содержание урока</label>
-                                                            <div>
-                                                                <button class="btn btn-outline-dark"><strong>B</strong>
-                                                                </button>
-                                                            </div>
+                                                            {{--                                                            <div>--}}
+                                                            {{--                                                                <button class="btn btn-outline-dark"><strong>B</strong>--}}
+                                                            {{--                                                                </button>--}}
+                                                            {{--                                                            </div>--}}
                                                             <textarea
                                                                 style="height: 400px;"
                                                                 name="content_raw"

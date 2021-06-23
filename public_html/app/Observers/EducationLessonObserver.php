@@ -60,13 +60,13 @@ class EducationLessonObserver
     private function setRandImage(EducationLesson $educationLesson)
     {
         if (!$educationLesson->isDirty('image')) {
-            $educationLesson->image = 'images/'.rand(1, 6).'-lg-posts.jpg';
+            $educationLesson->image = $educationLesson->program->image;
         }
     }
 
     /**
      * Если дата публикации не установлена и происходит установка флага - Опубликовано,
-     * то устанавливаем дату публикации на текующую.
+     * то устанавливаем дату публикации на текущую.
      *
      * @param  EducationLesson  $educationLesson
      */

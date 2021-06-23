@@ -52,7 +52,7 @@
                                         @method('PUT')
                                         @csrf
                                         <input type="hidden" name="is_moderated" value="0">
-                                        <button type="submit" class="btn btn-warning text-white">
+                                        <button type="submit" class="btn btn-danger text-white">
                                             Скрыть
                                         </button>
                                     </form>
