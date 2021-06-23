@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-8">
                     <h4 class="Oswald mb-3">{{ $program->lessons->first()->name }}</h4>
-                    <div class="lesson-container">{!! $program->lessons->first()->content_html !!}</div>
+                    <div class="">{!! $program->lessons->first()->content_html !!}</div>
                 </div>
             </div>
         @endif

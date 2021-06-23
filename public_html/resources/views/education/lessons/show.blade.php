@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-8">
                 <h4 class="Oswald mb-3">{{ $lesson->name }}</h4>
-                <div class="lesson-container">{!! $lesson->content_html !!}</div>
+                <div class="">{!! $lesson->content_html !!}</div>
             </div>
         </div>
     </div>

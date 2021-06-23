@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6ef24e41c0561be9f4dcf0ff1bd9aa4",
+    "content-hash": "c50ee0d13d1c8a986cfbacb769936026",
     "packages": [
         {
             "name": "andreasindal/laravel-markdown",
@@ -53,53 +53,6 @@
             },
             "abandoned": true,
             "time": "2016-08-18T19:20:45+00:00"
-        },
-        {
-            "name": "caouecs/laravel-lang",
-            "version": "4.0.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/caouecs/lang.git",
-                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/lang/zipball/134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
-                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*"
-            },
-            "suggest": {
-                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
-                "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
-                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
-                "overtrue/laravel-lang": "Command to add languages in your project"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "caouecs",
-                    "email": "caouecs@caouecs.net"
-                }
-            ],
-            "description": "Languages for Laravel",
-            "keywords": [
-                "lang",
-                "languages",
-                "laravel",
-                "lpm"
-            ],
-            "support": {
-                "source": "https://github.com/caouecs/lang/tree/4.0.11"
-            },
-            "abandoned": "https://github.com/Laravel-Lang/lang",
-            "time": "2020-03-17T15:24:26+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
