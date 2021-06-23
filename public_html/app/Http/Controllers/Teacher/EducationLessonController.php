@@ -30,13 +30,14 @@ class EducationLessonController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function index()
     {
         $items = EducationLesson::paginate('20');
 
-        return view('teacher.lessons.index', compact('items'));
+        return redirect()->route('teacher.index');
+//        return view('teacher.lessons.index', compact('items'));
     }
 
     /**
@@ -52,6 +53,8 @@ class EducationLessonController extends Controller
 
         $item = (new EducationLesson());
 
+        $this->authorize('create', $item);
+
         return view('teacher.lessons.edit', compact('item', 'programs'));
     }
 
@@ -66,6 +69,8 @@ class EducationLessonController extends Controller
         $data = $request->all();
 
         $item = (new EducationLesson())->fill($data);
+
+        $this->authorize('create', $item);
 
         $result = $item->save();
 
@@ -103,6 +108,8 @@ class EducationLessonController extends Controller
     {
         $item = EducationLesson::findOrFail($id);
 
+        $this->authorize('update', $item);
+
         $data = $this->userRepository->getShow();
 
         $programs = EducationProgram::where('user_id', $data->id)->get();
@@ -122,6 +129,8 @@ class EducationLessonController extends Controller
         $data = $request->all();
 
         $item = EducationLesson::findOrFail($id)->fill($data);
+
+        $this->authorize('update', $item);
 
         $result = $item->save();
 
@@ -144,6 +153,8 @@ class EducationLessonController extends Controller
     public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
         $item = EducationLesson::findOrFail($id);
+
+        $this->authorize('delete', $item);
 
         $result = $item->delete();
 
